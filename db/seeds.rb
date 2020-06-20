@@ -6,17 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# Destroy all cuisines
+puts "Destroy all cuisines"
 Cuisine.destroy_all
 
-def create_cuisine(name)
+def create_cuisine(name, filename)
   cuis = Cuisine.new(name: name)
+  # cuis.photo.attach(io: file, filename: filename, content_type: 'image/png')
   cuis.save!
 end
 
 puts "Creating cuisines"
-cuisines = %W[Western Japanese Korean Chinese Thai Vietnamese Indonesian Mexican Italian]
+
+cuisines = %W[American Arabic Asian Australian Brazilian British Cantonese Chinese European French Fusion German Hunan Indian Indonesian International Italian Japanese Korean Malaysian Mediterranean Mexican Middle Eastern Modern Indian Modernist European Nepali Singaporean Spanish Sichuan Taiwanese Thai Turkish Vietnamese Western]
+
 cuisines.each do |cuisine|
-  create_cuisine(cuisine)
-  puts "#{Cuisine} created"
+  filename = "seeds-imgs#{cuisine}.jpg"
+  create_cuisine(cuisine, filename)
+  puts "#{cuisine} created"
 end
