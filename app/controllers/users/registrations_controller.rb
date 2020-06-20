@@ -5,14 +5,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    raise
+    super do |resource|
+      resource.password = "asdi532l0"
+      resource.password_confirmation = "asdi532l0"
+      resource.save
+    end
+  end
 
   # GET /resource/edit
   # def edit
