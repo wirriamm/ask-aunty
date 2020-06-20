@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_06_20_083431) do
 
   # These are extensions that must be enabled in order to support this database
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_083431) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+
   end
 
   create_table "meals", force: :cascade do |t|
@@ -47,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_06_20_083431) do
     t.datetime "endtime"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+
   end
 
   create_table "preferences", force: :cascade do |t|
