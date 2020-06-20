@@ -5,7 +5,7 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(
-      vanity_id: 'XXX',
+      vanity_id: generate_vanity_id,
       endtime: Time.now + 2.hours
       )
     if @meal.save
@@ -21,7 +21,9 @@ class MealsController < ApplicationController
   private
 
   def generate_vanity_id
-    # Incomplete
-    Meal.find_by(vanity_id: 'XXX')
+    loop do
+      random_code = SecureRandom.alphanumeric
+      return random_code if Meal.find_by(vanity_id: random_code).nil?
+    end
   end
 end
