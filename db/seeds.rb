@@ -11,6 +11,9 @@ preferences = ['no spicy', 'no raw fish', 'no fast food']
 restrictions = ['halal', 'gluten free', 'kosher', 'vegan', 'vegetarian', 'allergic to seafood', 'allergic to peanuts', 'lactose free']
 seeds = preferences + restrictions
 
+puts "Destroy all preferences"
+Preference.destroy_all
+
 puts "Seeding all preferences."
 seeds.each do |pref|
   preference = Preference.new(name: pref)
