@@ -10,8 +10,8 @@
   <div>
     <%= simple_form_for(@poll) do |f| %>
       <%= f.input :score  %>
-      <%= f.input :cuisine, :as => :hidden, :input_html => { :value => cuisine } %>
-      <%= f.input :meal, :as => :hidden, :input_html => { :value => cuisine } %>
+      <%= f.hidden_field :cuisine, value:  cuisine %>
+      <%= f.input :meal, :as => :hidden, :input_html => { :value => @meal } %>
       <%= f.submit %>
     <% end %>
   </div>

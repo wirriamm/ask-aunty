@@ -1,7 +1,7 @@
 class PollsController < ApplicationController
   #user is at picture page, route meals#setup
   def create
-    @poll = Poll.new(params.require(:poll).permit(:score, :cuisine, :meal))
+    @poll = Poll.new(params.require(:poll).permit(:score, :meal, :cuisine))
     @poll.user = current_user
     raise
     #current implementation assume whole poll is on one page
