@@ -7,4 +7,12 @@
     <% count += 1 %>
     <%= image_tag "https://source.unsplash.com/414x736/?#{keyword}" %>
   </div>
+  <div>
+    <%= simple_form_for(@poll) do |f| %>
+      <%= f.input :score  %>
+      <%= f.input :cuisine, :as => :hidden, :input_html => { :value => cuisine } %>
+      <%= f.input :meal, :as => :hidden, :input_html => { :value => cuisine } %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 <% end %>

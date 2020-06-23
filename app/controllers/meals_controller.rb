@@ -20,6 +20,11 @@ class MealsController < ApplicationController
 
   def setup
     @cuisines = Cuisine.all
+    @poll = Poll.new
+    @meal = Meal.find_by
+  end
+
+  def result
   end
 
   private
