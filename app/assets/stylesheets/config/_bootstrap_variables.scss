@@ -17,9 +17,52 @@ $info:       $yellow;
 $danger:     $red;
 $warning:    $orange;
 
-// Buttons & inputs' radius
+// Buttons & inputs
 $border-radius:    2px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
-// Override other variables below!
+.button {
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.primarybtn {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+}
+
+.primarybtn:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.secondarybtn {
+  background-color: white;
+  color: black;
+  border: 2px solid #008CBA;
+}
+
+.secondarybtn:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+// Backgrounds
+.gradientbackground {
+  background-image: url('/w3images/forestbridge.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+
+$background-solid-colour:
