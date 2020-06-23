@@ -1,0 +1,10 @@
+<% count = 1; %>
+<% @cuisines.each do |cuisine| %>
+  <div>
+    <!-- TODO: retrieve keywords from cuisines -->
+    <% keyword = "beefsteak" %>
+    <p><%= "Cuisine no #{count}" %></p>
+    <% count += 1 %>
+    <%= image_tag "https://source.unsplash.com/414x736/?#{keyword}" %>
+  </div>
+<% end %>
