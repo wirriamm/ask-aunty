@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_23_135438) do
+ActiveRecord::Schema.define(version: 2020_06_23_152609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_06_23_135438) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "dish"
   end
 
   create_table "meals", force: :cascade do |t|
@@ -47,6 +48,18 @@ ActiveRecord::Schema.define(version: 2020_06_23_135438) do
     t.datetime "endtime"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "polls", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "meal_id", null: false
+    t.bigint "cuisine_id", null: false
+    t.boolean "score"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cuisine_id"], name: "index_polls_on_cuisine_id"
+    t.index ["meal_id"], name: "index_polls_on_meal_id"
+    t.index ["user_id"], name: "index_polls_on_user_id"
   end
 
   create_table "preferences", force: :cascade do |t|
@@ -77,6 +90,9 @@ ActiveRecord::Schema.define(version: 2020_06_23_135438) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "polls", "cuisines"
+  add_foreign_key "polls", "meals"
+  add_foreign_key "polls", "users"
   add_foreign_key "users_meals", "meals"
   add_foreign_key "users_meals", "users"
 end
