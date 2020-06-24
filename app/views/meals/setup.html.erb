@@ -1,13 +1,23 @@
 <% count = 1; %>
 <% @polls.each do |poll| %>
+<!-- TODO: Add a progress bar showing % of polls done -->
   <div>
     <p><%= "Poll no #{count}" %></p>
     <% count += 1 %>
     <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
     <%= form_for [@meal, poll] do |f| %>
-      <%= f.collection_radio_buttons :score, [[true, 'Yes'], [false, 'No']], :first, :last %>
+      <%= f.hidden_field :score, value: false %>
       <%= f.hidden_field :cuisine, value: poll.cuisine.id %>
-      <%= f.submit %>
+      <!-- TODO: change to thumbs down icon -->
+      <!-- TODO: disable when 1 button is clicked -->
+      <%= f.submit "Thumbs Down"%>
+    <% end %>
+    <%= form_for [@meal, poll] do |f| %>
+      <%= f.hidden_field :score, value: true %>
+      <%= f.hidden_field :cuisine, value: poll.cuisine.id %>
+      <!-- TODO: change to thumbs up icon -->
+      <!-- TODO: disable when 1 button is clicked -->
+      <%= f.submit "Thumbs Up"%>
     <% end %>
   </div>
 <% end %>
