@@ -1,0 +1,6 @@
+<div class="d-flex justify-content-center">
+  <%= simple_form_for(@meal) do |f| %>
+    <%= f.input :vanity_id, label: 'Meal ID' %>
+    <%= f.submit 'Join Meal', class: 'btn btn-primary btn-block' %>
+  <% end %>
+</div>
