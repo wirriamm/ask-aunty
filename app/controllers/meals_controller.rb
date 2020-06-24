@@ -18,6 +18,10 @@ class MealsController < ApplicationController
   def show
   end
 
+  def setup
+    @cuisines = Cuisine.all
+  end
+
   private
 
   def generate_vanity_id
