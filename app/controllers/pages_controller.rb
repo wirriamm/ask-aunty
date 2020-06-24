@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     @meal = Meal.new
   end
 
-  def create_meal
+  def create_users_meal
     @meal = Meal.new
   end
 end

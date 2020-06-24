@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center">
+  <% unless @meal.id %>
+    <%= simple_form_for(@meal, remote: true) do |f| %>
+      <%= f.input :postal_code, label: 'Postal Code' %>
+      <%= f.submit 'Create Meal', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  <% else %>
+    <%= simple_form_for(@meal, remote: true) do |f| %>
+      <%= f.input :postal_code, label: 'Postal Code' %>
+      <%= f.input :vanity_id %>
+    <% end %>
+  <% end %>
+</div>

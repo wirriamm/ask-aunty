@@ -6,10 +6,11 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(
       vanity_id: generate_vanity_id,
-      endtime: Time.now + 2.hours
+      endtime: Time.now + 2.hours,
+      postal_code: params[:meal][:postal_code]
       )
     if @meal.save
-      redirect_to '/' # change to preferences path
+      render partial: 'meals/vanity_id' # change to preferences path
     else
       render new
     end

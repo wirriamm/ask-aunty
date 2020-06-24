@@ -1,0 +1,4 @@
+<%= simple_form_for(@meal, remote: true) do |f| %>
+  <%= f.input :vanity_id %>
+  <%= f.submit 'Create Meal', class: 'btn btn-primary btn-block' %>
+<% end %>
