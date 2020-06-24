@@ -1,4 +1,6 @@
-<%= simple_form_for(@meal, remote: true) do |f| %>
-  <%= f.input :vanity_id %>
-  <%= f.submit 'Create Meal', class: 'btn btn-primary btn-block' %>
-<% end %>
+<div>
+  <%= meal.vanity_id %>
+</div>
+<div>
+  <%= link_to root_path, class: 'btn btn-secondary' %>
+</div>

@@ -1,6 +1,10 @@
 class MealsController < ApplicationController
   def new
     @meal = Meal.new
+    respond_to do |format|
+      format.html
+      format.json { render json: { meal: params[:meal][:vanity_id] } }
+    end
   end
 
   def create
@@ -10,9 +14,13 @@ class MealsController < ApplicationController
       postal_code: params[:meal][:postal_code]
       )
     if @meal.save
-      render partial: 'meals/vanity_id' # change to preferences path
+      respond_to do |format|
+        format.html
+        format.json { render json: { meal: @meal } }
+      end
+      # change to preferences path
     else
-      render new
+      render :new
     end
   end
 
