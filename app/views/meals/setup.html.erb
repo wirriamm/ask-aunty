@@ -1,10 +1,13 @@
 <% count = 1; %>
-<% @cuisines.each do |cuisine| %>
+<% @polls.each do |poll| %>
   <div>
-    <!-- TODO: retrieve keywords from cuisines -->
-    <% keyword = "beefsteak" %>
-    <p><%= "Cuisine no #{count}" %></p>
+    <p><%= "Poll no #{count}" %></p>
     <% count += 1 %>
-    <%= image_tag "https://source.unsplash.com/414x736/?#{keyword}" %>
+    <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
+    <%= form_for [@meal, poll] do |f| %>
+      <%= f.collection_radio_buttons :score, [[true, 'Yes'], [false, 'No']], :first, :last %>
+      <%= f.hidden_field :cuisine, value: poll.cuisine.id %>
+      <%= f.submit %>
+    <% end %>
   </div>
 <% end %>

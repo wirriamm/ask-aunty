@@ -20,6 +20,12 @@ class MealsController < ApplicationController
 
   def setup
     @cuisines = Cuisine.all
+    @polls = []
+    @meal = Meal.find(params[:id])
+    @cuisines.each do |cuisine|
+      @poll = Poll.new(cuisine: cuisine)
+      @polls << @poll
+    end
   end
 
   private
