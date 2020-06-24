@@ -7,4 +7,5 @@ class User < ApplicationRecord
   # relationship
   has_many :users_meals
   has_many :meals, through: :users_meals
+  has_many :polls
 end
