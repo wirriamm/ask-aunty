@@ -28,6 +28,9 @@ class MealsController < ApplicationController
     end
   end
 
+  def result
+  end
+
   private
 
   def generate_vanity_id
