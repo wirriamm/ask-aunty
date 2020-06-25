@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
-  get '/meals/:id/polls', to: 'meals#setup'
-  get '/meals/:id/result', to: 'meals#result'
+
+  get '/meals/:id/polls', to: 'meals#setup', as: 'setup'
+  get '/meals/:id/result', to: 'meals#result', as: "result"
 
   resources :meals, only: [:new, :create] do
     resources :polls, only: [:create]

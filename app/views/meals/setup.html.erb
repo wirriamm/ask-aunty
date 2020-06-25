@@ -20,6 +20,14 @@
       <%= f.submit "Thumbs Up"%>
     <% end %>
   </div>
+  <div>
+    <%= simple_form_for(@poll) do |f| %>
+      <%= f.input :score  %>
+      <%= f.hidden_field :cuisine, value:  cuisine %>
+      <%= f.input :meal, :as => :hidden, :input_html => { :value => @meal } %>
+      <%= f.submit %>
+    <% end %>
+  </div>
 <% end %>
 <!-- TODO: Hide the "View Result" button until all polls are completed -->
 <%= link_to "View Results", "/meals/:id/result" %>
