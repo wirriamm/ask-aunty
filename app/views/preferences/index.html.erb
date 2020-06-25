@@ -1,0 +1,5 @@
+<% @users_preferences.each do |up| %>
+  <%= simple_form_for(up) do |f| %>
+    <%= f.check_box :status %>
+  <% end %>
+<% end %>
