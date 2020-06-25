@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :users_meals
   has_many :meals, through: :users_meals
   has_many :polls
+  has_many :users_preferences
 end
