@@ -32,7 +32,7 @@ class MealsController < ApplicationController
     @polls = []
     @meal = Meal.find(params[:id])
     @cuisines.each do |cuisine|
-      @poll = Poll.new(cuisine: cuisine)
+      @poll = Poll.new(cuisine: cuisine, meal: @meal, user: current_user)
       @polls << @poll
     end
   end

@@ -1,25 +1,33 @@
-<% count = 1; %>
-<% @polls.each do |poll| %>
 <!-- TODO: Add a progress bar showing % of polls done -->
-  <div>
-    <p><%= "Poll no #{count}" %></p>
-    <% count += 1 %>
-    <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
-    <%= form_for [@meal, poll] do |f| %>
-      <%= f.hidden_field :score, value: false %>
-      <%= f.hidden_field :cuisine, value: poll.cuisine.id %>
-      <!-- TODO: change to thumbs down icon -->
-      <!-- TODO: disable when 1 button is clicked -->
-      <%= f.submit "Thumbs Down"%>
+<% count = 0; %>
+
+<div data-controller='polls'>
+  <input type="hidden" data-target='polls.count' value='<%= count %>'>
+  <% @polls.each do |poll|%>
+    <% if poll == @polls.first %>
+      <div data-target='polls.poll' style='display: block;'>
+        <input type="hidden" data-target='polls.mealId' value='<%= poll.meal.id %>'>
+        <input type="hidden" data-target='polls.cuisineId' value='<%= poll.cuisine.id %>'>
+        <input type="hidden" data-target='polls.userId' value='<%= poll.user.id %>'>
+        <p><%= "Poll no #{count + 1}" %></p>
+        <% count += 1 %>
+        <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
+        <button data-action='click->polls#thumbsUp'> Thumbs Up </button>
+        <button data-action='click->polls#thumbsDown'> Thumbs Down </button>
+      </div>
+    <% else %>
+      <div data-target='polls.poll' style='display: none;'>
+        <input type="hidden" data-target='polls.mealId' value='<%= poll.meal.id %>'>
+        <input type="hidden" data-target='polls.cuisineId' value='<%= poll.cuisine.id %>'>
+        <input type="hidden" data-target='polls.userId' value='<%= poll.user.id %>'>
+        <p><%= "Poll no #{count + 1}" %></p>
+        <% count += 1 %>
+        <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
+        <button data-action='click->polls#thumbsUp'> Thumbs Up </button>
+        <button data-action='click->polls#thumbsDown'> Thumbs Down </button>
+      </div>
     <% end %>
-    <%= form_for [@meal, poll] do |f| %>
-      <%= f.hidden_field :score, value: true %>
-      <%= f.hidden_field :cuisine, value: poll.cuisine.id %>
-      <!-- TODO: change to thumbs up icon -->
-      <!-- TODO: disable when 1 button is clicked -->
-      <%= f.submit "Thumbs Up"%>
-    <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>
 <!-- TODO: Hide the "View Result" button until all polls are completed -->
 <%= link_to "View Results", "/meals/:id/result" %>
