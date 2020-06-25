@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get '/join_meal', to: 'pages#join_meal'
+  get '/create_meal', to: 'pages#create_meal'
+
+  resources :meals, only: [:new, :create]
 end

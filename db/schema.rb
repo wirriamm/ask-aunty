@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_06_23_152609) do
     t.datetime "endtime"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "postal_code"
   end
 
   create_table "polls", force: :cascade do |t|
