@@ -1,10 +1,6 @@
 class MealsController < ApplicationController
   def new
     @meal = Meal.new
-    respond_to do |format|
-      format.html
-      format.json { render json: { meal: params[:meal][:vanity_id] } }
-    end
   end
 
   def create
@@ -14,11 +10,7 @@ class MealsController < ApplicationController
       postal_code: params[:meal][:postal_code]
       )
     if @meal.save
-      respond_to do |format|
-        format.html
-        format.json { render json: { meal: @meal } }
-      end
-      # change to preferences path
+      redirect_to preferences_path
     else
       render :new
     end
@@ -44,7 +36,7 @@ class MealsController < ApplicationController
 
   def generate_vanity_id
     loop do
-      random_code = SecureRandom.alphanumeric
+      random_code = SecureRandom.alphanumeric(6)
       return random_code if Meal.find_by(vanity_id: random_code).nil?
     end
   end
