@@ -7,7 +7,7 @@ class PollsController < ApplicationController
     @poll.user = current_user
     @poll.meal = @meal
     @poll.cuisine = @cuisine
-    @poll.save
+    redirect_to setup_path(@meal) if @poll.save
   end
 
   private

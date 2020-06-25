@@ -6,14 +6,14 @@
     <% count += 1 %>
     <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
     <%= form_for [@meal, poll] do |f| %>
-      <%= f.hidden_field :score, value: false %>
+      <%= f.hidden_field :score, value: -1 %>
       <%= f.hidden_field :cuisine, value: poll.cuisine.id %>
       <!-- TODO: change to thumbs down icon -->
       <!-- TODO: disable when 1 button is clicked -->
       <%= f.submit "Thumbs Down"%>
     <% end %>
     <%= form_for [@meal, poll] do |f| %>
-      <%= f.hidden_field :score, value: true %>
+      <%= f.hidden_field :score, value: 1 %>
       <%= f.hidden_field :cuisine, value: poll.cuisine.id %>
       <!-- TODO: change to thumbs up icon -->
       <!-- TODO: disable when 1 button is clicked -->

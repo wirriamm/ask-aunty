@@ -6,7 +6,10 @@ Poll ends: <%= @endtime %><br>
 If poll not ended: show "waiting"<br>
 
 Else show result:
-<% @polls.each do |poll| %>
-  <%= poll %>
-<% end %>
+<br></br>
+
+<h3>Result</h3><br>
+First: <%= @first.name %><br>
+Second: <%= @second.name %><br>
+Third: <%= @third.name %><br>
 
