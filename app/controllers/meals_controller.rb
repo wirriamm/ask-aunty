@@ -29,6 +29,14 @@ class MealsController < ApplicationController
   end
 
   def result
+    @meal = Meal.find(params[:id])
+    @endtime = @meal.endtime
+    @polls = Poll.where(meal_id: @meal.id)
+    @poll_summary = {}
+    # @polls.each do |poll|
+    #   if poll.cuisine.name #exists in polls summary
+    #   else #create new hash
+    # end
   end
 
   private

@@ -1,1 +1,12 @@
-View result
+<h1>View Result</h1><br>
+
+Poll ends: <%= @endtime %><br>
+</br>
+
+If poll not ended: show "waiting"<br>
+
+Else show result:
+<% @polls.each do |poll| %>
+  <%= poll %>
+<% end %>
+
