@@ -1,4 +1,5 @@
 class PollsController < ApplicationController
+
   def create
     @meal = Meal.find(params[:meal_id])
     @cuisine = Cuisine.find(params[:poll][:cuisine])
