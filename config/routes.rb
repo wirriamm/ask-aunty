@@ -9,9 +9,9 @@ Rails.application.routes.draw do
     resources :polls, only: [:create]
   end
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/join_meal', to: 'pages#join_meal'
-  get '/create_meal', to: 'pages#create_meal'
+  post '/join_meal', to: 'pages#create_users_meal'
 
-  resources :meals, only: [:new, :create]
+  resources :preferences, only: [:index]
+  post '/preferences', to: 'preferences#save_preferences'
 end
