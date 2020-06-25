@@ -1,11 +1,24 @@
 <% count = 1; %>
-<% @cuisines.each do |cuisine| %>
+<% @polls.each do |poll| %>
+<!-- TODO: Add a progress bar showing % of polls done -->
   <div>
-    <!-- TODO: retrieve keywords from cuisines -->
-    <% keyword = "beefsteak" %>
-    <p><%= "Cuisine no #{count}" %></p>
+    <p><%= "Poll no #{count}" %></p>
     <% count += 1 %>
-    <%= image_tag "https://source.unsplash.com/414x736/?#{keyword}" %>
+    <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
+    <%= form_for [@meal, poll] do |f| %>
+      <%= f.hidden_field :score, value: false %>
+      <%= f.hidden_field :cuisine, value: poll.cuisine.id %>
+      <!-- TODO: change to thumbs down icon -->
+      <!-- TODO: disable when 1 button is clicked -->
+      <%= f.submit "Thumbs Down"%>
+    <% end %>
+    <%= form_for [@meal, poll] do |f| %>
+      <%= f.hidden_field :score, value: true %>
+      <%= f.hidden_field :cuisine, value: poll.cuisine.id %>
+      <!-- TODO: change to thumbs up icon -->
+      <!-- TODO: disable when 1 button is clicked -->
+      <%= f.submit "Thumbs Up"%>
+    <% end %>
   </div>
   <div>
     <%= simple_form_for(@poll) do |f| %>
@@ -16,3 +29,5 @@
     <% end %>
   </div>
 <% end %>
+<!-- TODO: Hide the "View Result" button until all polls are completed -->
+<%= link_to "View Results", "/meals/:id/result" %>
