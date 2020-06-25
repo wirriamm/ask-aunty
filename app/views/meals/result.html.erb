@@ -10,6 +10,10 @@ Else show result:
 
 <h3>Result</h3><br>
 First: <%= @first.name %><br>
+<%= cl_image_tag @first.photo.key, height: 300, width: 400, crop: :fill %><br>
 Second: <%= @second.name %><br>
+<%= cl_image_tag @second.photo.key, height: 300, width: 400, crop: :fill %><br>
 Third: <%= @third.name %><br>
+<%= cl_image_tag @third.photo.key, height: 300, width: 400, crop: :fill %><br>
+
 
