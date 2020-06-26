@@ -52,7 +52,7 @@ export default class extends Controller {
         meal: mealId,
         user: userId,
         cuisine: cuisineId,
-        score: `${bool}`
+        score: bool
       })
     }).then(response => console.log(response));
   }
