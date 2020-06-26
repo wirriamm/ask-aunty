@@ -1,33 +1,32 @@
 <!-- TODO: Add a progress bar showing % of polls done -->
 <% count = 0; %>
 
-<div data-controller='polls'>
-  <input type="hidden" data-target='polls.count' value='<%= count %>'>
-  <% @polls.each do |poll|%>
-    <% if poll == @polls.first %>
-      <div data-target='polls.poll' style='display: block;'>
-        <input type="hidden" data-target='polls.mealId' value='<%= poll.meal.id %>'>
-        <input type="hidden" data-target='polls.cuisineId' value='<%= poll.cuisine.id %>'>
-        <input type="hidden" data-target='polls.userId' value='<%= poll.user.id %>'>
-        <p><%= "Poll no #{count + 1}" %></p>
-        <% count += 1 %>
-        <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
-        <button data-action='click->polls#thumbsUp'> Thumbs Up </button>
-        <button data-action='click->polls#thumbsDown'> Thumbs Down </button>
-      </div>
-    <% else %>
-      <div data-target='polls.poll' style='display: none;'>
-        <input type="hidden" data-target='polls.mealId' value='<%= poll.meal.id %>'>
-        <input type="hidden" data-target='polls.cuisineId' value='<%= poll.cuisine.id %>'>
-        <input type="hidden" data-target='polls.userId' value='<%= poll.user.id %>'>
-        <p><%= "Poll no #{count + 1}" %></p>
-        <% count += 1 %>
-        <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
-        <button data-action='click->polls#thumbsUp'> Thumbs Up </button>
-        <button data-action='click->polls#thumbsDown'> Thumbs Down </button>
-      </div>
+<div data-controller='polls' data-target='polls'>
+  <% if @polls.any? %>
+    <input type="hidden" data-target='polls.count' value='<%= count %>'>
+    <% @polls.each do |poll|%>
+      <% if poll == @polls.first %>
+        <div data-target='polls.poll' style='display: block;'>
+          <p><%= "Poll no #{@poll_no}/10" %></p>
+          <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
+        </div>
+      <% else %>
+        <div data-target='polls.poll' style='display: none;'>
+          <p><%= "Poll no #{@poll_no}/10" %></p>
+          <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
+        </div>
+      <% end %>
+      <% @poll_no += 1 %>
+      <% count += 1 %>
+      <input type="hidden" data-target='polls.cuisineId' value='<%= poll.cuisine.id %>'>
     <% end %>
+    <input type="hidden" data-target='polls.mealId' value='<%= @meal.id %>'>
+    <input type="hidden" data-target='polls.userId' value='<%= current_user.id %>'>
+    <button data-target='polls.btn' data-action='click->polls#thumbsUp'> Thumbs Up </button>
+    <button data-target='polls.btn' data-action='click->polls#thumbsDown'> Thumbs Down </button>
+    <div data-target='polls.viewResult' style='display: none;'><%= link_to "View Result", "/meals/:id/result" %></div>
+  <% else %>
+    <div data-target='polls.viewResult'><%= link_to "View Result", "/meals/:id/result" %></div>
   <% end %>
 </div>
 <!-- TODO: Hide the "View Result" button until all polls are completed -->
-<%= link_to "View Results", "/meals/:id/result" %>

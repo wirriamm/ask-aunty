@@ -32,9 +32,13 @@ class MealsController < ApplicationController
     @polls = []
     @meal = Meal.find(params[:id])
     @cuisines.each do |cuisine|
-      @poll = Poll.new(cuisine: cuisine, meal: @meal, user: current_user)
-      @polls << @poll
+      poll_exist = Poll.find_by(cuisine: cuisine, meal: @meal, user: current_user)
+      unless poll_exist
+        new_poll = Poll.new(cuisine: cuisine, meal: @meal, user: current_user)
+        @polls << new_poll
+      end
     end
+    @poll_no = 10 - @polls.length + 1
   end
 
   def result

@@ -1,6 +1,6 @@
 class PollsController < ApplicationController
   def create
-    puts "Hello World"
+    # puts "Hello World"
     @poll = Poll.new(meal: Meal.find(params[:meal]),
                      user: User.find(params[:user]),
                      cuisine: Cuisine.find(params[:cuisine]),
@@ -15,9 +15,9 @@ class PollsController < ApplicationController
     # redirect_to setup_path(@meal) if @poll.save
   end
 
-  private
+  # private
 
-  def poll_params
-    params.require(:poll).permit(:score)
-  end
+  # def poll_params
+  #   params.require(:poll).permit(:score)
+  # end
 end
