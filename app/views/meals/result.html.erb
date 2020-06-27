@@ -1,19 +1,13 @@
-<h1>View Result</h1><br>
+<% if Time.now > @endtime %>
+  <h1>Aunty's Verdict:</h1>
+  <% @top_cuisine.each do |cuisine| %>
+    <%= render partial: 'verdict', locals: { cuisine: cuisine } %>
+  <% end %>
+<% else %>
+  <h1>Aunty's still waiting...</h1>
+  <h3>Your poll ends: <%= @endtime %></h3><br>
+  <p>Please check back after poll closing time for Aunty's verdict.</p></br>
+<% end %>
 
-Poll ends: <%= @endtime %><br>
-</br>
-
-If poll not ended: show "waiting"<br>
-
-Else show result:
-<br></br>
-
-<h3>Result</h3><br>
-First: <%= @first.name %><br>
-<%= cl_image_tag @first.photo.key, height: 300, width: 400, crop: :fill %><br>
-Second: <%= @second.name %><br>
-<%= cl_image_tag @second.photo.key, height: 300, width: 400, crop: :fill %><br>
-Third: <%= @third.name %><br>
-<%= cl_image_tag @third.photo.key, height: 300, width: 400, crop: :fill %><br>
 
 
