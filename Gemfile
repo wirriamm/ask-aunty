@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 
+gem 'font-awesome-sass', '~> 5.6.1'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -30,9 +32,9 @@ gem 'devise'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'autoprefixer-rails'
-gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'cloudinary', '~> 1.12.0'
+gem 'turbolinks_render'
 
 group :development, :test do
   gem 'pry-byebug'

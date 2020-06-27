@@ -10,7 +10,7 @@ $body-bg:                 $light-gray;
 $font-size-base: 1rem;
 
 // Colors
-$body-color: $gray;
+$body-color: #000000;
 $primary:    $blue;
 $success:    $green;
 $info:       $yellow;
@@ -18,48 +18,75 @@ $danger:     $red;
 $warning:    $orange;
 
 // Buttons & inputs
-$border-radius:    2px;
-$border-radius-lg: 2px;
-$border-radius-sm: 2px;
+$border-radius:    0px;
+$border-radius-lg: 0px;
+$border-radius-sm: 0px;
 
-.button {
-  border: none;
-  color: white;
+h1 {
+  font-weight:bold;
+  font-size: 40px;
+}
+
+.score {
+  font-family: 'Fredoka One', cursive;
+  font-size: 40px;
+}
+
+body {
+  font-size: 24px;
+}
+
+
+.btn {
+  border: 2px solid black;
   padding: 16px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: 24px;
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
 }
 
 .primarybtn {
-  background-color: white;
+  background-color: red;
   color: black;
-  border: 2px solid #4CAF50;
+}
+
+.fa-thumbs-up:hover {
+    color: red;
+}
+
+.fa-thumbs-down:hover {
+    color: gray;
 }
 
 .primarybtn:hover {
-  background-color: #4CAF50;
-  color: white;
+  border: 4px solid black;
+}
+
+.primarybtn:focus {
+  background-color: white;
 }
 
 .secondarybtn {
-  background-color: white;
+  background-color: light-gray;
   color: black;
-  border: 2px solid #008CBA;
 }
 
 .secondarybtn:hover {
-  background-color: #008CBA;
-  color: white;
+  border: 4px solid black;
 }
 
+.secondarybtn:focus {
+  background-color: white;
+}
 // Backgrounds
 .gradientbackground {
-  background-image: url('/w3images/forestbridge.jpg');
+  background: #9D50BB;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6E48AA, #9D50BB);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6E48AA, #9D50BB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   min-height: 100%;
   background-position: center;
   background-size: cover;
