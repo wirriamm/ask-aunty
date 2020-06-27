@@ -55,6 +55,8 @@ class MealsController < ApplicationController
     # #   if poll.cuisine.name #exists in polls summary
     # #   else #create new hash
     # # end
+    @users = find_users_for_meal(@meal)
+    # @user_preferences = find_user_preferences_for_meal(@meal)
   end
 
   private
@@ -65,4 +67,22 @@ class MealsController < ApplicationController
       return random_code if Meal.find_by(vanity_id: random_code).nil?
     end
   end
+
+  def find_users_for_meal(meal)
+    users_meals = UsersMeal.where(meal: meal).includes(:user)
+    users = []
+    users_meals.each do |users_meal|
+      users << users_meal.user
+    end
+    users
+  end
+
+  # def find_users_preferences_for_meal
+  #   user_preferences = []
+  #   users.each do |user|
+  #     user_preferences << UsersPreference.where(user: user).includes(:preference)
+  #   end
+  #   user_preferences
+  #   users
+  # end
 end

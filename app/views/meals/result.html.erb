@@ -3,9 +3,20 @@
   <% if @top_cuisine == [] %>
     <p>Your poll closed but no one voted :(</p>
   <% else %>
-    <% @top_cuisine.each do |cuisine| %>
-      <%= render partial: 'verdict', locals: { cuisine: cuisine } %>
-    <% end %>
+    <div>
+      <% @top_cuisine.each do |cuisine| %>
+        <%= render partial: 'verdict', locals: { cuisine: cuisine } %>
+      <% end %>
+    </div>
+    <br>
+    <div>
+      <h2>Your Group's Preferences</h2>
+      <ul>
+        <% @users.each do |user| %>
+          <li><%= user.email %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 <% else %>
   <h1>Aunty's still waiting...</h1>
