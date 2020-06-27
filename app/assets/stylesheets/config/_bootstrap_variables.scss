@@ -22,58 +22,6 @@ $border-radius:    4px;
 $border-radius-lg: 4px;
 $border-radius-sm: 4px;
 
-h1 {
-  font-weight:bold;
-  font-size: 40px;
-}
-
-.score {
-  font-family: 'Fredoka One', cursive;
-  font-size: 40px;
-}
-
-body {
-  font-size: 24px;
-}
-
-.btn {
-  border: 2px solid black;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 24px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.primarybtn {
-  background-color: red;
-  color: black;
-}
-
-.primarybtn:hover {
-  border: 4px solid black;
-}
-
-.primarybtn:focus {
-  background-color: white;
-}
-
-.secondarybtn {
-  background-color: light-gray;
-  color: black;
-}
-
-.secondarybtn:hover {
-  border: 4px solid black;
-}
-
-.secondarybtn:focus {
-  background-color: white;
-}
-
 // Backgrounds
 .gradientbackground {
   background: #FCD4D4;  /* fallback for old browsers */
