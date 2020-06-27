@@ -17,12 +17,10 @@ class PagesController < ApplicationController
     else
       # Check if user have already joined this meal
       if @meal.users.include? current_user
-        redirect_to root_path # TO BE REMOVED
-        # redirect_to result_path
+        redirect_to result_path(@meal.id)
       else
         @meal.users << current_user
         @meal.save
-        # redirect_to root_path # TO BE REMOVED
         redirect_to setup_path(@meal)
       end
     end
