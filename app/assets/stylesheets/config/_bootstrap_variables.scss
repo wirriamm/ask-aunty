@@ -54,12 +54,12 @@ body {
   color: black;
 }
 
-.fa-thumbs-up:hover {
-    color: red;
-}
-
-.fa-thumbs-down:hover {
-    color: gray;
+.fa-thumbs-up, .fa-thumbs-down {
+  color: grey;
+  font-size: 40px;
+  &:hover {
+    color: #FCD4D4;
+  }
 }
 
 .primarybtn:hover {
