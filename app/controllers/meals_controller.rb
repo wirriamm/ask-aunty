@@ -9,7 +9,7 @@ class MealsController < ApplicationController
       endtime: Time.now + 2.hours
       )
     if @meal.save
-      redirect_to '/' # change to preferences path
+      redirect_to preferences_path
     else
       render new
     end

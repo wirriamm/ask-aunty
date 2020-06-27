@@ -8,12 +8,15 @@
 
 require 'open-uri'
 
-puts "Destroy all cuisines"
-Cuisine.destroy_all
+# puts "Destroy all cuisines"
+# Cuisine.destroy_all
 puts "Destroy all preferences"
 Preference.destroy_all
+puts "Destroy all meals"
+Meal.destroy_all
 puts "Destroy all users"
 User.destroy_all
+puts
 
 # Cuisines preferences
 # cuisines = %W[American Arabic Asian Australian Brazilian British Cantonese Chinese European French Fusion German Hunan Indian Indonesian International Italian Japanese Korean Malaysian Mediterranean Mexican Middle Eastern Modern Indian Modernist European Nepali Singaporean Spanish Sichuan Taiwanese Thai Turkish Vietnamese Western]
@@ -83,13 +86,6 @@ john = User.new(email: 'john@gmail.com',
                 password_confirmation: 'topsecret')
 john.save!
 puts "john seeded"
-john.preferences.concat(Preference.all)
-john.users_preferences = john.users_preferences.map do |up|
-  up.status = rand > 0.5
-  up.save
-  return up
-end
-puts "john's preferences seeded"
 
 jane = User.new(email: 'jane@gmail.com',
                 password: 'topsecret',

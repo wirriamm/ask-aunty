@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get '/create_meal', to: 'pages#create_meal'
 
   resources :meals, only: [:new, :create]
-  resources :preferences, only: [:index, :create, :update]
+  resources :preferences, only: [:index]
+  patch '/save_preference', to: 'preferences#save_preference'
 end
