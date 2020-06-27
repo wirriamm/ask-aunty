@@ -11,12 +11,18 @@
     <br>
     <div>
       <h2>Your Group's Preferences</h2>
-      <ul>
+ <!--      <ul>
         <% @users.each do |user| %>
           <li><%= user.email %></li>
         <% end %>
+      </ul> -->
+      <ul>
+        <% @user_preferences.each do |p| %>
+          <% p.each do |pp| %>
+            <li><%= pp.preference.name %>: <%= pp.status %></li>
+          <% end %>
+        <% end %>
       </ul>
-      <%= @user_preferences %>
     </div>
   <% end %>
 <% else %>
