@@ -11,7 +11,7 @@ $font-size-base: 1rem;
 
 // Colors
 $body-color: #000000;
-$primary:    $blue;
+$primary:    #ff847c;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
@@ -36,7 +36,6 @@ body {
   font-size: 24px;
 }
 
-
 .btn {
   border: 2px solid black;
   padding: 16px 32px;
@@ -48,10 +47,6 @@ body {
   transition-duration: 0.4s;
   cursor: pointer;
 }
-
-// .btn .a {
-//   text-decoration: none;
-// }
 
 .primarybtn {
   background-color: red;
