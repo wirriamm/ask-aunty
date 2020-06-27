@@ -1,25 +1,30 @@
-<% count = 1; %>
-<% @polls.each do |poll| %>
-<!-- TODO: Add a progress bar showing % of polls done -->
-  <div>
-    <p><%= "Poll no #{count}" %></p>
-    <% count += 1 %>
-    <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
-    <%= form_for [@meal, poll] do |f| %>
-      <%= f.hidden_field :score, value: false %>
-      <%= f.hidden_field :cuisine, value: poll.cuisine.id %>
-      <!-- TODO: change to thumbs down icon -->
-      <!-- TODO: disable when 1 button is clicked -->
-      <%= f.submit "Thumbs Down"%>
+<% count = 0; %>
+
+<div data-controller='polls' data-target='polls'>
+  <% if @polls.any? %>
+    <input type="hidden" data-target='polls.count' value='<%= count %>'>
+    <% @polls.each do |poll|%>
+      <% if poll == @polls.first %>
+        <div data-target='polls.poll' style='display: block;'>
+          <p><%= "Poll no #{@poll_no}/10" %></p>
+          <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
+        </div>
+      <% else %>
+        <div data-target='polls.poll' style='display: none;'>
+          <p><%= "Poll no #{@poll_no}/10" %></p>
+          <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
+        </div>
+      <% end %>
+      <% @poll_no += 1 %>
+      <% count += 1 %>
+      <input type="hidden" data-target='polls.cuisineId' value='<%= poll.cuisine.id %>'>
     <% end %>
-    <%= form_for [@meal, poll] do |f| %>
-      <%= f.hidden_field :score, value: true %>
-      <%= f.hidden_field :cuisine, value: poll.cuisine.id %>
-      <!-- TODO: change to thumbs up icon -->
-      <!-- TODO: disable when 1 button is clicked -->
-      <%= f.submit "Thumbs Up"%>
-    <% end %>
-  </div>
-<% end %>
-<!-- TODO: Hide the "View Result" button until all polls are completed -->
-<%= link_to "View Results", "/meals/:id/result" %>
+    <input type="hidden" data-target='polls.mealId' value='<%= @meal.id %>'>
+    <input type="hidden" data-target='polls.userId' value='<%= current_user.id %>'>
+    <button data-target='polls.btn' data-action='click->polls#thumbsUp'> Thumbs Up </button>
+    <button data-target='polls.btn' data-action='click->polls#thumbsDown'> Thumbs Down </button>
+    <div data-target='polls.viewResult' style='display: none;'><%= link_to "View Result", "/meals/:id/result" %></div>
+  <% else %>
+    <div data-target='polls.viewResult'><%= link_to "View Result", "/meals/:id/result" %></div>
+  <% end %>
+</div>
