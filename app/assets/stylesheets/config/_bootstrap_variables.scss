@@ -49,6 +49,10 @@ body {
   cursor: pointer;
 }
 
+// .btn .a {
+//   text-decoration: none;
+// }
+
 .primarybtn {
   background-color: red;
   color: black;
@@ -74,6 +78,7 @@ body {
 .secondarybtn:focus {
   background-color: white;
 }
+
 // Backgrounds
 .gradientbackground {
   background: #FCD4D4;  /* fallback for old browsers */
@@ -84,5 +89,4 @@ body {
   background-position: center;
   background-size: cover;
 }
-
 // $background-solid-colour:
