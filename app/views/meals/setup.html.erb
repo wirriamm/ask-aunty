@@ -23,8 +23,8 @@
     <input type="hidden" data-target='polls.userId' value='<%= current_user.id %>'>
     <button data-target='polls.btn' data-action='click->polls#thumbsUp'> Thumbs Up </button>
     <button data-target='polls.btn' data-action='click->polls#thumbsDown'> Thumbs Down </button>
-    <div data-target='polls.viewResult' style='display: none;'><%= link_to "View Result", "/meals/:id/result" %></div>
+    <div data-target='polls.viewResult' style='display: none;'><%= link_to "View Result", result_path(@meal) %></div>
   <% else %>
-    <div data-target='polls.viewResult'><%= link_to "View Result", "/meals/:id/result" %></div>
+    <div data-target='polls.viewResult'><%= link_to "View Result", result_path(@meal) %></div>
   <% end %>
 </div>
