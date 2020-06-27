@@ -1,13 +1,13 @@
 <% count = 0; %>
 
-<div data-controller='polls' data-target='polls'>
+<div class='poll' data-controller='polls' data-target='polls'>
   <% if @polls.any? %>
     <input type="hidden" data-target='polls.count' value='<%= count %>'>
     <% @polls.each do |poll|%>
       <% if poll == @polls.first %>
-        <div data-target='polls.poll' style='display: block;'>
+        <div class='' data-target='polls.poll' style='display: block;'>
           <p><%= "Poll no #{@poll_no}/10" %></p>
-          <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill %>
+          <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill, class: "rounded" %>
         </div>
       <% else %>
         <div data-target='polls.poll' style='display: none;'>
@@ -21,10 +21,13 @@
     <% end %>
     <input type="hidden" data-target='polls.mealId' value='<%= @meal.id %>'>
     <input type="hidden" data-target='polls.userId' value='<%= current_user.id %>'>
-    <button data-target='polls.btn' data-action='click->polls#thumbsUp'> Thumbs Up </button>
-    <button data-target='polls.btn' data-action='click->polls#thumbsDown'> Thumbs Down </button>
-    <div data-target='polls.viewResult' style='display: none;'><%= link_to "View Result", result_path(@meal) %></div>
+    <div class='d-flex justify-content-around'>
+      <div data-target='polls.btn' data-action='click->polls#thumbsUp'> <i class="fas fa-thumbs-up"></i> </div>
+      <div data-target='polls.btn' data-action='click->polls#thumbsDown'> <i class="fas fa-thumbs-down"></i></div>
+    </div>
+      <div data-target='polls.viewResult' style='display: none;' class='btn primarybtn btn-block'><%= link_to "View Result", "/meals/:id/result" %></div>
   <% else %>
-    <div data-target='polls.viewResult'><%= link_to "View Result", result_path(@meal) %></div>
+    <div data-target='polls.viewResult' class='btn primarybtn btn-block'><%= link_to "View Result", "/meals/:id/result" %></div>
+
   <% end %>
 </div>

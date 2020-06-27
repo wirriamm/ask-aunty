@@ -36,16 +36,15 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
     @endtime = @meal.endtime
     @polls =  Poll.where(meal_id: @meal.id)
-              .select("cuisine_id, score")
-              .group("cuisine_id")
-              .order("cuisine_id").sum("score")
+                  .select("cuisine_id, score")
+                  .group("cuisine_id")
+                  .order("cuisine_id").sum("score")
     # @poll_summary = @polls.select("cuisine_id, score").group("cuisine_id").sum("score").order("score")
     @polls_sorted = @polls.sort_by { |cuisine, score| score }
     @top_cuisine = []
     @top_cuisine << Cuisine.find(@polls_sorted.reverse.first[0])
     @top_cuisine << Cuisine.find(@polls_sorted.reverse.second[0])
     @top_cuisine << Cuisine.find(@polls_sorted.reverse.third[0])
-
 
     # @poll_summary.order(:value).reverse_order
     # @poll_summary = {}
