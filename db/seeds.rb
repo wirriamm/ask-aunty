@@ -16,7 +16,6 @@ puts "Destroy all meals"
 Meal.destroy_all
 puts "Destroy all users"
 User.destroy_all
-puts
 
 # Cuisines preferences
 # cuisines = %W[American Arabic Asian Australian Brazilian British Cantonese Chinese European French Fusion German Hunan Indian Indonesian International Italian Japanese Korean Malaysian Mediterranean Mexican Middle Eastern Modern Indian Modernist European Nepali Singaporean Spanish Sichuan Taiwanese Thai Turkish Vietnamese Western]
@@ -63,7 +62,7 @@ cuisines.each do |attribs|
   cuis.save!
   puts "#{attribs[:name]} created"
 end
-puts
+puts "All cuisines seeded"
 
 # Seeds preferences
 preferences = ['no spicy', 'no raw fish', 'no fast food']
@@ -78,7 +77,6 @@ seeds.each do |pref|
   end
 end
 puts "Seeded #{Preference.count} preferences."
-puts
 
 puts "Seeding users"
 john = User.new(email: 'john@gmail.com',
@@ -105,8 +103,12 @@ jill = User.new(email: 'jill@gmail.com',
 jill.save!
 puts "jill seeded"
 
-puts "Seeding test meal"
+puts "Seeding test meal for john"
 meal = Meal.new(vanity_id: 'test123',
                 endtime: Time.now )
 meal.save!
+
+users_meal = UsersMeal.new(user: john,
+                            meal: meal )
+users_meal.save!
 puts "test meal seeded"
