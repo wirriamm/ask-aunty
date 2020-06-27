@@ -1,7 +1,11 @@
 <% if Time.now > @endtime %>
   <h1>Aunty's Verdict:</h1>
-  <% @top_cuisine.each do |cuisine| %>
-    <%= render partial: 'verdict', locals: { cuisine: cuisine } %>
+  <% if @top_cuisine == [] %>
+    <p>Your poll closed but no one voted :(</p>
+  <% else %>
+    <% @top_cuisine.each do |cuisine| %>
+      <%= render partial: 'verdict', locals: { cuisine: cuisine } %>
+    <% end %>
   <% end %>
 <% else %>
   <h1>Aunty's still waiting...</h1>
