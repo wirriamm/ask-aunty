@@ -90,10 +90,22 @@ ActiveRecord::Schema.define(version: 2020_06_25_135934) do
     t.index ["user_id"], name: "index_users_meals_on_user_id"
   end
 
+  create_table "users_preferences", force: :cascade do |t|
+    t.bigint "preference_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "status"
+    t.index ["preference_id"], name: "index_users_preferences_on_preference_id"
+    t.index ["user_id"], name: "index_users_preferences_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "polls", "cuisines"
   add_foreign_key "polls", "meals"
   add_foreign_key "polls", "users"
   add_foreign_key "users_meals", "meals"
   add_foreign_key "users_meals", "users"
+  add_foreign_key "users_preferences", "preferences"
+  add_foreign_key "users_preferences", "users"
 end

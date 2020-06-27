@@ -12,33 +12,11 @@ puts "Destroy all cuisines"
 Cuisine.destroy_all
 puts "Destroy all preferences"
 Preference.destroy_all
+puts "Destroy all meals"
+Meal.destroy_all
 puts "Destroy all users"
 User.destroy_all
-
-puts "Seeding users"
-john = User.new(email: 'john@gmail.com',
-                password: 'topsecret',
-                password_confirmation: 'topsecret')
-john.save!
-puts "john seeded"
-
-jane = User.new(email: 'jane@gmail.com',
-                password: 'topsecret',
-                password_confirmation: 'topsecret')
-jane.save!
-puts "jane seeded"
-
-jack = User.new(email: 'jack@gmail.com',
-                password: 'topsecret',
-                password_confirmation: 'topsecret')
-jack.save!
-puts "jack seeded"
-
-jill = User.new(email: 'jill@gmail.com',
-                password: 'topsecret',
-                password_confirmation: 'topsecret')
-jill.save!
-puts "jill seeded"
+puts
 
 # Cuisines preferences
 # cuisines = %W[American Arabic Asian Australian Brazilian British Cantonese Chinese European French Fusion German Hunan Indian Indonesian International Italian Japanese Korean Malaysian Mediterranean Mexican Middle Eastern Modern Indian Modernist European Nepali Singaporean Spanish Sichuan Taiwanese Thai Turkish Vietnamese Western]
@@ -85,6 +63,7 @@ cuisines.each do |attribs|
   cuis.save!
   puts "#{attribs[:name]} created"
 end
+puts
 
 # Seeds preferences
 preferences = ['no spicy', 'no raw fish', 'no fast food']
@@ -99,3 +78,29 @@ seeds.each do |pref|
   end
 end
 puts "Seeded #{Preference.count} preferences."
+puts
+
+puts "Seeding users"
+john = User.new(email: 'john@gmail.com',
+                password: 'topsecret',
+                password_confirmation: 'topsecret')
+john.save!
+puts "john seeded"
+
+jane = User.new(email: 'jane@gmail.com',
+                password: 'topsecret',
+                password_confirmation: 'topsecret')
+jane.save!
+puts "jane seeded"
+
+jack = User.new(email: 'jack@gmail.com',
+                password: 'topsecret',
+                password_confirmation: 'topsecret')
+jack.save!
+puts "jack seeded"
+
+jill = User.new(email: 'jill@gmail.com',
+                password: 'topsecret',
+                password_confirmation: 'topsecret')
+jill.save!
+puts "jill seeded"

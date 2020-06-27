@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   get '/join_meal', to: 'pages#join_meal'
-  post '/join_meal', to: 'pages#create_users_meal'
+  get '/create_meal', to: 'pages#create_meal'
 
   get '/meals/:id/polls', to: 'meals#setup', as: 'setup'
   get '/meals/:id/result', to: 'meals#result', as: "result"
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :polls, only: [:create]
   end
 
+  resources :meals, only: [:new, :create]
   resources :preferences, only: [:index]
-  post '/preferences', to: 'preferences#save_preferences'
+  patch '/save_preference', to: 'preferences#save_preference'
 end

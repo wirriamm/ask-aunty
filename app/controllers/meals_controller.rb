@@ -10,8 +10,7 @@ class MealsController < ApplicationController
       postal_code: params[:meal][:postal_code]
       )
     if @meal.save
-      redirect_to root_path # TO BE DELETED
-      # redirect_to preferences_path
+      redirect_to preferences_path
     else
       render :new
     end

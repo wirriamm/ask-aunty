@@ -1,0 +1,4 @@
+<%= simple_form_for current_user, url: "/save_preference", action: :post do |f| %>
+  <%= f.association :preferences, as: :check_boxes, include_blank: true %>
+  <%= f.submit 'Save Preferences' %>
+<% end %>
