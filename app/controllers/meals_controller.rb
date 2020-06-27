@@ -10,7 +10,7 @@ class MealsController < ApplicationController
       postal_code: params[:meal][:postal_code]
       )
     if @meal.save
-      redirect_to preferences_path
+      redirect_to setup_path(@meal)
     else
       render :new
     end
