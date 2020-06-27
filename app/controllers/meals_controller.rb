@@ -1,4 +1,8 @@
 class MealsController < ApplicationController
+  def index
+    @meals = UsersMeal.where(user: current_user).includes(:meals)
+  end
+
   def new
     @meal = Meal.new
   end

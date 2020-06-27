@@ -1,0 +1,8 @@
+<div>
+  <h1>My Makan</h1>
+  <p>
+    <% @meals.each do |meal| %>
+      <%= meal.vanity_id %> | <%= meal.endtime %>
+    <% end %>
+  </p>
+</div>
