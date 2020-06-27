@@ -1,11 +1,26 @@
 <!-- Used for each of the 3 aunty's suggestions -->
 <!-- The style is to specify the -->
 <style>
-.selected{
+.selected {
 border: 4px red;
 }
 
-.suggestion:hover{
+.suggestion:hover {
   border: 4px gray;
 }
 </style>
+
+<div>
+  <p class="card-text font-weight-bold my-0">
+      <h2><%= cuisine.name.capitalize %></h2>
+  </p>
+
+  <div class="img-thumbnail img-fluid max-width: 100% height: auto">
+    <% if cuisine.photo.attached? %>
+      <%= cl_image_tag(cuisine.photo.key, crop: :fill, class: 'card-img-top') %>
+    <% else %>
+      <%= image_tag "https://source.unsplash.com/featured/?#{cuisine.name}", alt: "alttext", class: 'card-img-top' %>
+    <% end %>
+  </div>
+
+</div>
