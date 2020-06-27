@@ -11,14 +11,13 @@ class MealsController < ApplicationController
       )
     UsersMeal.create(user: current_user, meal: @meal)
     if @meal.save
-      redirect_to setup_path(@meal), meal_id: @meal.id
+      redirect_to setup_path(@meal, test: "test", notice: "2 Meal ID: #{@meal.vanity_id}"), notice: "Meal ID: #{@meal.vanity_id}"
     else
       render :new
     end
   end
 
   def setup
-    raise
     @cuisines = Cuisine.all
     @polls = []
     @meal = Meal.find(params[:id])
