@@ -8,7 +8,7 @@
 
 require 'open-uri'
 
-# puts "Destroy all cuisines"
+puts "Destroy all cuisines"
 Cuisine.destroy_all
 puts "Destroy all preferences"
 Preference.destroy_all
