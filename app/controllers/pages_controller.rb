@@ -20,13 +20,14 @@ class PagesController < ApplicationController
       render :join_meal, alert: "Meal ID #{get_vanity_id} not found"
     else
       # Check if user have already joined this meal
-      if @meal.users.include? current_user
-        redirect_to result_path(@meal.id)
-      else
-        @meal.users << current_user
-        @meal.save
-        redirect_to setup_path(@meal)
-      end
+      redirect_to setup_path(@meal)
+      # if @meal.users.include? current_user
+      #   redirect_to result_path(@meal.id)
+      # else
+      #   @meal.users << current_user
+      #   @meal.save
+      #   redirect_to setup_path(@meal)
+      # end
     end
   end
 
