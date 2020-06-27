@@ -19,7 +19,7 @@ border: 4px red;
     <% if cuisine.photo.attached? %>
       <%= cl_image_tag(cuisine.photo.key, crop: :fill, class: 'card-img-top') %>
     <% else %>
-      <%= image_tag "https://source.unsplash.com/featured/?#{cuisine.name}", alt: "alttext", class: 'card-img-top' %>
+      <%= image_tag "https://source.unsplash.com/featured/?#{cuisine.dish}", alt: "alttext", class: 'card-img-top' %>
     <% end %>
   </div>
 

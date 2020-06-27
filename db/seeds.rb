@@ -104,3 +104,9 @@ jill = User.new(email: 'jill@gmail.com',
                 password_confirmation: 'topsecret')
 jill.save!
 puts "jill seeded"
+
+puts "Seeding test meal"
+meal = Meal.new(vanity_id: 'test123',
+                endtime: Time.now )
+meal.save!
+puts "test meal seeded"
