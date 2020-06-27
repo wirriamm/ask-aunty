@@ -1,6 +1,7 @@
 class PollsController < ApplicationController
   def create
-    @poll = Poll.new(meal: Meal.find(params[:meal]),
+    @meal = Meal.find(params[:meal])
+    @poll = Poll.new(meal: @meal,
                      user: User.find(params[:user]),
                      cuisine: Cuisine.find(params[:cuisine]),
                      score: params[:score])

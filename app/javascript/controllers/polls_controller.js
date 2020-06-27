@@ -9,15 +9,15 @@ export default class extends Controller {
 
   thumbsUp(event) {
     console.log("Up");
-    this.draftMessage(event, true);
+    this.draftMessage(event, 1);
   }
 
   thumbsDown() {
     console.log("Down");
-    this.draftMessage(event, false);
+    this.draftMessage(event, -1);
   }
 
-  draftMessage = (event, bool) => {
+  draftMessage = (event, scoring) => {
     const mealId = this.mealIdTarget.value;
     const userId = this.userIdTarget.value;
     let eventCount = Number.parseInt(this.countTarget.value);
@@ -52,7 +52,7 @@ export default class extends Controller {
         meal: mealId,
         user: userId,
         cuisine: cuisineId,
-        score: bool
+        score: scoring
       })
     }).then(response => console.log(response));
   }
