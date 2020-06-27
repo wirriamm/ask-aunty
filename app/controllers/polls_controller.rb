@@ -5,6 +5,14 @@ class PollsController < ApplicationController
                      user: User.find(params[:user]),
                      cuisine: Cuisine.find(params[:cuisine]),
                      score: params[:score])
-    redirect_to setup_path(@meal) if @poll.save
+
+    respond_to do |format|
+      if @poll.save
+        format.html do
+          redirect_to setup_path(@meal)
+        end
+        format.json { render json: @poll.to_json }
+      end
+    end
   end
 end

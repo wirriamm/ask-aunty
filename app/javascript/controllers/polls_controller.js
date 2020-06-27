@@ -54,7 +54,7 @@ export default class extends Controller {
         cuisine: cuisineId,
         score: scoring
       })
-    }).then(response => console.log(response));
+    });
   }
 }
 
