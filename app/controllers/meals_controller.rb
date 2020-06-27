@@ -56,7 +56,7 @@ class MealsController < ApplicationController
     # #   else #create new hash
     # # end
     @users = find_users_for_meal(@meal)
-    # @user_preferences = find_user_preferences_for_meal(@meal)
+    @user_preferences = find_users_preferences_for_meal(@meal)
   end
 
   private
@@ -77,12 +77,12 @@ class MealsController < ApplicationController
     users
   end
 
-  # def find_users_preferences_for_meal
-  #   user_preferences = []
-  #   users.each do |user|
-  #     user_preferences << UsersPreference.where(user: user).includes(:preference)
-  #   end
-  #   user_preferences
-  #   users
-  # end
+  def find_users_preferences_for_meal(meal)
+    users = find_users_for_meal(meal)
+    user_preferences = []
+    users.each do |user|
+      user_preferences << UsersPreference.where(user: user).includes(:preference)
+    end
+    user_preferences
+  end
 end
