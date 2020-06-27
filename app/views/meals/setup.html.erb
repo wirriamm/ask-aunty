@@ -25,8 +25,8 @@
       <div data-target='polls.btn' data-action='click->polls#thumbsUp'> <i class="fas fa-thumbs-up"></i> </div>
       <div data-target='polls.btn' data-action='click->polls#thumbsDown'> <i class="fas fa-thumbs-down"></i></div>
     </div>
-      <div data-target='polls.viewResult' style='display: none;' class='btn primarybtn'><%= link_to "View Result", "/meals/:id/result" %></div>
+      <div data-target='polls.viewResult' style='display: none;' class='btn primarybtn btn-block'><%= link_to "View Result", "/meals/:id/result" %></div>
   <% else %>
-    <div data-target='polls.viewResult' class='btn primarybtn'><%= link_to "View Result", "/meals/:id/result" %></div>
+    <div data-target='polls.viewResult' class='btn primarybtn btn-block'><%= link_to "View Result", "/meals/:id/result" %></div>
   <% end %>
 </div>
