@@ -9,6 +9,7 @@ class PagesController < ApplicationController
 
   def create_users_meal
     @meal = Meal.find_by(vanity_id: get_vanity_id)
+    UsersMeal.create(user: current_user, meal: @meal)
     # Check if Meal ID exists
     if @meal.nil?
       @meal = Meal.new

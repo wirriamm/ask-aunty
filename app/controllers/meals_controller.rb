@@ -9,14 +9,16 @@ class MealsController < ApplicationController
       endtime: Time.now + 2.hours,
       postal_code: params[:meal][:postal_code]
       )
+    UsersMeal.create(user: current_user, meal: @meal)
     if @meal.save
-      redirect_to setup_path(@meal)
+      redirect_to setup_path(@meal), meal_id: @meal.id
     else
       render :new
     end
   end
 
   def setup
+    raise
     @cuisines = Cuisine.all
     @polls = []
     @meal = Meal.find(params[:id])
