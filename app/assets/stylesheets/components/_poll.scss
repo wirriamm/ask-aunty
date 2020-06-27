@@ -1,7 +1,13 @@
 .fa-thumbs-up, .fa-thumbs-down {
   color: grey;
   font-size: 40px;
+  margin: 20px;
   &:hover {
-    color: #FCD4D4;
+    color: #ff847c;
   }
+}
+
+.poll {
+  width: fit-content;
+  margin: 0 auto;
 }
