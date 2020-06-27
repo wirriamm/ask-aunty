@@ -21,8 +21,8 @@ class PagesController < ApplicationController
       else
         @meal.users << current_user
         @meal.save
-        redirect_to root_path # TO BE REMOVED
-        # redirect_to preferences_path
+        # redirect_to root_path # TO BE REMOVED
+        redirect_to setup_path(@meal)
       end
     end
   end
