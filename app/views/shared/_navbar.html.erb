@@ -20,7 +20,7 @@
           <%= image_tag "https://ui-avatars.com/api/?name=#{current_user.email}", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "My Makan", meals_path, class: "dropdown-item" %>
-            <%= link_to "Edit Preferences", "#", class: "dropdown-item" %>
+            <%= link_to "Edit Preferences", preferences_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
