@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
   def index
-    @meals = UsersMeal.where(user: current_user).includes(:meals)
+    @users_meals = UsersMeal.where(user: current_user).includes(:meal)
   end
 
   def new

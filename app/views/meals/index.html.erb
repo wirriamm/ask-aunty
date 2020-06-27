@@ -1,8 +1,11 @@
 <div>
-  <h1>My Makan</h1>
-  <p>
-    <% @meals.each do |meal| %>
-      <%= meal.vanity_id %> | <%= meal.endtime %>
+  <h1>My Makan</h1><br>
+  <ul>
+    <% @users_meals.each do |user_meal| %>
+      <li>
+        Meal ID: <%= link_to user_meal.meal.vanity_id, result_path(user_meal.meal) %> |
+        Endtime: <%= user_meal.meal.endtime %>
+      </li>
     <% end %>
-  </p>
+  </ul>
 </div>
