@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'pages#landing'
 
+  get '/home', to: 'pages#home'
   get '/join_meal', to: 'pages#join_meal'
   post '/join_meal', to: 'pages#create_users_meal'
   get '/create_meal', to: 'meals#new'
