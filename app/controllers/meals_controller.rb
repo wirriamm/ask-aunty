@@ -1,3 +1,5 @@
+require "selenium-webdriver"
+
 class MealsController < ApplicationController
   def index
     @users_meals = UsersMeal.where(user: current_user).includes(:meal)
@@ -62,6 +64,8 @@ class MealsController < ApplicationController
     # #   if poll.cuisine.name #exists in polls summary
     # #   else #create new hash
     # # end
+    @fortune = fortune
+    # raise
   end
 
   private
@@ -71,5 +75,20 @@ class MealsController < ApplicationController
       random_code = SecureRandom.alphanumeric(6)
       return random_code if Meal.find_by(vanity_id: random_code).nil?
     end
+  end
+
+  def fortune
+    options = Selenium::WebDriver::Chrome::Options.new(args: ['headless'])
+    driver = Selenium::WebDriver.for(:chrome, options: options)
+    driver.navigate.to "http://www.fortunecookiemessage.com/"
+    # driver.navigate.to "https://generatorfun.com/fortune-cookie-generator"
+    fortune_cookie = driver.find_element(:class, "cookie-link" )
+    txt = fortune_cookie.text.strip
+    # ff = []
+    # fortune_cookie.each do |f|
+    #   ff << f.text.strip
+    # end
+    driver.quit
+    txt
   end
 end
