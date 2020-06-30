@@ -13,11 +13,12 @@
   <!-- <h3>Your poll ends: <%= @endtime %></h3><br> -->
   <h3>Your poll ends in: <%= distance_of_time_in_words(Time.now, @endtime) %></h3><br>
   <p>Please check back after poll closing time for Aunty's verdict!</p></br>
-  ---
-  <div span class="border-danger">
+
+  <div class="bubble">
     <p>ps... <strong> Aunty's wise words for today: </strong><br>
       <em><%= @fortune %></em></p>
   </div>
+  <div class="pointer"></div>
 <% end %>
 
 
