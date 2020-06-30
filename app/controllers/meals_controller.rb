@@ -46,9 +46,9 @@ class MealsController < ApplicationController
     if @polls != {}
       @polls_sorted = @polls.sort_by { |cuisine, score| score }
       @top_cuisine = []
-      @top_cuisine << Cuisine.find(@polls_sorted.reverse.first[0])
-      @top_cuisine << Cuisine.find(@polls_sorted.reverse.second[0])
-      @top_cuisine << Cuisine.find(@polls_sorted.reverse.third[0])
+      @top_cuisine << Cuisine.find(@polls_sorted.reverse.first[0]) if @polls_sorted.reverse.first
+      @top_cuisine << Cuisine.find(@polls_sorted.reverse.second[0])if @polls_sorted.reverse.second
+      @top_cuisine << Cuisine.find(@polls_sorted.reverse.third[0]) if @polls_sorted.reverse.third
     end
     # @poll_summary.order(:value).reverse_order
     # @poll_summary = {}
