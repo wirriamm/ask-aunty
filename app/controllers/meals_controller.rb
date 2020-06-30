@@ -64,7 +64,7 @@ class MealsController < ApplicationController
     # #   if poll.cuisine.name #exists in polls summary
     # #   else #create new hash
     # # end
-    if Time.now < @endtime
+    if Time.now < @endtime && @endtime != nil
       @fortune = fortune
     end
     # raise
