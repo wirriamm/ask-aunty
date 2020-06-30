@@ -43,12 +43,13 @@ class MealsController < ApplicationController
                   .group("cuisine_id")
                   .order("cuisine_id").sum("score")
     # @poll_summary = @polls.select("cuisine_id, score").group("cuisine_id").sum("score").order("score")
-    @polls_sorted = @polls.sort_by { |cuisine, score| score }
-    @top_cuisine = []
-    @top_cuisine << Cuisine.find(@polls_sorted.reverse.first[0])
-    @top_cuisine << Cuisine.find(@polls_sorted.reverse.second[0])
-    @top_cuisine << Cuisine.find(@polls_sorted.reverse.third[0])
-
+    if @polls != {}
+      @polls_sorted = @polls.sort_by { |cuisine, score| score }
+      @top_cuisine = []
+      @top_cuisine << Cuisine.find(@polls_sorted.reverse.first[0])
+      @top_cuisine << Cuisine.find(@polls_sorted.reverse.second[0])
+      @top_cuisine << Cuisine.find(@polls_sorted.reverse.third[0])
+    end
     # @poll_summary.order(:value).reverse_order
     # @poll_summary = {}
     # # @polls.each do |poll|

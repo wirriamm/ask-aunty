@@ -10,6 +10,7 @@
 <% else %>
   <h1>Aunty's still waiting...</h1>
   <h3>Your poll ends: <%= @endtime %></h3><br>
+  <h3>Your poll ends in: <%= @endtime - Time.now %></h3>
   <p>Please check back after poll closing time for Aunty's verdict.</p></br>
 <% end %>
 
