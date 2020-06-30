@@ -8,6 +8,7 @@
     <% end %>
   <% end %>
 <% else %>
+  <%= image_tag image_path('aunty-square.svg') %>
   <h1>Aunty's still waiting...</h1><br>
   <!-- <h3>Your poll ends: <%= @endtime %></h3><br> -->
   <h3>Your poll ends in: <%= distance_of_time_in_words(Time.now, @endtime) %></h3><br>
