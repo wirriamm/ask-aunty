@@ -12,7 +12,7 @@
       <% else %>
         <div data-target='polls.poll' style='display: none;'>
           <p><%= "Poll no #{@poll_no}/10" %></p>
-          <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill class: "img-thumbnail img-fluid max-width: 100%, height: auto" %>
+          <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill, class: "img-thumbnail img-fluid max-width: 100%, height: auto" %>
         </div>
       <% end %>
       <% @poll_no += 1 %>
