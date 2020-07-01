@@ -1,3 +1,5 @@
+require "selenium-webdriver"
+
 class MealsController < ApplicationController
   def index
     @users_meals = UsersMeal.where(user: current_user).includes(:meal)
@@ -44,23 +46,27 @@ class MealsController < ApplicationController
                   .order("cuisine_id").sum("score")
     @total_polls = @polls.count
     if @polls != {}
-      @polls_sorted = @polls.sort_by { |cuisine, score| score }
+      @polls_sorted = @polls.sort_by { |_cuisine, score| score }
       @polls_sorted.map
       @top_cuisine = []
       @top_cuisine << Cuisine.find(@polls_sorted.reverse.first[0]) if @polls_sorted.reverse.first
-      @top_cuisine << Cuisine.find(@polls_sorted.reverse.second[0])if @polls_sorted.reverse.second
+      @top_cuisine << Cuisine.find(@polls_sorted.reverse.second[0]) if @polls_sorted.reverse.second
       @top_cuisine << Cuisine.find(@polls_sorted.reverse.third[0]) if @polls_sorted.reverse.third
       @top_cuisine_score = []
       @top_cuisine_score << @polls_sorted.reverse.first[1] if @polls_sorted.reverse.first
-      @top_cuisine_score << @polls_sorted.reverse.second[1]if @polls_sorted.reverse.second
+      @top_cuisine_score << @polls_sorted.reverse.second[1] if @polls_sorted.reverse.second
       @top_cuisine_score << @polls_sorted.reverse.third[1] if @polls_sorted.reverse.third
     end
 
     # Remove duplicates of users
     # Collect preferences of each user
-    all_prefs = @meal.users.uniq.flat_map { |u| u.preferences }
+    all_prefs = @meal.users.uniq.flat_map(&:preferences)
     # Remove duplicates of preferences
     @collated_prefs = all_prefs.uniq
+
+    if Time.now < @endtime && @endtime != nil
+      @fortune = fortune
+    end
   end
 
   private
@@ -74,5 +80,20 @@ class MealsController < ApplicationController
 
   def get_time_left
     helpers.distance_of_time_in_words(Time.now, @meal.endtime)
+  end
+
+  def fortune
+    options = Selenium::WebDriver::Chrome::Options.new(args: ['headless'])
+    driver = Selenium::WebDriver.for(:chrome, options: options)
+    driver.navigate.to "http://www.fortunecookiemessage.com/"
+    # driver.navigate.to "https://generatorfun.com/fortune-cookie-generator"
+    fortune_cookie = driver.find_element(:class, "cookie-link" )
+    txt = fortune_cookie.text.strip
+    # ff = []
+    # fortune_cookie.each do |f|
+    #   ff << f.text.strip
+    # end
+    driver.quit
+    txt
   end
 end
