@@ -11,11 +11,6 @@
     <br>
     <div>
       <h2>Your Group's Preferences</h2>
- <!--      <ul>
-        <% @users.each do |user| %>
-          <li><%= user.email %></li>
-        <% end %>
-      </ul> -->
       <ul>
         <% @user_preferences.each do |p| %>
           <% p.each do |pp| %>
@@ -26,9 +21,9 @@
     </div>
   <% end %>
 <% else %>
-  <h1>Aunty's still waiting...</h1>
-  <h3>Your poll ends: <%= @endtime %></h3><br>
-  <p>Please check back after poll closing time for Aunty's verdict.</p></br>
+  <h1>Aunty still processing all votes...</h1>
+  <h3>Your poll ends: <%= @endtime.localtime %></h3><br>
+  <p>Wah you damn on ah! Very early, very good! Come back to aunty later for results.</p></br>
 <% end %>
 
 

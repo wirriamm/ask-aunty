@@ -13,9 +13,8 @@
 
   <body class='gradientbackground'>
     <%= render 'shared/navbar' %>
-    <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <div class="container my-3">
+      <%= render 'shared/flashes' %>
       <%= yield %>
     </div>
   </body>

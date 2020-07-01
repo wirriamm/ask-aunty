@@ -15,7 +15,7 @@ class MealsController < ApplicationController
       )
     UsersMeal.create(user: current_user, meal: @meal)
     if @meal.save
-      redirect_to setup_path(@meal, test: "test", notice: "2 Meal ID: #{@meal.vanity_id}"), notice: "Meal ID: #{@meal.vanity_id}"
+      redirect_to setup_path @meal, notice: "Meal ID: #{@meal.vanity_id}"
     else
       render :new
     end
@@ -57,6 +57,7 @@ class MealsController < ApplicationController
     # # end
     @users = find_users_for_meal(@meal)
     @user_preferences = find_users_preferences_for_meal(@meal)
+    raise
   end
 
   private
