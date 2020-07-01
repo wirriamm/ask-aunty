@@ -15,11 +15,11 @@ export default class extends Controller {
     this.draftMessage(event, 0);
   }
 
-  dragstart(event) {
+  dragStart(event) {
     event.currentTarget.dataset.xstart = event.screenX;
   }
 
-  dropping(event) {
+  dragEnd(event) {
     const xStart =  Number.parseInt(event.currentTarget.dataset.xstart);
     const xEnd =  Number.parseInt(event.screenX);
     if (xStart !== xEnd) {
