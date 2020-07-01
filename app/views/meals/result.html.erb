@@ -12,19 +12,14 @@
     <div>
       <h2>Your Group's Preferences</h2>
       <ul>
-        <% @user_preferences.each do |p| %>
-          <% p.each do |pp| %>
-            <li><%= pp.preference.name %>: <%= pp.status %></li>
-          <% end %>
+        <% @collated_prefs.each do |p| %>
+          <li><%= p.name %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 <% else %>
   <h1>Aunty still processing all votes...</h1>
-  <h3>Your poll ends: <%= @endtime.localtime %></h3><br>
+  <h3>You wait until <%= @endtime.localtime %> can?</h3><br>
   <p>Wah you damn on ah! Very early, very good! Come back to aunty later for results.</p></br>
 <% end %>
-
-
-

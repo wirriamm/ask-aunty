@@ -38,7 +38,7 @@ class MealsController < ApplicationController
   def result
     @meal = Meal.find(params[:id])
     @endtime = @meal.endtime
-    @polls =  Poll.where(meal_id: @meal.id)
+    @polls = Poll.where(meal_id: @meal.id)
                   .select("cuisine_id, score")
                   .group("cuisine_id")
                   .order("cuisine_id").sum("score")
@@ -49,15 +49,11 @@ class MealsController < ApplicationController
     @top_cuisine << Cuisine.find(@polls_sorted.reverse.second[0])
     @top_cuisine << Cuisine.find(@polls_sorted.reverse.third[0])
 
-    # @poll_summary.order(:value).reverse_order
-    # @poll_summary = {}
-    # # @polls.each do |poll|
-    # #   if poll.cuisine.name #exists in polls summary
-    # #   else #create new hash
-    # # end
-    @users = find_users_for_meal(@meal)
-    @user_preferences = find_users_preferences_for_meal(@meal)
-    raise
+    # Remove duplicates of users
+    # Collect preferences of each user
+    all_prefs = @meal.users.uniq.flat_map { |u| u.preferences }
+    # Remove duplicates of preferences
+    @collated_prefs = all_prefs.uniq
   end
 
   private
@@ -67,23 +63,5 @@ class MealsController < ApplicationController
       random_code = SecureRandom.alphanumeric(6)
       return random_code if Meal.find_by(vanity_id: random_code).nil?
     end
-  end
-
-  def find_users_for_meal(meal)
-    users_meals = UsersMeal.where(meal: meal).includes(:user)
-    users = []
-    users_meals.each do |users_meal|
-      users << users_meal.user
-    end
-    users
-  end
-
-  def find_users_preferences_for_meal(meal)
-    users = find_users_for_meal(meal)
-    user_preferences = []
-    users.each do |user|
-      user_preferences << UsersPreference.where(user: user).includes(:preference)
-    end
-    user_preferences
   end
 end
