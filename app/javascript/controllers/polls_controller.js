@@ -14,7 +14,7 @@ export default class extends Controller {
 
   thumbsDown() {
     console.log("Down");
-    this.draftMessage(event, -1);
+    this.draftMessage(event, 0);
   }
 
   draftMessage = (event, scoring) => {

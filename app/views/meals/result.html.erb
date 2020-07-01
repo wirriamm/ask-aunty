@@ -1,4 +1,4 @@
-<% if Time.now > @endtime %>
+<% if Time.now > @meal.endtime %>
   <h1>Aunty's Verdict:</h1>
   <% if @top_cuisine == [] %>
     <p>Your poll closed but no one voted :(</p>
@@ -19,7 +19,8 @@
     </div>
   <% end %>
 <% else %>
-  <h1>Aunty still processing all votes...</h1>
-  <h3>You wait until <%= @endtime.localtime %> can?</h3><br>
-  <p>Wah you damn on ah! Very early, very good! Come back to aunty later for results.</p></br>
+  <%= image_tag image_path('aunty-square.svg') %>
+  <h3>Aunty still processing all votes...</h3>
+  <%= raise %>
+  <p>Wah you damn on ah! Can wait? Come back to aunty in <%= @time_left %> for results.</p></br>
 <% end %>
