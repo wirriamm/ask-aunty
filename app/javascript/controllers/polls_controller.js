@@ -17,6 +17,17 @@ export default class extends Controller {
     this.draftMessage(event, -1);
   }
 
+  dragstart(event) {
+    console.log(event);
+    console.log(event.screenX);
+    console.log(event.currentTarget);
+  }
+
+  dropping(event) {
+    console.log(event);
+    console.log(event.screenX);
+  }
+
   draftMessage = (event, scoring) => {
     const mealId = this.mealIdTarget.value;
     const userId = this.userIdTarget.value;
