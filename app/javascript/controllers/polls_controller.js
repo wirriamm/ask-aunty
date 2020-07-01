@@ -14,18 +14,26 @@ export default class extends Controller {
 
   thumbsDown() {
     console.log("Down");
-    this.draftMessage(event, -1);
+    this.draftMessage(event, 0);
   }
 
   dragstart(event) {
     console.log(event);
     console.log(event.screenX);
-    console.log(event.currentTarget);
+    console.log("Before: " + event.currentTarget.dataset.xstart);
+    event.currentTarget.dataset.xstart = event.screenX;
+    console.log("After: " + event.currentTarget.dataset.xstart);
   }
 
   dropping(event) {
     console.log(event);
-    console.log(event.screenX);
+    console.log("xstart: " + event.currentTarget.dataset.xstart);
+    const xStart =  Number.parseInt(event.currentTarget.dataset.xstart);
+    const xEnd =  Number.parseInt(event.screenX);
+    if (xStart !== xEnd) {
+      const score = (xStart > xEnd) ? 0 : 1
+      this.draftMessage(event, score);
+    }
   }
 
   draftMessage = (event, scoring) => {
