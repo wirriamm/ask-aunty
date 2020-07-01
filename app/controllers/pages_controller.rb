@@ -18,9 +18,16 @@ class PagesController < ApplicationController
       @meal = Meal.new
       flash.now[:alert] = "Don't have Meal ID \"#{get_vanity_id}\" lah!"
       render :join_meal
-    else
-      # Check if user has already joined this meal
-      if current_user.meals.include? @meal
+    # Cannot join meal once it is closed
+    elsif @meal.endtime < Time.now
+      if user_in_meal?
+        redirect_to result_path(@meal)
+      else
+        flash.now[:alert] = "Too late! \"#{get_vanity_id}\" close liao!"
+        render :join_meal
+      end
+    else # Time not up yet
+      if user_in_meal?
         redirect_to setup_path(@meal), notice: "Continue from where you left off"
       else
         users_meal = UsersMeal.create(user: current_user, meal: @meal)
@@ -34,5 +41,9 @@ class PagesController < ApplicationController
 
   def get_vanity_id
     params[:meal][:vanity_id]
+  end
+
+  def user_in_meal?
+    current_user.meals.include? @meal
   end
 end

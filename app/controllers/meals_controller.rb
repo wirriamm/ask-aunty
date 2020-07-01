@@ -24,9 +24,9 @@ class MealsController < ApplicationController
   end
 
   def setup
+    @meal = Meal.find(params[:id])
     @cuisines = Cuisine.all
     @polls = []
-    @meal = Meal.find(params[:id])
     @cuisines.each do |cuisine|
       poll_exist = Poll.find_by(cuisine: cuisine, meal: @meal, user: current_user)
       unless poll_exist
@@ -64,7 +64,7 @@ class MealsController < ApplicationController
     # Remove duplicates of preferences
     @collated_prefs = all_prefs.uniq
 
-    if Time.now < @endtime && @endtime != nil
+    if (Time.now < @meal.endtime) && (@meal.endtime != nil)
       @fortune = fortune
     end
   end
