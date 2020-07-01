@@ -1,6 +1,6 @@
 <% if Time.now > @meal.endtime %>
   <h1>Aunty's Verdict:</h1>
-  <% if @top_cuisine == [] %>
+  <% unless @top_cuisine %>
     <p>Your poll closed but no one voted :(</p>
   <% else %>
     <div>
