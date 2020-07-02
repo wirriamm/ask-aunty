@@ -6,7 +6,9 @@ class MealsController < ApplicationController
   end
 
   def new
-    @meal = Meal.new
+    @meal = Meal.new(
+      endtime: Time.now + 2.hours
+    )
   end
 
   def create
