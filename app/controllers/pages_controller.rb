@@ -1,27 +1,12 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
-  # def landing
-  # end
-
   def home
     @meal = Meal.new
   end
 
   def join_meal
     @meal = Meal.new
-  end
-
-  def join_meal_ajax
-    @meal = Meal.new
-    # respond_to do |format|
-    #   format.html
-    #   format.json {
-    #     render json: {
-    #       meal: @meal
-    #     }
-    #   }
-    # end
   end
 
   def create_users_meal
