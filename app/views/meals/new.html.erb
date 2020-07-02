@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center" data-controller="newmeal">
   <%= simple_form_for(@meal,remote: true) do |f| %>
-    <%= f.input :postal_code, label: 'Postal Code', input_html: { class: "sharp-box" } %>
+    <%= f.input :postal_code, label: 'Jio your makan kakis go where?', placeholder: 'postal code', hint: '**Aunty needs to know so she can suggest places nearby', input_html: { class: "sharp-box" }, maxlength: "6" %>
     <%= f.submit 'Create Meal', class: 'btn btn-primary btn-block', data: { action: "click->newmeal#refresh"} %>
   <% end %>
   <div data-target="newmeal.vanityid">
