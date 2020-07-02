@@ -1,17 +1,32 @@
-<% if Time.now > @endtime %>
+<% if Time.now > @meal.endtime %>
   <h1>Aunty's Verdict:</h1>
-  <% if @top_cuisine == [] %>
+  <% unless @top_cuisine %>
     <p>Your poll closed but no one voted :(</p>
   <% else %>
-    <% @top_cuisine.each do |cuisine| %>
-      <%= render partial: 'verdict', locals: { cuisine: cuisine } %>
-    <% end %>
+    <div>
+      <% @top_cuisine.each do |cuisine| %>
+        <%= render partial: 'verdict', locals: { cuisine: cuisine } %>
+      <% end %>
+    </div>
+    <br>
+    <div>
+      <h2>Your Group's Preferences</h2>
+      <ul>
+        <% @collated_prefs.each do |p| %>
+          <li><%= p.name %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 <% else %>
-  <h1>Aunty's still waiting...</h1>
-  <h3>Your poll ends: <%= @endtime %></h3><br>
-  <p>Please check back after poll closing time for Aunty's verdict.</p></br>
+  <%= image_tag image_path('aunty-square.svg') %>
+  <h3>Aunty still processing all votes...</h3>
+  <%= raise %>
+  <p>Wah you damn on ah! Can wait? Come back to aunty in <%= @time_left %> for results.</p></br>
+
+  <div class="bubble">
+    <p>ps... <strong> Aunty's wise words for today: </strong><br>
+      <em><%= @fortune %></em></p>
+  </div>
+  <div class="pointer"></div>
 <% end %>
-
-
-

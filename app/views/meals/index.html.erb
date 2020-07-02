@@ -1,10 +1,10 @@
 <div>
   <h1>My Makan</h1><br>
-  <ul>
+  <ul style="list-style-type:square">
     <% @users_meals.each do |user_meal| %>
       <li>
         Meal ID: <%= link_to user_meal.meal.vanity_id, result_path(user_meal.meal) %> |
-        Endtime: <%= user_meal.meal.endtime %>
+        Poll end: <%= user_meal.meal.endtime.localtime.strftime('%e %b %Y %I:%M %P') %>
       </li>
     <% end %>
   </ul>

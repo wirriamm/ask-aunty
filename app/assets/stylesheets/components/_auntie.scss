@@ -1,0 +1,66 @@
+// .speech {
+//   position: relative;
+//   width: 200px;
+//   height: 100px;
+//   text-align: center;
+//   line-height: 100px;
+//   background-color: #fff;
+//   border: 8px solid #666;
+//   -webkit-border-radius: 30px;
+//   -moz-border-radius: 30px;
+//   border-radius: 30px;
+//   -webkit-box-shadow: 2px 2px 4px #888;
+//   -moz-box-shadow: 2px 2px 4px #888;
+//   box-shadow: 2px 2px 4px #888;
+// }
+
+// .bubble
+// {
+// position: relative;
+// width: 250px;
+// height: 120px;
+// padding: 0px;
+// background: #FFFFFF;
+// -webkit-border-radius: 0px;
+// -moz-border-radius: 0px;
+// border-radius: 0px;
+// }
+
+// .bubble:after
+// {
+// position: absolute;
+// border-style: solid;
+// border-width: 15px 20px 15px 0;
+// border-color: transparent #FFFFFF;
+// display: block;
+// width: 0;
+// z-index: 1;
+// left: -20px;
+// top: 72px;
+// }
+
+.bubble {
+  height: 250px;
+  width: 60%;
+  min-width: 200px;
+  background: ivory;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.pointer {
+  height: 40px;
+  width: 40px;
+  background: ivory;
+  margin: 0 auto;
+  padding: 10px;
+  transform: rotate(45deg);
+  border-radius: 0 0 12px 0;
+  margin-top: -22px;
+  position: relative;
+  left: calc(0.5vw - 50px);
+}
