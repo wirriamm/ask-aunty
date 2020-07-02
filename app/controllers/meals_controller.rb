@@ -26,17 +26,18 @@ class MealsController < ApplicationController
   end
 
   def setup
-    @meal = Meal.find(params[:id])
-    @cuisines = Cuisine.all
-    @polls = []
-    @cuisines.each do |cuisine|
-      poll_exist = Poll.find_by(cuisine: cuisine, meal: @meal, user: current_user)
-      unless poll_exist
-        new_poll = Poll.new(cuisine: cuisine, meal: @meal, user: current_user)
-        @polls << new_poll
+    @meal = Meal.find_by(id: params[:id])
+    if @meal.nil?
+      redirect_to root_path, alert: "Anyhow put wrong Meal ID..."
+    else
+      if @meal.users.exclude? current_user
+        @meal.users << current_user
       end
+      completed_cuisines = current_user.polls.where(meal: @meal).map(&:cuisine)
+      remaining_cuisines = Cuisine.all - completed_cuisines
+      @polls = remaining_cuisines.map { |c| Poll.new(cuisine: c, meal: @meal, user: current_user) }
+      @poll_no = 10 - @polls.length + 1
     end
-    @poll_no = 10 - @polls.length + 1
   end
 
   def result
@@ -69,6 +70,7 @@ class MealsController < ApplicationController
     if (Time.now < @meal.endtime) && (@meal.endtime != nil)
       @fortune = fortune
     end
+
   end
 
   private
