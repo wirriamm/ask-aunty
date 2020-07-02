@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   # get '/home', to: 'pages#home'
-  get '/join_makan', to: 'pages#join_meal'
+  get '/join_makan', to: 'pages#join_meal', as: 'join_makan'
   post '/join_makan', to: 'pages#create_users_meal'
-  get '/create_makan', to: 'meals#new'
+  get '/create_makan', to: 'meals#new', as: 'create_makan'
   # stimulus ajax routes
   get '/join_meal_ajax', to: 'pages#join_meal_ajax'
 

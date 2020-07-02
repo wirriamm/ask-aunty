@@ -15,16 +15,15 @@
   <p>Need to eat in a group?</p>
   <p>But don't know what to eat?</p>
   <p class="py-4"><strong>Leave it to Aunty!</strong></p>
-  <p>Aunty can investigate what everybody feel like having today.</p>
-  <p>Then, Aunty will tell you the verdict later.</p>
+  <p>Aunty will ask everyone what they feel like eating (kaypoh mah)...</p>
+  <p>and suggest shiokk makan spots based on how your makan kakis vote!</p>
 </div>
 </div>
 
-<div data-controller="journey">
-  <div class="d-flex justify-content-center m-3" data-target="journey.joinmeal">
-    <%= link_to 'Join Makan', '/join_meal_ajax', remote: true, class: "btn primarybtn btn-block", style: "width:50%", 'data-action' => 'click->journey#joinmeal' %>
+  <div class="d-flex justify-content-center m-3">
+    <%= link_to 'Join Makan', join_makan_path, class: "btn primarybtn btn-block", style: "width:50%" %>
   </div>
   <div class="d-flex justify-content-center m-3">
-    <%= link_to 'Create Makan', '/create_meal', class: "btn primarybtn btn-block", style: "width:50%", 'data-toggle'=> "tooltip", 'data-placement' => 'bottom', 'title' => 'Wah you treating the meal ah?' %>
+    <%= link_to 'Create Makan', create_makan_path, class: "btn primarybtn btn-block", style: "width:50%", 'data-toggle'=> "tooltip", 'data-placement' => 'bottom', 'title' => 'Start a new meal poll for your makan kakis' %>
   </div>
-</div>
+
