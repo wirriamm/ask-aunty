@@ -1,14 +1,11 @@
-<% if Time.now > @meal.endtime %>
+<% if @endtime == nil || Time.now > @endtime  %>
   <h1>Aunty's Verdict:</h1>
-  <% unless @top_cuisine %>
+  <% if @polls == [] %>
     <p>Your poll closed but no one voted :(</p>
   <% else %>
-    <div>
-      <% @top_cuisine.each do |cuisine| %>
-        <%= render partial: 'verdict', locals: { cuisine: cuisine } %>
-      <% end %>
-    </div>
-    <br>
+    <% @polls.each do |poll| %>
+      <%= render partial: 'verdict', locals: { poll: poll } %>
+    <% end %>
     <div>
       <h2>Your Group's Preferences</h2>
       <ul>
