@@ -9,6 +9,7 @@ export default class extends Controller {
   }
 
   joinmeal = (event) => {
+    debugger;
     this.mealIdLabelTarget.classList.remove("hide");
     this.mealIdInputTarget.classList.remove("hide");
     this.mealIdSubmitTarget.classList.remove("hide");
