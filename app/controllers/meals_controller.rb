@@ -25,7 +25,7 @@ class MealsController < ApplicationController
   end
 
   def setup
-    @meal = Meal.find(params[:id])
+    @meal = Meal.find_by(vanity_id: params[:id])
     @cuisines = Cuisine.all
     @polls = []
     @meal = Meal.find_by(vanity_id: params[:id])

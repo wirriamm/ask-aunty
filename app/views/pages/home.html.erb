@@ -21,9 +21,9 @@
 </div>
 
   <div class="d-flex justify-content-center m-3">
-    <%= link_to 'Join Makan', join_makan_path, class: "btn primarybtn btn-block", style: "width:50%" %>
+    <%= link_to 'Join Makan', join_makan_path, class: "btn primarybtn btn-block", style: "width:50%", 'data-toggle'=> "tooltip", 'data-placement' => 'bottom', 'title' => 'Join an existing makan poll that you have a Makan Code for' %>
   </div>
   <div class="d-flex justify-content-center m-3">
-    <%= link_to 'Create Makan', create_makan_path, class: "btn primarybtn btn-block", style: "width:50%", 'data-toggle'=> "tooltip", 'data-placement' => 'bottom', 'title' => 'Start a new meal poll for your makan kakis' %>
+    <%= link_to 'Create Makan', create_makan_path, class: "btn primarybtn btn-block", style: "width:50%", 'data-toggle'=> "tooltip", 'data-placement' => 'bottom', 'title' => 'Start a new makan poll for your makan kakis' %>
   </div>
 
