@@ -66,9 +66,9 @@ cuisines = [
 puts "Seeding all cuisines"
 cuisines.each do |attribs|
   cuis = Cuisine.new(name: attribs[:name])#, dish: attribs[:dish])
-  cuis.photos.each_with_index do |photo, index|
-    file = URI.open(attribs[:url][index])
-    photo.attach(io: file, filename: "#{attribs[:name]} #{index + 1}", content_type: 'image/png')
+  attribs[:url].each_with_index do |url, index|
+    file = URI.open(url)
+    cuis.photos.attach(io: file, filename: "#{attribs[:name]} #{index + 1}", content_type: 'image/png')
   end
   cuis.save!
   puts "#{attribs[:name]} created"
