@@ -1,4 +1,4 @@
-<% if Time.now > @endtime %>
+<% if @endtime == nil || Time.now > @endtime  %>
   <h1>Aunty's Verdict:</h1>
   <% if @polls == [] %>
     <p>Your poll closed but no one voted :(</p>

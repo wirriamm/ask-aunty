@@ -48,8 +48,9 @@ class MealsController < ApplicationController
                   # .having("total_score > 1")
                   # raise
     # @poll_summary = @polls.select("cuisine_id, score").group("cuisine_id").sum("score").order("score")
+    @total_polls = Poll.where(meal_id: @meal.id)
+                  .count
     # raise
-    # @total_polls = @polls.count
     # if @polls != {}
     #   @polls_sorted = @polls.sort_by { |cuisine, score| score }
     #   @polls_sorted.map
@@ -68,7 +69,9 @@ class MealsController < ApplicationController
     # #   if poll.cuisine.name #exists in polls summary
     # #   else #create new hash
     # # end
-    if Time.now < @endtime && @endtime != nil
+    if @endtime == nil
+      return
+    elsif Time.now < @endtime && @endtime != nil
       @fortune = fortune
     end
     # raise

@@ -13,7 +13,7 @@ border: 4px red;
 <div>
   <p class="card-text font-weight-bold my-0">
       <h2><%= poll.cuisine.name.capitalize %> |
-          <%= poll.total_score %></h2>
+          <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %></h2>
   </p>
 
   <div class="img-thumbnail img-fluid max-width: 100% height: auto">
