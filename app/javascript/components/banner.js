@@ -4,7 +4,7 @@ const loadDynamicBannerText = () => {
   new Typed('#banner-typed-text', {
     strings: ["Ask Aunty"],
     typeSpeed: 100,
-    loop: true
+    loop: false
   });
   $(".typed-cursor").hide()
 }
