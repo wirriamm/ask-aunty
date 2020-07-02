@@ -17,7 +17,7 @@ border: 4px red;
 
   <div class="img-thumbnail img-fluid max-width: 100% height: auto">
     <% if cuisine.photo.attached? %>
-      <%= cl_image_tag(cuisine.photo.key, crop: :fill, class: 'card-img-top') %>
+      <%= cl_image_tag(cuisine.photo.sample.key, crop: :fill, class: 'card-img-top') %>
     <% else %>
       <%= image_tag "https://source.unsplash.com/featured/?#{cuisine.dish}", alt: "alttext", class: 'card-img-top' %>
     <% end %>
