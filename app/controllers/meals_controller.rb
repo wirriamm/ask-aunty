@@ -17,13 +17,14 @@ class MealsController < ApplicationController
       )
     UsersMeal.create(user: current_user, meal: @meal)
     if @meal.save
-      redirect_to setup_path(@meal, test: "test", notice: "2 Meal ID: #{@meal.vanity_id}"), notice: "Meal ID: #{@meal.vanity_id}"
+      redirect_to setup_path @meal, notice: "Meal ID: #{@meal.vanity_id}"
     else
       render :new
     end
   end
 
   def setup
+    @meal = Meal.find(params[:id])
     @cuisines = Cuisine.all
     @polls = []
     @meal = Meal.find_by(vanity_id: params[:id])
@@ -46,36 +47,19 @@ class MealsController < ApplicationController
                   .group("cuisine_id")
                   .order("total_score DESC")
                   .limit(3)
-                  # .having("total_score > 1")
-                  # raise
-    # @poll_summary = @polls.select("cuisine_id, score").group("cuisine_id").sum("score").order("score")
     @total_polls = Poll.where(meal_id: @meal.id)
                   .count
-    # raise
-    # if @polls != {}
-    #   @polls_sorted = @polls.sort_by { |cuisine, score| score }
-    #   @polls_sorted.map
-    #   @top_cuisine = []
-    #   @top_cuisine << Cuisine.find(@polls_sorted.reverse.first[0]) if @polls_sorted.reverse.first
-    #   @top_cuisine << Cuisine.find(@polls_sorted.reverse.second[0])if @polls_sorted.reverse.second
-    #   @top_cuisine << Cuisine.find(@polls_sorted.reverse.third[0]) if @polls_sorted.reverse.third
-    #   @top_cuisine_score = []
-    #   @top_cuisine_score << @polls_sorted.reverse.first[1] if @polls_sorted.reverse.first
-    #   @top_cuisine_score << @polls_sorted.reverse.second[1]if @polls_sorted.reverse.second
-    #   @top_cuisine_score << @polls_sorted.reverse.third[1] if @polls_sorted.reverse.third
-    # end
-    # @poll_summary.order(:value).reverse_order
-    # @poll_summary = {}
-    # # @polls.each do |poll|
-    # #   if poll.cuisine.name #exists in polls summary
-    # #   else #create new hash
-    # # end
     if @endtime == nil
       return
     elsif Time.now < @endtime && @endtime != nil
       @fortune = fortune
     end
-    # raise
+      
+    # Remove duplicates of users
+    # Collect preferences of each user
+    all_prefs = @meal.users.uniq.flat_map(&:preferences)
+    # Remove duplicates of preferences
+    @collated_prefs = all_prefs.uniq
   end
 
   private
@@ -85,6 +69,10 @@ class MealsController < ApplicationController
       random_code = SecureRandom.alphanumeric(6)
       return random_code if Meal.find_by(vanity_id: random_code).nil?
     end
+  end
+
+  def get_time_left
+    helpers.distance_of_time_in_words(Time.now, @meal.endtime)
   end
 
   def fortune

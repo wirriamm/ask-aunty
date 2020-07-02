@@ -1,18 +1,18 @@
 <% count = 0; %>
 
-<div class='poll' data-controller='polls' data-target='polls'>
+<div class='poll' data-controller='polls swipepolls' data-target='polls'>
   <% if @polls.any? %>
     <input type="hidden" data-target='polls.count' value='<%= count %>'>
     <% @polls.each do |poll|%>
       <% if poll == @polls.first %>
         <div class='' data-target='polls.poll' style='display: block;'>
           <p><%= "Poll no #{@poll_no}/10" %></p>
-          <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill, class: "img-thumbnail img-fluid max-width: 100%, height: auto" %>
+          <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill, data: {action:'dragstart->polls#dragStart dragend->polls#dragEnd', xStart: "hey there"}, draggable: "true", class: "img-thumbnail img-fluid max-width: 100% height: auto" %>
         </div>
       <% else %>
-        <div data-target='polls.poll' style='display: none;'>
+        <div draggable='true' data-target='polls.poll' style='display: none;'>
           <p><%= "Poll no #{@poll_no}/10" %></p>
-          <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill, class: "img-thumbnail img-fluid max-width: 100%, height: auto" %>
+          <%= cl_image_tag poll.cuisine.photo.key, height: 300, width: 400, crop: :fill, data: {action:'dragstart->polls#dragStart dragend->polls#dragEnd', xStart: "hey there"}, draggable: "true", class: "img-thumbnail img-fluid max-width: 100% height: auto"  %>
         </div>
       <% end %>
       <% @poll_no += 1 %>

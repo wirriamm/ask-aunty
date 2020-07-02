@@ -15,23 +15,24 @@ body {
 
 .btn {
   // border: 2px solid black;
-  padding: 16px 32px;
+  padding: 12px 16px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 24px;
-  // margin: 4px 2px;
+  margin: 8px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
+  border-radius: 0;
 }
 
 .primarybtn {
+  // border: 2px solid white;
   background-color: $primary;
   color: white;
 }
 
 .primarybtn:hover {
-  // border: 4px solid black;
   box-shadow: 2px 1px 1px grey;
 }
 
@@ -40,8 +41,11 @@ body {
 }
 
 .secondarybtn {
-  background-color: light-gray;
-  color: black;
+  // border: 4px solid black;
+  // // background-color: $light-gray;
+  // color: black;
+  background-color: white;
+  color: $primary;
 }
 
 .secondarybtn:hover {

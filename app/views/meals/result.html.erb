@@ -6,13 +6,20 @@
     <% @polls.each do |poll| %>
       <%= render partial: 'verdict', locals: { poll: poll } %>
     <% end %>
+    <div>
+      <h2>Your Group's Preferences</h2>
+      <ul>
+        <% @collated_prefs.each do |p| %>
+          <li><%= p.name %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 <% else %>
   <%= image_tag image_path('aunty-square.svg') %>
-  <h1>Aunty's still waiting...</h1><br>
-  <!-- <h3>Your poll ends: <%= @endtime %></h3><br> -->
-  <h3>Your poll ends in: <%= distance_of_time_in_words(Time.now, @endtime) %></h3><br>
-  <p>Please check back after poll closing time for Aunty's verdict!</p></br>
+  <h3>Aunty still processing all votes...</h3>
+  <%= raise %>
+  <p>Wah you damn on ah! Can wait? Come back to aunty in <%= @time_left %> for results.</p></br>
 
   <div class="bubble">
     <p>ps... <strong> Aunty's wise words for today: </strong><br>
@@ -20,6 +27,3 @@
   </div>
   <div class="pointer"></div>
 <% end %>
-
-
-
