@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   post '/join_meal', to: 'pages#create_users_meal'
   get '/create_meal', to: 'meals#new'
 
+  # stimulus ajax routes
+  get '/join_meal_ajax', to: 'pages#join_meal_ajax'
+
   get '/meals/:id/polls', to: 'meals#setup', as: 'setup'
   get '/meals/:id/result', to: 'meals#result', as: "result"
 

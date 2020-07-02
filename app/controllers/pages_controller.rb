@@ -11,6 +11,19 @@ class PagesController < ApplicationController
     @meal = Meal.new
   end
 
+  def join_meal_ajax
+    @meal = Meal.new
+    respond_to do |format|
+      format.html render_to_string(partial: 'join_meal_ajax', locals: { meal: @meal })
+      # format.html { render partial: "join_meal_ajax", locals: { meal: @meal } }
+      format.json {
+        render json: {
+          partial: { meal: @meal }
+        }
+      }
+    end
+  end
+
   def create_users_meal
     @meal = Meal.find_by(vanity_id: get_vanity_id)
     # Check if Meal ID exists
