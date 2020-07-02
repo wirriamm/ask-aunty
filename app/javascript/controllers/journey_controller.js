@@ -1,15 +1,13 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = [ 'mealId', 'joinmeal',
-  'postalCode', 'createmeal' ];
+  static targets = [ 'mealId', 'joinmeal', 'postalCode', 'createmeal' ];
 
   connect() {
     console.log("Stimulus connected :)");
   }
 
   joinmeal = (event) => {
-    // debugger;
     this.mealIdTargets.forEach(e => e.classList.remove('hide'));
     this.joinmealTarget.classList.add("hide");
     this.joinmealTarget.classList.remove("secondarybtn");
