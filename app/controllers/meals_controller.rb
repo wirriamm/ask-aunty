@@ -41,23 +41,26 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
     @endtime = @meal.endtime
     @polls =  Poll.where(meal_id: @meal.id)
-                  .select("cuisine_id, score")
+                  .select("cuisine_id, sum(score) as total_score")
                   .group("cuisine_id")
-                  .order("cuisine_id").sum("score")
+                  .order("total_score DESC")
+                  .limit(3)
+                  # .having("total_score > 1")
     # @poll_summary = @polls.select("cuisine_id, score").group("cuisine_id").sum("score").order("score")
+    # raise
     @total_polls = @polls.count
-    if @polls != {}
-      @polls_sorted = @polls.sort_by { |cuisine, score| score }
-      @polls_sorted.map
-      @top_cuisine = []
-      @top_cuisine << Cuisine.find(@polls_sorted.reverse.first[0]) if @polls_sorted.reverse.first
-      @top_cuisine << Cuisine.find(@polls_sorted.reverse.second[0])if @polls_sorted.reverse.second
-      @top_cuisine << Cuisine.find(@polls_sorted.reverse.third[0]) if @polls_sorted.reverse.third
-      @top_cuisine_score = []
-      @top_cuisine_score << @polls_sorted.reverse.first[1] if @polls_sorted.reverse.first
-      @top_cuisine_score << @polls_sorted.reverse.second[1]if @polls_sorted.reverse.second
-      @top_cuisine_score << @polls_sorted.reverse.third[1] if @polls_sorted.reverse.third
-    end
+    # if @polls != {}
+    #   @polls_sorted = @polls.sort_by { |cuisine, score| score }
+    #   @polls_sorted.map
+    #   @top_cuisine = []
+    #   @top_cuisine << Cuisine.find(@polls_sorted.reverse.first[0]) if @polls_sorted.reverse.first
+    #   @top_cuisine << Cuisine.find(@polls_sorted.reverse.second[0])if @polls_sorted.reverse.second
+    #   @top_cuisine << Cuisine.find(@polls_sorted.reverse.third[0]) if @polls_sorted.reverse.third
+    #   @top_cuisine_score = []
+    #   @top_cuisine_score << @polls_sorted.reverse.first[1] if @polls_sorted.reverse.first
+    #   @top_cuisine_score << @polls_sorted.reverse.second[1]if @polls_sorted.reverse.second
+    #   @top_cuisine_score << @polls_sorted.reverse.third[1] if @polls_sorted.reverse.third
+    # end
     # @poll_summary.order(:value).reverse_order
     # @poll_summary = {}
     # # @polls.each do |poll|
