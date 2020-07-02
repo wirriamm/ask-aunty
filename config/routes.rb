@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   post '/join_meal', to: 'pages#create_users_meal'
   get '/create_meal', to: 'meals#new'
 
-  get '/meals/:id/polls', to: 'meals#setup', as: 'setup'
-  get '/meals/:id/result', to: 'meals#result', as: "result"
+  get '/meals/:vanity_id/polls', to: 'meals#setup', as: 'setup'
+  get '/meals/:vanity_id/result', to: 'meals#result', as: "result"
 
   resources :meals, only: [:index, :new, :create] do
     resources :polls, only: [:create]

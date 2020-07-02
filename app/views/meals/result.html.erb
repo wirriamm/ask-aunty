@@ -3,8 +3,8 @@
   <% if @top_cuisine == [] %>
     <p>Your poll closed but no one voted :(</p>
   <% else %>
-    <% @top_cuisine.each do |cuisine| %>
-      <%= render partial: 'verdict', locals: { cuisine: cuisine } %>
+    <% @polls do |p| %>
+      <%= render partial: 'verdict', locals: { cuisine: p.cuisine } %>
     <% end %>
   <% end %>
 <% else %>
