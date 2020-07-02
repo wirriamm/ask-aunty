@@ -1,15 +1,3 @@
-<!-- <div class="justify-content-center">
-  <div>
-    <%#= image_tag image_path('aunty-square.svg') %>
-  </div>
-  <h1>Ask Aunty</h1>
-  <p>
-    Going out in a group and can't decide what to eat? <br>
-    <br> <strong>ASK AUNTY!</strong><br>
-    <br> Aunty will set up a poll for your group and suggest locations based on your group's preferences.
-  </p>
-</div> -->
-
 <div class="d-flex justify-content-center">
 <div class="d-flex flex-column align-items-center text-center" style="width: 50%;">
   <p>Need to eat in a group?</p>
@@ -21,10 +9,29 @@
 </div>
 
 <div data-controller="journey">
-  <div class="d-flex justify-content-center m-3" data-target="journey.joinmeal">
-    <%= link_to 'Join Makan', '/join_meal_ajax', remote: true, class: "btn primarybtn btn-block", style: "width:50%", 'data-action' => 'click->journey#joinmeal' %>
+
+  <div class="d-flex justify-content-center">
+    <%= simple_form_for(@meal, method: :post, url: '/join_meal', 'data-target' => 'journey.joinmealForm') do |f| %>
+      <%= f.input :vanity_id, label: 'Meal ID', input_html: { class: "sharp-box hide", 'data-target' => 'journey.mealIdInput' } %>
+      <%= f.submit 'Join Meal', class: 'btn primarybtn btn-block hide', 'data-target' => 'journey.mealIdSubmit' %>
+    <% end %>
   </div>
+
   <div class="d-flex justify-content-center m-3">
-    <%= link_to 'Create Makan', '/create_meal', class: "btn primarybtn btn-block", style: "width:50%", 'data-toggle'=> "tooltip", 'data-placement' => 'bottom', 'title' => 'Wah you treating the meal ah?' %>
+    <div class="btn primarybtn btn-block" data-remote="true" data-action="click->journey#joinmeal", data-target="journey.joinmeal", style="width:50%">Join Makan</div>
+    <%#= link_to 'Join Makan', '/join_meal', class: "btn primarybtn btn-block", style: "width:50%" %>
   </div>
+
+  <div class="d-flex justify-content-center">
+    <%= simple_form_for(@meal) do |f| %>
+      <%= f.input :postal_code, label: 'Postal Code', input_html: { class: "sharp-box hide", 'data-target' => "journey.postalCodeInput" } %>
+      <%= f.submit 'Create Makan', class: 'btn btn-primary btn-block hide', 'data-target' => "journey.postalCodeSubmit" %>
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-center m-3">
+    <div class="btn primarybtn btn-block" data-remote="true" data-action="click->journey#createmeal", data-target="journey.createmeal", style="width:50%">Create Makan</div>
+    <%#= link_to 'Create Makan', '/create_meal', class: "btn primarybtn btn-block", style: "width:50%", 'data-toggle'=> "tooltip", 'data-placement' => 'bottom', 'title' => 'Wah you treating the meal ah?' %>
+  </div>
+
 </div>

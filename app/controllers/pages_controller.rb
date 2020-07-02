@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   # end
 
   def home
+    @meal = Meal.new
   end
 
   def join_meal
@@ -13,15 +14,14 @@ class PagesController < ApplicationController
 
   def join_meal_ajax
     @meal = Meal.new
-    respond_to do |format|
-      format.html render_to_string(partial: 'join_meal_ajax', locals: { meal: @meal })
-      # format.html { render partial: "join_meal_ajax", locals: { meal: @meal } }
-      format.json {
-        render json: {
-          partial: { meal: @meal }
-        }
-      }
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.json {
+    #     render json: {
+    #       meal: @meal
+    #     }
+    #   }
+    # end
   end
 
   def create_users_meal
