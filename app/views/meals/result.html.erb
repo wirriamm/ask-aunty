@@ -1,10 +1,10 @@
 <% if Time.now > @endtime %>
   <h1>Aunty's Verdict:</h1>
-  <% if @top_cuisine == [] %>
+  <% if @polls == [] %>
     <p>Your poll closed but no one voted :(</p>
   <% else %>
-    <% @polls do |p| %>
-      <%= render partial: 'verdict', locals: { cuisine: p.cuisine } %>
+    <% @polls.each do |poll| %>
+      <%= render partial: 'verdict', locals: { poll: poll } %>
     <% end %>
   <% end %>
 <% else %>

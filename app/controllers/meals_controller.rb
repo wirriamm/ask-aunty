@@ -46,6 +46,7 @@ class MealsController < ApplicationController
                   .order("total_score DESC")
                   .limit(3)
                   # .having("total_score > 1")
+                  # raise
     # @poll_summary = @polls.select("cuisine_id, score").group("cuisine_id").sum("score").order("score")
     # raise
     # @total_polls = @polls.count

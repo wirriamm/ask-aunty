@@ -12,14 +12,15 @@ border: 4px red;
 
 <div>
   <p class="card-text font-weight-bold my-0">
-      <h2><%= cuisine.name.capitalize %></h2>
+      <h2><%= poll.cuisine.name.capitalize %> |
+          <%= poll.total_score %></h2>
   </p>
 
   <div class="img-thumbnail img-fluid max-width: 100% height: auto">
-    <% if cuisine.photo.attached? %>
-      <%= cl_image_tag(cuisine.photo.key, crop: :fill, class: 'card-img-top') %>
+    <% if poll.cuisine.photo.attached? %>
+      <%= cl_image_tag(poll.cuisine.photo.key, crop: :fill, class: 'card-img-top') %>
     <% else %>
-      <%= image_tag "https://source.unsplash.com/featured/?#{cuisine.dish}", alt: "alttext", class: 'card-img-top' %>
+      <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-img-top' %>
     <% end %>
   </div>
 
