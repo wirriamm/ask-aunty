@@ -4,4 +4,5 @@ class Meal < ApplicationRecord
   has_many :polls, dependent: :destroy
 
   validates :vanity_id, uniqueness: true
+  validates :postal_code, presence: true
 end
