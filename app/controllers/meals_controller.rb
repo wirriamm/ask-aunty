@@ -17,8 +17,8 @@ class MealsController < ApplicationController
       endtime: Time.now + 2.hours,
       postal_code: params[:meal][:postal_code]
       )
-    UsersMeal.create(user: current_user, meal: @meal)
     if @meal.save
+      UsersMeal.create(user: current_user, meal: @meal)
       redirect_to setup_path @meal, notice: "Meal ID: #{@meal.vanity_id}"
     else
       render :new
