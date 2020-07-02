@@ -1,7 +1,12 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top d-flex align-items-end">
-  <%= link_to root_path, class: "navbar-brand p-0 m-0" do %>
-    <%= image_tag image_path('aunty-square.svg') %>
-  <% end %>
+  <div class="d-flex align-items-center">
+    <%= link_to root_path, class: "navbar-brand p-0 m-0" do %>
+      <%= image_tag image_path('aunty-square.svg') %>
+    <% end %>
+    <p class="m-0 pl-2 pt-1">
+      <span class="m-0 y-0" id="banner-typed-text"></span>
+    </p>
+  </div>
 
   <button class="navbar-toggler m-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
