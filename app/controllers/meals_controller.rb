@@ -3,6 +3,7 @@ require "selenium-webdriver"
 class MealsController < ApplicationController
   def index
     @users_meals = UsersMeal.where(user: current_user).includes(:meal)
+    # raise
   end
 
   def new
@@ -27,10 +28,10 @@ class MealsController < ApplicationController
   end
 
   def setup
-    @meal = Meal.find(vanity_id: params[:id])
+    @meal = Meal.find_by(vanity_id: params[:vanity_id])
     @cuisines = Cuisine.all
     @polls = []
-    @meal = Meal.find_by(vanity_id: params[:id])
+    @meal = Meal.find_by(vanity_id: params[:vanity_id])
     # @meal = Meal.find(params[:vanity_id])
     @cuisines.each do |cuisine|
       poll_exist = Poll.find_by(cuisine: cuisine, meal: @meal, user: current_user)
@@ -43,7 +44,7 @@ class MealsController < ApplicationController
   end
 
   def result
-    @meal = Meal.find_by(vanity_id: params[:id])
+    @meal = Meal.find_by(vanity_id: params[:vanity_id])
     @endtime = @meal.endtime
     @polls =  Poll.where(meal_id: @meal.id)
                   .select("cuisine_id, sum(score) as total_score")
