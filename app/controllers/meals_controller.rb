@@ -1,5 +1,3 @@
-require "selenium-webdriver"
-
 class MealsController < ApplicationController
   def index
     @users_meals = UsersMeal.where(user: current_user).includes(:meal)
@@ -26,7 +24,7 @@ class MealsController < ApplicationController
   end
 
   def setup
-    @meal = Meal.find_by(id: params[:id])
+    @meal = Meal.find_by(vanity_id: params[:_vanity_id])
     if @meal.nil?
       redirect_to root_path, alert: "Anyhow put wrong Meal ID..."
     else
@@ -41,7 +39,7 @@ class MealsController < ApplicationController
   end
 
   def result
-    @meal = Meal.find(params[:id])
+    @meal = Meal.find_by(vanity_id: params[:vanity_id])
     @time_left = get_time_left
     @polls = Poll.where(meal_id: @meal.id)
                   .select("cuisine_id, score")
@@ -70,7 +68,6 @@ class MealsController < ApplicationController
     if (Time.now < @meal.endtime) && (@meal.endtime != nil)
       @fortune = fortune
     end
-
   end
 
   private
