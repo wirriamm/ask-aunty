@@ -14,8 +14,9 @@ border: 4px red;
   <p class="card-text font-weight-bold my-0">
       <h2><%= poll.cuisine.name.capitalize %> |
           <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %></h2>
-          <%= link_to "#{poll.cuisine.name.capitalize} Restaurants Delivering to Me", "https://deliveroo.com.sg/restaurants/singapore/sg?postcode=#{@meal.postal_code}&collection=#{poll.cuisine.name.downcase}"  %>
-  </p>
+          <%= link_to "Nearest #{poll.cuisine.name.capitalize} Resturants", "#" %>
+<!--           "https://deliveroo.com.sg/restaurants/singapore/sg?postcode=#{@meal.postal_code}&collection=#{poll.cuisine.name.downcase}"
+ -->  </p>
 
   <div class="img-thumbnail img-fluid max-width: 100% height: auto">
     <% if poll.cuisine.photos.attached? %>
