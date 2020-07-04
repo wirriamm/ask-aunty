@@ -3,8 +3,6 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root to: 'pages#home'
-
-  # get '/home', to: 'pages#home'
   get '/join_meal', to: 'pages#join_meal'
   post '/join_meal', to: 'pages#create_users_meal'
   get '/create_meal', to: 'meals#new'
