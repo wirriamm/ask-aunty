@@ -27,8 +27,10 @@
     </div>
       <div data-target='polls.viewResult' style='display: none;' class='btn primarybtn btn-block'><%= link_to "View Result", result_path(@meal) %></div>
   <% else %>
-    <p>Thanks for letting Aunty know what you feel like eating!</p>
-    <div data-target='polls.viewResult' class='btn primarybtn btn-block', ><%= link_to "View Result", result_path(@meal.vanity_id), 'data-toggle'=> "tooltip", 'data-placement' => 'bottom', 'title' => 'View your poll results once the poll closes' %></div>
-
+    <div class="d-flex flex-column justify-content-center">
+      <%= image_tag "aunty-square.svg", class: "rotate" %><br>
+      <p>Thanks for letting Aunty know what you feel like eating! Come back to Aunty in <%= @time_left %> for results.</p>
+      <div data-target='polls.viewResult' class='btn primarybtn btn-block', ><%= link_to "My Makan", meals_path, 'data-toggle'=> "tooltip", 'data-placement' => 'bottom', 'title' => 'All my Makan Memories' %></div>
+    </div>
   <% end %>
 </div>

@@ -36,6 +36,7 @@ class MealsController < ApplicationController
       end
     end
     @poll_no = 10 - @polls.length + 1
+    @time_left = get_time_left
   end
 
   def result
