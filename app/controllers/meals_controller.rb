@@ -53,7 +53,7 @@ class MealsController < ApplicationController
     if @endtime == nil
       return
     elsif Time.now < @endtime && @endtime != nil
-      @fortune = fortune
+      # @fortune = fortune
       @time_left = get_time_left
     end
 
