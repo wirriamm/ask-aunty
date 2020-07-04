@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 #   get '/meals/:id/polls', to: 'meals#setup', as: 'setup'
 #   get '/meals/:id/result', to: 'meals#result', as: "result"
 
-  resources :meals, only: [:index, :new, :create] do
+  resources :meals, only: [:index, :show, :new, :create] do
     resources :polls, only: [:create]
   end
 

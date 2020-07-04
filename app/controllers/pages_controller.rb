@@ -41,10 +41,10 @@ class PagesController < ApplicationController
       end
     else # Time not up yet
       if user_in_meal?
-        redirect_to setup_path(@meal), notice: "Continue from where you left off"
+        redirect_to meal_path(@meal), notice: "Continue from where you left off"
       else
         users_meal = UsersMeal.create(user: current_user, meal: @meal)
-        redirect_to setup_path(@meal), success: "Welcome to the makan gang!"
+        redirect_to meal_path(@meal), success: "Welcome to the makan gang!"
       end
       # If user completed the poll, meals#setup controller will show a 'Show Results' button.
     end

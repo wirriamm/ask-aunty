@@ -9,6 +9,9 @@ class MealsController < ApplicationController
     @meal = Meal.new
   end
 
+  def show
+  end
+
   def create
     @meal = Meal.new(
       vanity_id: generate_vanity_id,
@@ -24,7 +27,7 @@ class MealsController < ApplicationController
   end
 
   def setup
-    @meal = Meal.find(params[:id])
+    @meal = Meal.find(vanity_id: params[:id])
     @cuisines = Cuisine.all
     @polls = []
     @meal = Meal.find_by(vanity_id: params[:id])
@@ -54,7 +57,7 @@ class MealsController < ApplicationController
     elsif Time.now < @endtime && @endtime != nil
       @fortune = fortune
     end
-      
+
     # Remove duplicates of users
     # Collect preferences of each user
     all_prefs = @meal.users.uniq.flat_map(&:preferences)
