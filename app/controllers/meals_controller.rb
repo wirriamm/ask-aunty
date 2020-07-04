@@ -53,6 +53,7 @@ class MealsController < ApplicationController
       return
     elsif Time.now < @endtime && @endtime != nil
       @fortune = fortune
+      @time_left = get_time_left
     end
 
     # Remove duplicates of users
