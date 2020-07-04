@@ -11,6 +11,7 @@ class MealsController < ApplicationController
   end
 
   def show
+    @meal = Meal.find_by(vanity_id: params[:vanity_id])
   end
 
   def create

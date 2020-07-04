@@ -1,1 +1,9 @@
-Hey show meal
+<h1>Meal ID: <%= @meal.vanity_id %></h1>
+<%= link_to "Start the poll", setup_path(@meal.vanity_id) %>
+<%= link_to "View result", result_path(@meal.vanity_id) %>
+<br>
+<br>
+<h1>Instructions</h1>
+<p>This is a tinder app for cuisines</p>
+<p>Swipe right for the right cuisines</p>
+<p>What are not right... go to the left!</p>
