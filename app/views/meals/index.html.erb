@@ -4,11 +4,13 @@
     <% @users_meals.each do |user_meal| %>
       <% polls = Poll.where(user_id: user_meal.user_id, meal_id: user_meal.meal_id) %>
       <!-- cut-off time is over -->
+      <%if user_meal.meal.endtime < Time.now %>
         <li>
           Meal ID: <%= link_to user_meal.meal.vanity_id, result_path(user_meal.meal.vanity_id) %> |
           Poll end: <%= user_meal.meal.endtime.localtime.strftime('%e %b %Y %I:%M %P') %>
         </li>
       <!-- cut-off time not over yet, user havent donfinished the polls -->
+      <% end %>
     <% end %>
   </ul>
 </div>
