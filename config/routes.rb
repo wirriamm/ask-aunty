@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     resources :polls, only: [:create]
   end
 
-  resources :meals, only: [:new, :create]
   resources :preferences, only: [:index]
   patch '/save_preference', to: 'preferences#save_preference'
 end

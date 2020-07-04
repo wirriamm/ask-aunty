@@ -11,12 +11,11 @@ class PagesController < ApplicationController
 
   def create_users_meal
     @meal = Meal.find_by(vanity_id: get_vanity_id)
-    raise
     # Check if Meal ID exists
     if @meal.nil?
       @meal = Meal.new
       flash.now[:alert] = "Don't have Meal ID \"#{get_vanity_id}\" lah!"
-      render :join_meal
+      render :home # :join_meal
     # Cannot join meal once it is closed
     elsif @meal.endtime < Time.now
       if user_in_meal?
