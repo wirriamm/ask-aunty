@@ -15,7 +15,7 @@ class MealsController < ApplicationController
       endtime: Time.now + 2.hours,
       postal_code: params[:meal][:postal_code]
       )
-    raise
+    # raise
     if @meal.save
       UsersMeal.create(user: current_user, meal: @meal)
       redirect_to setup_path(@meal.vanity_id), notice: "Meal ID: #{@meal.vanity_id}"
@@ -25,8 +25,9 @@ class MealsController < ApplicationController
   end
 
   def setup
-    @meal = Meal.find_by(vanity_id: params[:_vanity_id])
+    @meal = Meal.find_by(vanity_id: params[:vanity_id])
     if @meal.nil?
+      raise
       redirect_to root_path, alert: "Anyhow put wrong Meal ID..."
     else
       if @meal.users.exclude? current_user
