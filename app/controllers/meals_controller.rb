@@ -49,6 +49,7 @@ class MealsController < ApplicationController
                   .limit(3)
     @total_polls = Poll.where(meal_id: @meal.id)
                   .count
+                # raise
     if @endtime == nil
       return
     elsif Time.now < @endtime && @endtime != nil
