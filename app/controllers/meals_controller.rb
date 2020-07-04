@@ -1,12 +1,17 @@
 class MealsController < ApplicationController
   def index
     @users_meals = UsersMeal.where(user: current_user).includes(:meal)
+    # raise
   end
 
   def new
     @meal = Meal.new(
       endtime: Time.now + 2.hours
     )
+  end
+
+  def show
+    @meal = Meal.find_by(vanity_id: params[:vanity_id])
   end
 
   def create
@@ -27,7 +32,6 @@ class MealsController < ApplicationController
   def setup
     @meal = Meal.find_by(vanity_id: params[:vanity_id])
     if @meal.nil?
-      raise
       redirect_to root_path, alert: "Anyhow put wrong Meal ID..."
     else
       if @meal.users.exclude? current_user
@@ -35,7 +39,9 @@ class MealsController < ApplicationController
       end
       completed_cuisines = current_user.polls.where(meal: @meal).map(&:cuisine)
       remaining_cuisines = Cuisine.all - completed_cuisines
-      @polls = remaining_cuisines.map { |c| Poll.new(cuisine: c, meal: @meal, user: current_user) }
+      @polls = remaining_cuisines.map do |c|
+        Poll.new(cuisine: c, meal: @meal, user: current_user)
+      end
       @poll_no = 10 - @polls.length + 1
     end
   end
@@ -43,8 +49,9 @@ class MealsController < ApplicationController
   def result
     @meal = Meal.find_by(vanity_id: params[:vanity_id])
     @time_left = get_time_left
-    @polls = Poll.where(meal_id: @meal.id)
-                  .select("cuisine_id, score")
+    @endtime = @meal.endtime
+    @polls =  Poll.where(meal_id: @meal.id)
+                  .select("cuisine_id, sum(score) as total_score")
                   .group("cuisine_id")
                   .order("total_score DESC")
                   .limit(3)
@@ -52,8 +59,8 @@ class MealsController < ApplicationController
                   .count
     if @endtime == nil
       return
-    elsif Time.now < @endtime && @endtime != nil
-      @fortune = fortune
+    elsif (Time.now < @meal.endtime) && (@meal.endtime != nil)
+      # @fortune = fortune
     end
 
     # Remove duplicates of users
@@ -61,10 +68,6 @@ class MealsController < ApplicationController
     all_prefs = @meal.users.uniq.flat_map(&:preferences)
     # Remove duplicates of preferences
     @collated_prefs = all_prefs.uniq
-
-    if (Time.now < @meal.endtime) && (@meal.endtime != nil)
-      @fortune = fortune
-    end
   end
 
   private
