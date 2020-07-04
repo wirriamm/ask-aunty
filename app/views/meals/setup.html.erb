@@ -27,8 +27,8 @@
     </div>
       <div data-target='polls.viewResult' style='display: none;' class='btn primarybtn btn-block'><%= link_to "View Result", result_path(@meal) %></div>
   <% else %>
-    <p>Thanks for letting Aunty know what you feel like having!</p>
-    <div data-target='polls.viewResult' class='btn primarybtn btn-block'><%= link_to "View Result", result_path(@meal.vanity_id) %></div>
+    <p>Thanks for letting Aunty know what you feel like eating!</p>
+    <div data-target='polls.viewResult' class='btn primarybtn btn-block', ><%= link_to "View Result", result_path(@meal.vanity_id), 'data-toggle'=> "tooltip", 'data-placement' => 'bottom', 'title' => 'View your poll results once the poll closes' %></div>
 
   <% end %>
 </div>

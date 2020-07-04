@@ -6,8 +6,9 @@
     <% @polls.each do |poll| %>
       <%= render partial: 'verdict', locals: { poll: poll } %>
     <% end %>
+    <br>
     <div>
-      <h2>Your Group's Preferences</h2>
+      <h2><strong> PS: Your Group's Preferences</strong></h2>
       <ul style="list-style-type:square">
         <% @collated_prefs.each do |p| %>
           <li><%= p.name %></li>
@@ -20,9 +21,9 @@
   <h3>Aunty's still working on it...</h3>
   <p>Can wait? Come back to aunty in <%= @time_left %> for results.</p></br>
 
-  <div class="bubble">
+<!--   <div class="bubble">
     <p>ps... <strong> Aunty's wise words for today: </strong><br>
       <em><%= @fortune %></em></p>
   </div>
-  <div class="pointer"></div>
+  <div class="pointer"></div> -->
 <% end %>
