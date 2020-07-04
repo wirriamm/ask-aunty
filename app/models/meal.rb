@@ -5,4 +5,5 @@ class Meal < ApplicationRecord
 
   validates :postal_code, presence: true
   validates :vanity_id, presence: true, uniqueness: true
+  validates :pax, presence: true, numericality: { only_integer: true, greater_than: 0 }
 end

@@ -1,7 +1,6 @@
 class MealsController < ApplicationController
   def index
     @users_meals = UsersMeal.where(user: current_user).includes(:meal)
-    # raise
   end
 
   def new
@@ -18,9 +17,9 @@ class MealsController < ApplicationController
     @meal = Meal.new(
       vanity_id: generate_vanity_id,
       endtime: Time.now + 2.hours,
-      postal_code: params[:meal][:postal_code]
+      postal_code: params[:meal][:postal_code],
+      pax: params[:meal][:pax]
       )
-    # raise
     if @meal.save
       UsersMeal.create(user: current_user, meal: @meal)
       redirect_to setup_path(@meal.vanity_id), notice: "Meal ID: #{@meal.vanity_id}"
