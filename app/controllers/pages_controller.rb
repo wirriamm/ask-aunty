@@ -32,7 +32,7 @@ class PagesController < ApplicationController
       flash.now[:alert] = "Don't have Makan Code \"#{get_vanity_id}\" lah!"
       render :join_meal
     # Cannot join meal once it is closed
-    elsif @meal.endtime < Time.now
+    elsif @meal.endtime == nil || @meal.endtime < Time.now
       if user_in_meal?
         redirect_to result_path(@meal)
       else

@@ -25,11 +25,9 @@ class MealsController < ApplicationController
   end
 
   def setup
-    @meal = Meal.find_by(vanity_id: params[:id])
+    @meal = Meal.find_by(vanity_id: params[:vanity_id])
     @cuisines = Cuisine.all
     @polls = []
-    @meal = Meal.find_by(vanity_id: params[:id])
-    # @meal = Meal.find(params[:vanity_id])
     @cuisines.each do |cuisine|
       poll_exist = Poll.find_by(cuisine: cuisine, meal: @meal, user: current_user)
       unless poll_exist
@@ -41,8 +39,9 @@ class MealsController < ApplicationController
   end
 
   def result
-    @meal = Meal.find_by(vanity_id: params[:id])
+    @meal = Meal.find_by(vanity_id: params[:vanity_id])
     @endtime = @meal.endtime
+    # raise
     @polls =  Poll.where(meal_id: @meal.id)
                   .select("cuisine_id, sum(score) as total_score")
                   .group("cuisine_id")
