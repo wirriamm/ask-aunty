@@ -1,12 +1,17 @@
-require "selenium-webdriver"
-
 class MealsController < ApplicationController
   def index
     @users_meals = UsersMeal.where(user: current_user).includes(:meal)
+    # raise
   end
 
   def new
-    @meal = Meal.new
+    @meal = Meal.new(
+      endtime: Time.now + 2.hours
+    )
+  end
+
+  def show
+    @meal = Meal.find_by(vanity_id: params[:vanity_id])
   end
 
   def create
@@ -15,32 +20,35 @@ class MealsController < ApplicationController
       endtime: Time.now + 2.hours,
       postal_code: params[:meal][:postal_code]
       )
-    UsersMeal.create(user: current_user, meal: @meal)
+    # raise
     if @meal.save
-      redirect_to setup_path @meal, notice: "Meal ID: #{@meal.vanity_id}"
+      UsersMeal.create(user: current_user, meal: @meal)
+      redirect_to setup_path(@meal.vanity_id), notice: "Meal ID: #{@meal.vanity_id}"
     else
       render :new
     end
   end
 
   def setup
-    @meal = Meal.find(params[:id])
-    @cuisines = Cuisine.all
-    @polls = []
-    @meal = Meal.find_by(vanity_id: params[:id])
-    # @meal = Meal.find(params[:vanity_id])
-    @cuisines.each do |cuisine|
-      poll_exist = Poll.find_by(cuisine: cuisine, meal: @meal, user: current_user)
-      unless poll_exist
-        new_poll = Poll.new(cuisine: cuisine, meal: @meal, user: current_user)
-        @polls << new_poll
+    @meal = Meal.find_by(vanity_id: params[:vanity_id])
+    if @meal.nil?
+      redirect_to root_path, alert: "Anyhow put wrong Meal ID..."
+    else
+      if @meal.users.exclude? current_user
+        @meal.users << current_user
       end
+      completed_cuisines = current_user.polls.where(meal: @meal).map(&:cuisine)
+      remaining_cuisines = Cuisine.all - completed_cuisines
+      @polls = remaining_cuisines.map do |c|
+        Poll.new(cuisine: c, meal: @meal, user: current_user)
+      end
+      @poll_no = 10 - @polls.length + 1
     end
-    @poll_no = 10 - @polls.length + 1
   end
 
   def result
-    @meal = Meal.find_by(vanity_id: params[:id])
+    @meal = Meal.find_by(vanity_id: params[:vanity_id])
+    @time_left = get_time_left
     @endtime = @meal.endtime
     @polls =  Poll.where(meal_id: @meal.id)
                   .select("cuisine_id, sum(score) as total_score")
@@ -51,10 +59,10 @@ class MealsController < ApplicationController
                   .count
     if @endtime == nil
       return
-    elsif Time.now < @endtime && @endtime != nil
-      @fortune = fortune
+    elsif (Time.now < @meal.endtime) && (@meal.endtime != nil)
+      # @fortune = fortune
     end
-      
+
     # Remove duplicates of users
     # Collect preferences of each user
     all_prefs = @meal.users.uniq.flat_map(&:preferences)

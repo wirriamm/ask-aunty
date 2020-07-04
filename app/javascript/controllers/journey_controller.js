@@ -1,30 +1,29 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = [ 'mealIdInput', 'mealIdSubmit','joinmeal', 'joinmealForm',
-  'postalCodeInput', 'postalCodeSubmit', 'createmeal' ];
+  static targets = [ 'mealId', 'joinmeal', 'postalCode', 'createmeal' ];
 
   connect() {
     console.log("Stimulus connected :)");
   }
 
   joinmeal = (event) => {
-    this.mealIdInputTarget.classList.remove("hide");
-    this.mealIdSubmitTarget.classList.remove("hide");
+    this.mealIdTargets.forEach(e => e.classList.remove('hide'));
     this.joinmealTarget.classList.add("hide");
+    this.joinmealTarget.classList.remove("secondarybtn");
 
-    this.postalCodeSubmitTarget.classList.add("hide");
-    this.postalCodeInputTarget.classList.add("hide");
+    this.postalCodeTargets.forEach(e => e.classList.add('hide'));
     this.createmealTarget.classList.remove("hide");
+    this.createmealTarget.classList.add("secondarybtn");
   }
 
   createmeal = (event) => {
-    this.postalCodeSubmitTarget.classList.remove("hide");
-    this.postalCodeInputTarget.classList.remove("hide");
+    this.postalCodeTargets.forEach(e => e.classList.remove('hide'));
     this.createmealTarget.classList.add("hide");
+    this.createmealTarget.classList.remove("secondarybtn");
 
-    this.mealIdInputTarget.classList.add("hide");
-    this.mealIdSubmitTarget.classList.add("hide");
+    this.mealIdTargets.forEach(e => e.classList.add('hide'));
     this.joinmealTarget.classList.remove("hide");
+    this.joinmealTarget.classList.add("secondarybtn");
   }
 }
