@@ -12,6 +12,10 @@ class MealsController < ApplicationController
 
   def show
     @meal = Meal.find_by(vanity_id: params[:vanity_id])
+    @user_meal = UsersMeal.where(user: current_user, meal: @meal)
+    if @user_meal.nil?
+      @user_meal = UsersMeal.create!(user: current_user, meal: @meal)
+    end
   end
 
   def create
