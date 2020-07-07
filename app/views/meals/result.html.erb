@@ -4,7 +4,7 @@
     <p>Your poll closed but no one voted :(</p>
   <% else %>
     <% @polls.each do |poll| %>
-      <%= render partial: 'verdict', locals: { poll: poll } %>
+      <%= render partial: 'verdict', locals: { poll: poll, restaurants: @restaurants } %>
     <% end %>
     <br>
     <div>
