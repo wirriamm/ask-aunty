@@ -1,0 +1,30 @@
+<h1>H1 Test</h1>
+<h2>H2 Test</h2>
+<h3>H3 Test</h3>
+<a href="">Link Test</a>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, quidem? Quas quo repellat, culpa numquam, in, maxime nostrum magnam harum est debitis officiis, nulla! Expedita recusandae in harum amet debitis.</p>
+
+<p class="mt-4">Buttons</p>
+<div>
+  <div class="btn primarybtn">Primary button</div>
+  <div class="btn secondarybtn">Secondary button</div>
+</div>
+
+<p class="mt-4">Form</p>
+<%= simple_form_for :ui_kit do |f| -%>
+  <%= f.input 'Name', as: :string, input_html: { class: 'sharp-box', placeholder: 'String field' } %>
+  <%= f.input 'Text', as: :text, input_html: { class: 'sharp-box', placeholder: 'Text field' } %>
+  <%= f.submit 'Submit', class: 'btn primarybtn' %>
+<% end -%>
+
+<p class="mt-4">For meals index page (clickable)</p>
+<a href="" class="card-clickable">
+<div class="card card-shadow">
+  <h5 class="card-header">Makan Code: <span class="makan-code">AG2G34</span></h5>
+  <div class="card-body">
+    <p class="card-text">End: 5 Jul 2020 12:06 am</p>
+    <p>By: john@gmail.com</p>
+    <a href="#" class="btn btn-primary">Results</a>
+  </div>
+</div>
+</a>

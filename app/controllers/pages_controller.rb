@@ -5,6 +5,9 @@ class PagesController < ApplicationController
     @meal = Meal.new
   end
 
+  def ui_kit
+  end
+
   def join_meal
     @meal = Meal.new
   end
