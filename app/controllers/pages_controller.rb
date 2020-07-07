@@ -14,10 +14,10 @@ class PagesController < ApplicationController
     # Check if Meal ID exists
     if @meal.nil?
       @meal = Meal.new
-      flash.now[:alert] = "Don't have Meal ID \"#{get_vanity_id}\" lah!"
-      render :home # :join_meal
+      flash.now[:alert] = "Don't have Makan Code \"#{get_vanity_id}\" lah!"
+      render :home
     # Cannot join meal once it is closed
-    elsif @meal.endtime < Time.now
+    elsif @meal.endtime == nil || @meal.endtime < Time.now
       if user_in_meal?
         redirect_to result_path(@meal.vanity_id)
       else

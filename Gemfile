@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 
 gem 'font-awesome-sass', '~> 5.6.1'
+gem 'geocoder'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

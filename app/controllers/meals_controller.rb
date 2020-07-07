@@ -28,6 +28,7 @@ class MealsController < ApplicationController
       UsersMeal.create(user: current_user, meal: @meal)
       redirect_to setup_path(@meal.vanity_id), notice: "Meal ID: #{@meal.vanity_id}"
     else
+      flash.now[:alert] = "Postal Code not valid leh"
       render :new
     end
   end
@@ -47,12 +48,14 @@ class MealsController < ApplicationController
       end
       @poll_no = 10 - @polls.length + 1
     end
+    @poll_no = 10 - @polls.length + 1
+    @time_left = get_time_left
   end
 
   def result
     @meal = Meal.find_by(vanity_id: params[:vanity_id])
-    @time_left = get_time_left
     @endtime = @meal.endtime
+    # raise
     @polls =  Poll.where(meal_id: @meal.id)
                   .select("cuisine_id, sum(score) as total_score")
                   .group("cuisine_id")
@@ -60,10 +63,12 @@ class MealsController < ApplicationController
                   .limit(3)
     @total_polls = Poll.where(meal_id: @meal.id)
                   .count
+                # raise
     if @endtime == nil
       return
-    elsif (Time.now < @meal.endtime) && (@meal.endtime != nil)
+    elsif Time.now < @endtime && @endtime != nil
       # @fortune = fortune
+      @time_left = get_time_left
     end
 
     # Remove duplicates of users
