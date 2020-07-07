@@ -1,3 +1,6 @@
+require "json"
+require "rest-client"
+
 class MealsController < ApplicationController
   def index
     @users_meals = UsersMeal.where(user: current_user).includes(:meal)
@@ -76,6 +79,10 @@ class MealsController < ApplicationController
     all_prefs = @meal.users.uniq.flat_map(&:preferences)
     # Remove duplicates of preferences
     @collated_prefs = all_prefs.uniq
+    results = first_api_call(@meal.latitude, @meal.longitude, "thai")
+    results_json = JSON.parse(results.results)
+    @restaurants = restaurant_info(results_json)
+    # raise
   end
 
   private
@@ -104,5 +111,34 @@ class MealsController < ApplicationController
     # end
     driver.quit
     txt
+  end
+
+  def first_api_call(lat, long, cuisine)
+    verdict = Verdict.where(lat: lat, long: long, cuisine: cuisine).first
+    if verdict.nil?
+      url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}&radius=2000&types=restaurant&keyword=#{cuisine}&key=#{ENV['GOOGLE_PLACES_API']}"
+      response = RestClient.get url
+      repos = JSON.parse(response)
+      verdict = Verdict.create(lat: lat, long: long, cuisine: cuisine, results: JSON.generate(repos))
+    end
+    return verdict
+  end
+
+  def restaurant_info(json)
+    results = json["results"]
+    restaurants = results.slice(0, 3).map do |resto|
+      hash = {}
+      hash[:name] = resto["name"]
+      hash[:place_id] = resto["place_id"]
+      hash[:address] = resto["vicinity"]
+      hash[:rating] = resto["rating"]
+      hash
+    end
+
+    raise
+  end
+
+  def second_api_call
+
   end
 end
