@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_04_071020) do
-
+ActiveRecord::Schema.define(version: 2020_07_04_165211) do
+  
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_07_04_071020) do
     t.string "postal_code"
     t.float "latitude"
     t.float "longitude"
+    t.integer "pax", default: 1
   end
 
   create_table "polls", force: :cascade do |t|
