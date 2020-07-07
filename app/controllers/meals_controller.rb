@@ -132,13 +132,18 @@ class MealsController < ApplicationController
       hash[:place_id] = resto["place_id"]
       hash[:address] = resto["vicinity"]
       hash[:rating] = resto["rating"]
+      second_results = second_api_call(resto["place_id"])["result"]
+      hash[:url] = second_results["url"]
+      hash[:formatted_phone_number] = second_results["formatted_phone_number"]
+
+      raise
       hash
     end
-
-    raise
   end
 
-  def second_api_call
-
+  def second_api_call(place_id)
+    url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=formatted_phone_number,url&key=#{ENV['GOOGLE_PLACES_API']}"
+    response = RestClient.get url
+    repos = JSON.parse(response)
   end
 end
