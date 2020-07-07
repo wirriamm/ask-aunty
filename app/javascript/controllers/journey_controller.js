@@ -1,19 +1,29 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = [ 'joinmeal' ];
+  static targets = [ 'mealId', 'joinmeal', 'postalCode', 'createmeal' ];
 
   connect() {
-    console.log("Hello world");
+    console.log("Stimulus connected :)");
   }
 
   joinmeal = (event) => {
-    console.log(event);
-    // console.log(this.joinmealTarget);
-    fetch('/join_meal_ajax', { headers: { accept: "application/json"} })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      });
+    this.mealIdTargets.forEach(e => e.classList.remove('hide'));
+    this.joinmealTarget.classList.add("hide");
+    this.joinmealTarget.classList.remove("secondarybtn");
+
+    this.postalCodeTargets.forEach(e => e.classList.add('hide'));
+    this.createmealTarget.classList.remove("hide");
+    this.createmealTarget.classList.add("secondarybtn");
+  }
+
+  createmeal = (event) => {
+    this.postalCodeTargets.forEach(e => e.classList.remove('hide'));
+    this.createmealTarget.classList.add("hide");
+    this.createmealTarget.classList.remove("secondarybtn");
+
+    this.mealIdTargets.forEach(e => e.classList.add('hide'));
+    this.joinmealTarget.classList.remove("hide");
+    this.joinmealTarget.classList.add("secondarybtn");
   }
 }

@@ -3,25 +3,18 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   root to: 'pages#home'
-
-  # get '/home', to: 'pages#home'
-  get '/join_makan', to: 'pages#join_meal', as: 'join_makan'
-  post '/join_makan', to: 'pages#create_users_meal'
-  get '/create_makan', to: 'meals#new', as: 'create_makan'
-  # stimulus ajax routes
-  get '/join_meal_ajax', to: 'pages#join_meal_ajax'
+  get '/join_meal', to: 'pages#join_meal'
+  post '/join_meal', to: 'pages#create_users_meal'
+  get '/create_meal', to: 'meals#new'
 
   get '/meals/:vanity_id/polls', to: 'meals#setup', as: 'setup'
   get '/meals/:vanity_id/result', to: 'meals#result', as: "result"
-
-#   get '/meals/:id/polls', to: 'meals#setup', as: 'setup'
-#   get '/meals/:id/result', to: 'meals#result', as: "result"
+  get '/meals/:vanity_id/', to: 'meals#show', as: "meal"
 
   resources :meals, only: [:index, :new, :create] do
     resources :polls, only: [:create]
   end
 
-  resources :meals, only: [:new, :create]
   resources :preferences, only: [:index]
   patch '/save_preference', to: 'preferences#save_preference'
 end

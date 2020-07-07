@@ -37,6 +37,7 @@ gem 'simple_form'
 gem 'cloudinary', '~> 1.12.0'
 gem 'turbolinks_render'
 
+gem 'interactor'
 gem 'selenium-webdriver'
 
 group :development, :test do

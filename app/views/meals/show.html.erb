@@ -1,0 +1,16 @@
+<div data-controller='show-button'>
+  <h1>Meal ID: <%= @meal.vanity_id %></h1>
+  <input type="hidden" data-target='show-button.pollCount' value="<%= Poll.where(user: current_user, meal: @meal).length %>" >
+  <input type="hidden" data-target='show-button.time' value="<%= @meal.endtime > Time.now %>" >
+  <%= link_to "Start the poll", setup_path(@meal.vanity_id), data: {target: "show-button.startPoll"} %>
+  <%= link_to "View result", result_path(@meal.vanity_id), data: {target: "show-button.viewResult"} %>
+</div>
+
+<div>
+  <h1>Instructions</h1>
+  <p>This is a tinder app for cuisines</p>
+  <p>Swipe right for the right cuisines</p>
+  <p>What are not right... go to the left!</p>
+</div>
+
+<p>TODO: Add a share buttons here</p>

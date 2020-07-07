@@ -153,8 +153,8 @@ puts "jill seeded"
 
 puts "Seeding test meal for john"
 meal = Meal.new(vanity_id: 'test123',
-                endtime: Time.now,
-                postal_code: '123456' )
+                postal_code: 238869,
+                endtime: Time.now )
 meal.save!
 
 users_meal = UsersMeal.new(user: john,

@@ -2,10 +2,10 @@
   <h1>My Makan</h1><br>
   <ul style="list-style-type:square">
     <% @users_meals.each do |user_meal| %>
-      <li>
-        Makan Code: <%= link_to user_meal.meal.vanity_id, result_path(user_meal.meal.vanity_id) %> |
-        Poll end: <%= user_meal.meal.endtime.localtime.strftime('%e %b %Y %I:%M %P') %>
-      </li>
+        <li>
+         Makan Code: <%= link_to user_meal.meal.vanity_id, meal_path(user_meal.meal.vanity_id)%> |
+         Poll end: <%= user_meal.meal.endtime.localtime.strftime('%e %b %Y %I:%M %P') %>
+        </li>
     <% end %>
   </ul>
 </div>
