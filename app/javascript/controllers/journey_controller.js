@@ -9,21 +9,25 @@ export default class extends Controller {
 
   joinmeal = (event) => {
     this.mealIdTargets.forEach(e => e.classList.remove('hide'));
-    this.joinmealTarget.classList.add("hide");
-    this.joinmealTarget.classList.remove("secondarybtn");
+    // this.joinmealTarget.classList.add("hide");
+    this.joinmealTarget.classList.add("secondarybtn");
+    this.joinmealTarget.classList.add("highlight-tab");
 
     this.postalCodeTargets.forEach(e => e.classList.add('hide'));
-    this.createmealTarget.classList.remove("hide");
-    this.createmealTarget.classList.add("secondarybtn");
+    // this.createmealTarget.classList.remove("hide");
+    this.createmealTarget.classList.remove("secondarybtn");
+    this.createmealTarget.classList.remove("highlight-tab");
   }
 
   createmeal = (event) => {
     this.postalCodeTargets.forEach(e => e.classList.remove('hide'));
-    this.createmealTarget.classList.add("hide");
-    this.createmealTarget.classList.remove("secondarybtn");
+    // this.createmealTarget.classList.add("hide");
+    this.createmealTarget.classList.add("secondarybtn");
+    this.createmealTarget.classList.add("highlight-tab");
 
     this.mealIdTargets.forEach(e => e.classList.add('hide'));
-    this.joinmealTarget.classList.remove("hide");
-    this.joinmealTarget.classList.add("secondarybtn");
+    // this.joinmealTarget.classList.remove("hide");
+    this.joinmealTarget.classList.remove("secondarybtn");
+    this.joinmealTarget.classList.remove("highlight-tab");
   }
 }
