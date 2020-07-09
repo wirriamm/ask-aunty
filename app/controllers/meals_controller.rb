@@ -1,6 +1,3 @@
-require "json"
-require "rest-client"
-
 class MealsController < ApplicationController
   def index
     @users_meals = UsersMeal.where(user: current_user).includes(:meal)
