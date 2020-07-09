@@ -1,11 +1,6 @@
 <div>
-  <h1>My Makan</h1><br>
-  <ul style="list-style-type:square">
-    <% @users_meals.each do |user_meal| %>
-        <li>
-         Makan Code: <%= link_to user_meal.meal.vanity_id, meal_path(user_meal.meal.vanity_id)%> |
-         Poll end: <%= user_meal.meal.endtime.localtime.strftime('%e %b %Y %I:%M %P') %>
-        </li>
-    <% end %>
-  </ul>
+  <h1>My Makan</h1>
+  <% @users_meals.each do |users_meal| %>
+      <%= render 'shared/card', users_meal: users_meal, class: '' %>
+  <% end %>
 </div>
