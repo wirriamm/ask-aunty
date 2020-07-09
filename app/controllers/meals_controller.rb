@@ -55,15 +55,14 @@ class MealsController < ApplicationController
   def result
     @meal = Meal.find_by(vanity_id: params[:vanity_id])
     @endtime = @meal.endtime
-    # raise
-    @polls =  Poll.where(meal_id: @meal.id)
-                  .select("cuisine_id, sum(score) as total_score")
-                  .group("cuisine_id")
-                  .order("total_score DESC")
-                  .limit(3)
-    @total_polls = Poll.where(meal_id: @meal.id)
-                  .count
-                # raise
+
+    @polls = Poll.where(meal_id: @meal.id)
+                 .select("cuisine_id, sum(score) as total_score")
+                 .group("cuisine_id")
+                 .order("total_score DESC")
+                 .limit(3)
+    @total_polls = Poll.where(meal_id: @meal.id).count
+
     if @endtime == nil
       return
     elsif Time.now < @endtime && @endtime != nil
@@ -76,6 +75,14 @@ class MealsController < ApplicationController
     all_prefs = @meal.users.uniq.flat_map(&:preferences)
     # Remove duplicates of preferences
     @collated_prefs = all_prefs.uniq
+
+    @restaurants = []
+    @polls.each do |poll|
+      cuisine = poll.cuisine.name
+      results = first_api_call(@meal.latitude, @meal.longitude, cuisine)
+      results_json = JSON.parse(results.results)
+      restaurant_info(results_json, cuisine).each { |resto| @restaurants << resto }
+    end
   end
 
   private
@@ -104,5 +111,41 @@ class MealsController < ApplicationController
     # end
     driver.quit
     txt
+  end
+
+  def first_api_call(lat, long, cuisine)
+    verdict = Verdict.where(lat: lat, long: long, cuisine: cuisine).first
+    if verdict.nil?
+      url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}&radius=2000&types=restaurant&keyword=#{cuisine}&key=#{ENV['GOOGLE_PLACES_API']}"
+      response = RestClient.get url
+      repos = JSON.parse(response)
+      verdict = Verdict.create(lat: lat, long: long, cuisine: cuisine, results: JSON.generate(repos))
+    end
+    return verdict
+  end
+
+  def restaurant_info(json, cuisine)
+    results = json["results"]
+    restaurants = results.slice(0, 2).map do |resto|
+      restaurant = second_api_call(resto["place_id"], cuisine)
+    end
+  end
+
+  def second_api_call(place_id, cuisine)
+    url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name,vicinity,rating,website,formatted_phone_number,url&key=#{ENV['GOOGLE_PLACES_API']}"
+    restaurant = Restaurant.find_by(place_id: place_id)
+    if restaurant.nil?
+      response = RestClient.get url
+      repos = JSON.parse(response)["result"]
+      restaurant = Restaurant.create(name: repos["name"],
+                                     vicinity: repos["vicinity"],
+                                     rating: repos["rating"],
+                                     website: repos["website"],
+                                     formatted_phone_number: repos["formatted_phone_number"],
+                                     url: repos["url"],
+                                     place_id: place_id,
+                                     cuisine_id: Cuisine.find_by(name: cuisine).id)
+    end
+    return restaurant
   end
 end

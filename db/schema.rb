@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_04_165211) do
-  
+ActiveRecord::Schema.define(version: 2020_07_07_154537) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,6 +72,20 @@ ActiveRecord::Schema.define(version: 2020_07_04_165211) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "place_id"
+    t.string "vicinity"
+    t.float "rating"
+    t.string "website"
+    t.string "formatted_phone_number"
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "cuisine_id"
+    t.index ["cuisine_id"], name: "index_restaurants_on_cuisine_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -101,6 +115,15 @@ ActiveRecord::Schema.define(version: 2020_07_04_165211) do
     t.boolean "status"
     t.index ["preference_id"], name: "index_users_preferences_on_preference_id"
     t.index ["user_id"], name: "index_users_preferences_on_user_id"
+  end
+
+  create_table "verdicts", force: :cascade do |t|
+    t.float "lat"
+    t.float "long"
+    t.string "cuisine"
+    t.text "results"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
