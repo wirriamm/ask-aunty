@@ -1,5 +1,7 @@
 <div>
-  <h1>My Makan</h1>
+  <div class="card shadow-sm mb-3">
+    <h3 class="p-3 m-0">My Makan</h3>
+  </div>
   <% @users_meals.each do |users_meal| %>
       <%= render 'shared/card', users_meal: users_meal, class: '' %>
   <% end %>
