@@ -43,14 +43,10 @@
 
 <div data-controller="journey">
 
-  <div class="d-flex justify-content-center">
-    <div class="btn primarybtn btn-block" data-remote="true" data-action="click->journey#joinmeal" data-target="journey.joinmeal" data-toggle="tooltip" data-placement="bottom" title='Join an existing makan poll that you have a Makan Code for'>Join Makan</div>
-    <%#= link_to 'Join Makan', '/join_meal', class: "btn primarybtn btn-block", style: "width:50%" %>
-  </div>
+  <div class="d-flex justify-content-around">
+    <div class="btn primarybtn btn-block half-tab m-2" data-remote="true" data-action="click->journey#joinmeal" data-target="journey.joinmeal" data-toggle="tooltip" data-placement="bottom" title='Join an existing makan poll that you have a Makan Code for'>Join Makan</div>
 
-  <div class="d-flex justify-content-center">
-    <div class="btn primarybtn btn-block" data-remote="true" data-action="click->journey#createmeal" data-target="journey.createmeal" data-toggle="tooltip" data-placement="bottom" title="Start a new makan poll for your makan kakis">Create Makan</div>
-    <%#= link_to 'Create Makan', '/create_meal', class: "btn primarybtn btn-block", style: "width:50%", 'data-toggle'=> "tooltip", 'data-placement' => 'bottom', 'title' => 'Wah you treating the meal ah?' %>
+    <div class="btn primarybtn btn-block half-tab m-2" data-remote="true" data-action="click->journey#createmeal" data-target="journey.createmeal" data-toggle="tooltip" data-placement="bottom" title="Start a new makan poll for your makan kakis">Create Makan</div>
   </div>
 
   <div class="d-flex justify-content-center">
@@ -64,7 +60,7 @@
     <%= simple_form_for(@meal, method: :post) do |f| %>
       <%= f.input :postal_code, label: 'Postal Code', input_html: { class: "sharp-box hide", 'data-target' => "journey.postalCode", placeholder: "Where will you be dining today?" }, label_html: { class: "hide",  'data-target' => "journey.postalCode" } %>
       <%= f.input :pax, label: 'How many people?', input_html: { class: "sharp-box" } %>
-      <%= f.input :endtime, input_html: { class: "sharp-box hide", 'data-target' => "journey.postalCode", id: 'endtime' }, label_html: { class: "hide", 'data-target' => "journey.postalCode" }, class: "hide" %>
+      <%= f.input :endtime, input_html: { class: "sharp-box timefield hide", 'data-target' => "journey.postalCode", id: 'endtime' }, label_html: { class: "hide", 'data-target' => "journey.postalCode" }, class: "hide" %>
       <%= f.submit 'Create Makan', class: 'btn primarybtn btn-block hide', 'data-target' => "journey.postalCode" %>
     <% end %>
   </div>

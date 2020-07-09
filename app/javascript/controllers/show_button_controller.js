@@ -1,7 +1,7 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = [ 'startPoll', 'viewResult', 'pollCount', 'time', 'edit', 'source' ];
+  static targets = [ 'startPoll', 'viewResult', 'pollCount', 'time', 'edit', 'source', 'editBtn' ];
 
   connect() {
     console.log('Connected to show-button controller 🚀');
@@ -16,10 +16,12 @@ export default class extends Controller {
       } else {
         resultBtn.style.display = 'none';
         if (pollCount > 0)
-          startBtn.innerText = "Continue the poll";
+          startBtn.innerText = "Resume Poll";
       }
     } else {
         startBtn.style.display = 'none';
+        console.log(this.editBtnTarget);
+        this.editBtnTarget.classList.add('btn-disabled');
     }
   }
 

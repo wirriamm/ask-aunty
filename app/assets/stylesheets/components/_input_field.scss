@@ -1,6 +1,6 @@
 .sharp-box {
   border: 2px solid $light-gray;
-  padding: 28px 16px;
+  padding: 24px 0px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -9,4 +9,8 @@
   cursor: pointer;
   border-radius: 0;
   color: black;
+}
+
+.sharp-box.timefield {
+  padding: 0;
 }

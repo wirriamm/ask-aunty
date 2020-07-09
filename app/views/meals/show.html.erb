@@ -34,7 +34,7 @@
       <%= link_to "Start Poll", setup_path(@meal.vanity_id), class: 'btn primarybtn fixed-width', data: {target: "show-button.startPoll"} %>
       <%= link_to "See Result", result_path(@meal.vanity_id), class: 'btn primarybtn fixed-width', data: {target: "show-button.viewResult"} %>
     </div>
-    <div class="btn primarybtn fixed-width" data-action="click->show-button#update">
+    <div class="btn primarybtn fixed-width" data-target="show-button.editBtn" data-action="click->show-button#update">
       Edit
     </div>
   </div>
@@ -42,7 +42,7 @@
   <div class="my-3 hide" data-target="show-button.edit">
     <%= simple_form_for @meal, method: :patch do |f| %>
       <%= f.input :pax, label: "Max Kakis:", input_html: { class: 'sharp-box mb-0' }, label_html: { class: 'm-0' } %>
-      <%= f.input :endtime, label: "Endtime:", input_html: { class: 'sharp-box mb-0' }, label_html: { class: 'm-0' } %>
+      <%= f.input :endtime, label: "Endtime:", input_html: { class: 'sharp-box timefield mb-0' }, label_html: { class: 'm-0' } %>
       <%= f.submit 'Update', class: 'btn primarybtn btn-block m-0' %>
     <% end %>
   </div>
