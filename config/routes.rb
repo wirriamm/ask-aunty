@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/meals/:vanity_id/result', to: 'meals#result', as: "result"
   get '/meals/:vanity_id/', to: 'meals#show', as: "meal"
 
-  resources :meals, only: [:index, :new, :create] do
+  resources :meals, only: [:index, :new, :create, :update] do
     resources :polls, only: [:create]
   end
 

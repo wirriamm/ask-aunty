@@ -37,6 +37,10 @@ class MealsController < ApplicationController
     end
   end
 
+  def update
+    raise
+  end
+
   def setup
     @meal = Meal.find_by(vanity_id: params[:vanity_id])
     if @meal.nil?

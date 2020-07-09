@@ -1,29 +1,57 @@
 <div data-controller='show-button'>
   <div class="d-flex">
     <div class="card shadow-sm mb-3 mr-1">
-      <h4 class="p-3 m-0"><i class="fas fa-angle-left"></i></h4>
+      <a href="<%= meals_path %>">
+        <h4 class="p-3 m-0"><i class="fas fa-angle-left"></i></h4>
+      </a>
     </div>
-    <div class="card shadow-sm mb-3 flex-grow-1">
-      <h4 class="p-3 m-0">Makan Code: <%= @meal.vanity_id %></h4>
+    <div class="card shadow-sm mb-3 flex-grow-1 align-items-center justify-content-center">
+      <h5 class="p-3 m-0">Makan Code: <%= @meal.vanity_id %></h5>
     </div>
   </div>
 
-  <div>
-    Jio your kakis through:
-    <a href="<%= @whatsapp_link %>"><i class="fab fa-whatsapp"></i></a>
-    <a href="<%= @telegram_link %>"><i class="fab fa-telegram-plane"></i></a>
+
+  <div class="pt-4">
+    <p class="pl-1 mb-0">Jio your kakis</p>
+    <div class="d-flex justify-content-center align-items-center">
+      <input type="input" value="ask-aunty.herokuapp.com<%= meal_path(@meal.vanity_id) %>" class="sharp-box flex-grow-1 p-2" data-target="show-button.source" readonly>
+      <div class="lg-icon mx-2">
+        <a href="" data-action="click->show-button#copy"><i class="fas fa-link"></i></i></a>
+      </div>
+      <div class="lg-icon mx-2">
+        <a href="<%= @whatsapp_link %>" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <div class="lg-icon mx-2">
+        <a href="<%= @telegram_link %>" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+      </div>
+    </div>
   </div>
 
-  <input type="hidden" data-target='show-button.pollCount' value="<%= Poll.where(user: current_user, meal: @meal).length %>" >
-  <input type="hidden" data-target='show-button.time' value="<%= @meal.endtime > Time.now %>" >
-  <%= link_to "Start the poll", setup_path(@meal.vanity_id), class: 'btn primarybtn', data: {target: "show-button.startPoll"} %>
-  <%= link_to "View result", result_path(@meal.vanity_id), class: 'btn primarybtn', data: {target: "show-button.viewResult"} %>
+  <div class="d-flex justify-content-between mt-4">
+    <div class="fixed-width">
+      <input type="hidden" data-target='show-button.pollCount' value="<%= Poll.where(user: current_user, meal: @meal).length %>">
+      <input type="hidden" data-target='show-button.time' value="<%= @meal.endtime > Time.now %>" >
+      <%= link_to "Start Poll", setup_path(@meal.vanity_id), class: 'btn primarybtn fixed-width', data: {target: "show-button.startPoll"} %>
+      <%= link_to "See Result", result_path(@meal.vanity_id), class: 'btn primarybtn fixed-width', data: {target: "show-button.viewResult"} %>
+    </div>
+    <div class="btn primarybtn fixed-width" data-action="click->show-button#update">
+      Edit
+    </div>
+  </div>
+
+  <div class="my-3 hide" data-target="show-button.edit">
+    <%= simple_form_for @meal, method: :patch do |f| %>
+      <%= f.input :pax, label: "Max Kakis:", input_html: { class: 'sharp-box mb-0' }, label_html: { class: 'm-0' } %>
+      <%= f.input :endtime, label: "Endtime:", input_html: { class: 'sharp-box mb-0' }, label_html: { class: 'm-0' } %>
+      <%= f.submit 'Update', class: 'btn primarybtn btn-block m-0' %>
+    <% end %>
+  </div>
 </div>
 
-<div>
+<!-- <div>
   <h1>Instructions</h1>
   <p>This is a tinder app for cuisines</p>
   <p>Swipe right for the right cuisines</p>
   <p>What are not right... go to the left!</p>
-</div>
+</div> -->
 

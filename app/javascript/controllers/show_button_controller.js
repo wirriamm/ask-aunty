@@ -1,10 +1,10 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = [ 'startPoll', 'viewResult', 'pollCount', 'time' ];
+  static targets = [ 'startPoll', 'viewResult', 'pollCount', 'time', 'edit', 'source' ];
 
   connect() {
-    console.log('Hello!');
+    console.log('Connected to show-button controller 🚀');
     const startBtn = this.startPollTarget;
     const resultBtn = this.viewResultTarget;
     const pollCount = this.pollCountTarget.value;
@@ -21,5 +21,16 @@ export default class extends Controller {
     } else {
         startBtn.style.display = 'none';
     }
+  }
+
+  update = (e) => {
+    this.editTarget.classList.toggle('hide');
+  }
+
+  copy = (e) => {
+    e.preventDefault();
+    console.log(this.sourceTarget.value);
+    this.sourceTarget.select();
+    document.execCommand("copy");
   }
 }
