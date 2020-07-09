@@ -1,3 +1,4 @@
+// Remove green validation on checkboxes for association
 .edit_user .form-check-input.is-valid ~ .form-check-label {
   color: black;
 }
