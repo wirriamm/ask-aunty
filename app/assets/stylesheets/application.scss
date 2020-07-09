@@ -14,11 +14,14 @@
 @import "components/index";
 @import "pages/index";
 
-.navbar-offset {
-  margin-top: 96px;
-  margin-bottom: 40px;
-}
+
+// .navbar-offset {
+//   margin-top: 96px;
+//   margin-bottom: 40px;
+// }
+img { max-width: 100%; }
 
 .hide {
   display: none !important;
 }
+
