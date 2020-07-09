@@ -1,0 +1,10 @@
+<a href="<%= meal_path(users_meal.meal.vanity_id) %>" class="card-clickable">
+<div class="card card-shadow my-3">
+  <h5 class="card-header">Makan Code: <span class="makan-code"><%= users_meal.meal.vanity_id %></span></h5>
+  <div class="card-body">
+    <p class="card-text">End: <%= users_meal.meal.endtime.localtime.strftime('%e %b %Y %I:%M %P') %></p>
+    <p>By: john@gmail.com</p>
+    <a href="#" class="btn btn-primary">Results</a>
+  </div>
+</div>
+</a>
