@@ -1,13 +1,13 @@
 <!-- Used for each of the 3 aunty's suggestions -->
 <!-- The style is to specify the -->
 <style>
-.selected {
-border: 4px red;
-}
+  .selected {
+    border: 4px red;
+  }
 
-.suggestion:hover {
-  border: 4px gray;
-}
+  .suggestion:hover {
+    border: 4px gray;
+  }
 
 </style>
 
@@ -15,12 +15,12 @@ border: 4px red;
   <div class="card bg-dark text-white">
     <h5 class="card-title align-middle p-2 my-0">
       <%= poll.cuisine.name.capitalize %> |
-          <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %>
+      <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %>
     </h5>
     <% if poll.cuisine.photos.attached? %>
-      <%= cl_image_tag(poll.cuisine.photos.sample.key, class: 'card-img-top', style:"height:160px; object-fit:cover") %>
+    <%= cl_image_tag(poll.cuisine.photos.sample.key, class: 'card-img-top', style:"height:160px; object-fit:cover") %>
     <% else %>
-      <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-img' %>
+    <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-img' %>
     <% end %>
   </div>
   <ul class="list-group list-group-flush">
@@ -28,12 +28,25 @@ border: 4px red;
       <p class="card-text text-bold"><%= "Nearby #{poll.cuisine.name.capitalize} Restaurants"%></p>
     </li>
     <% @restaurants.each do |resto| %>
-      <% if resto.cuisine_id == poll.cuisine.id %>
-        <li class="list-group-item">
-          <%= link_to resto.name, resto.url %>
-        </li>
-      <% end %>
+    <% if resto.cuisine_id == poll.cuisine.id %>
+    <div class="accordion" id="accordionExample">
+      <div class="card">
+        <div class="card-text" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <div class="card-body" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <%= resto.name  %>
+          </div>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <div class="card-body">
+            <%= link_to resto.name, resto.url %>
+            Restaurant info.
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
     <% end %>
   </ul>
-
 </div>
+
