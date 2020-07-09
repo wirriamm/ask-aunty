@@ -9,7 +9,7 @@
   </div>
 
   <% if user_signed_in? %>
-    <%= image_tag "https://ui-avatars.com/api/?name=#{current_user.email}", class: "navbar-toggler", id: "navbarDropdown", data: { toggle: "collapse", target: '#navbarSupportedContent' } %>
+    <%= image_tag "https://ui-avatars.com/api/?name=#{current_user.email}", class: "max-width: 10%" "navbar-toggler", id: "navbarDropdown", data: { toggle: "collapse", target: '#navbarSupportedContent' } %>
   <% else %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
