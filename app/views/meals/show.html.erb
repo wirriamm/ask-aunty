@@ -1,5 +1,12 @@
 <div data-controller='show-button'>
   <h1>Makan Code: <%= @meal.vanity_id %></h1>
+
+  <div>
+    Jio your kakis through:
+    <a href="<%= @whatsapp_link %>"><i class="fab fa-whatsapp"></i></a>
+    <a href="<%= @telegram_link %>"><i class="fab fa-telegram-plane"></i></a>
+  </div>
+
   <input type="hidden" data-target='show-button.pollCount' value="<%= Poll.where(user: current_user, meal: @meal).length %>" >
   <input type="hidden" data-target='show-button.time' value="<%= @meal.endtime > Time.now %>" >
   <%= link_to "Start the poll", setup_path(@meal.vanity_id), data: {target: "show-button.startPoll"} %>
@@ -14,3 +21,5 @@
 </div>
 
 <p>TODO: Add a share buttons here</p>
+"whatsapp://send?text=Test"
+"https://wa.me/?text=urlencodedtext%0aSee if this works.%0aGo to out site lewagon.com"

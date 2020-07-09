@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 2020_07_04_165211) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "postal_code"
+    t.integer "pax", default: 1
     t.float "latitude"
     t.float "longitude"
-    t.integer "pax", default: 1
   end
 
   create_table "polls", force: :cascade do |t|
@@ -70,6 +70,20 @@ ActiveRecord::Schema.define(version: 2020_07_04_165211) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "place_id"
+    t.string "vicinity"
+    t.float "rating"
+    t.string "website"
+    t.string "formatted_phone_number"
+    t.string "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "cuisine_id"
+    t.index ["cuisine_id"], name: "index_restaurants_on_cuisine_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,6 +115,15 @@ ActiveRecord::Schema.define(version: 2020_07_04_165211) do
     t.boolean "status"
     t.index ["preference_id"], name: "index_users_preferences_on_preference_id"
     t.index ["user_id"], name: "index_users_preferences_on_user_id"
+  end
+
+  create_table "verdicts", force: :cascade do |t|
+    t.float "lat"
+    t.float "long"
+    t.string "cuisine"
+    t.text "results"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
