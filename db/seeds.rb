@@ -109,6 +109,7 @@ cuisines.each do |attribs|
   end
   cuis.save!
   puts "#{attribs[:name]} created"
+  sleep(60)
 end
 puts "All cuisines seeded"
 
@@ -152,7 +153,7 @@ jill.save!
 puts "jill seeded"
 
 puts "Seeding test meal for john"
-meal = Meal.new(vanity_id: 'test123',
+meal = Meal.new(vanity_id: 'TEST123',
                 postal_code: 238869,
                 endtime: Time.now )
 meal.save!
