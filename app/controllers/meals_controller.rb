@@ -93,7 +93,7 @@ class MealsController < ApplicationController
 
   def generate_vanity_id
     loop do
-      random_code = SecureRandom.alphanumeric(6)
+      random_code = SecureRandom.alphanumeric(6).upcase
       return random_code if Meal.find_by(vanity_id: random_code).nil?
     end
   end
