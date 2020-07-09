@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
   def index
-    @users_meals = UsersMeal.where(user: current_user).includes(:meal)
+    @users_meals = UsersMeal.where(user: current_user).includes(:meal).reverse
   end
 
   def new
@@ -35,6 +35,10 @@ class MealsController < ApplicationController
       flash.now[:alert] = "Postal Code not valid leh"
       render :new
     end
+  end
+
+  def update
+    raise
   end
 
   def setup
@@ -93,7 +97,7 @@ class MealsController < ApplicationController
 
   def generate_vanity_id
     loop do
-      random_code = SecureRandom.alphanumeric(6)
+      random_code = SecureRandom.alphanumeric(6).upcase
       return random_code if Meal.find_by(vanity_id: random_code).nil?
     end
   end
