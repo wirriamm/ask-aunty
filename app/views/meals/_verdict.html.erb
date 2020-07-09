@@ -8,26 +8,32 @@ border: 4px red;
 .suggestion:hover {
   border: 4px gray;
 }
+
 </style>
 
-<div>
-  <p class="card-text font-weight-bold my-0">
-      <h2><%= poll.cuisine.name.capitalize %> |
-          <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %></h2>
-          <%= "Nearest #{poll.cuisine.name.capitalize} Restaurants"%>
-          <% @restaurants.each do |resto| %>
-            <% if resto.cuisine_id == poll.cuisine.id %>
-              <div> <%= link_to resto.name, resto.url %> </div>
-            <% end %>
-          <% end %>
-  </p>
-
-  <div class="img-thumbnail img-fluid max-width: 100% height: auto">
+<div class='card my-3'>
+  <div class="card bg-dark text-white">
+    <h5 class="card-title align-middle p-2 my-0">
+      <%= poll.cuisine.name.capitalize %> |
+          <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %>
+    </h5>
     <% if poll.cuisine.photos.attached? %>
-      <%= cl_image_tag(poll.cuisine.photos.sample.key, crop: :fill, class: 'card-img-top') %>
+      <%= cl_image_tag(poll.cuisine.photos.sample.key, class: 'card-img-top', style:"height:160px; object-fit:cover") %>
     <% else %>
-      <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-img-top' %>
+      <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-img' %>
     <% end %>
   </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <p class="card-text text-bold"><%= "Nearby #{poll.cuisine.name.capitalize} Restaurants"%></p>
+    </li>
+    <% @restaurants.each do |resto| %>
+      <% if resto.cuisine_id == poll.cuisine.id %>
+        <li class="list-group-item">
+          <%= link_to resto.name, resto.url %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
 
 </div>
