@@ -32,8 +32,8 @@
     <% if resto.cuisine_id == poll.cuisine.id %>
       <div class="accordion" id="accordionExample">
         <div class="card">
-          <div class="card-text" id="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="true" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
-            <div class="card-body" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="true" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
+          <div class="card-text" id="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="false" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
+            <div class="card-body" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="false" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
               <div class="card-text">
                 <div><%= resto.name %></div>
                 <%= "#{resto.rating}" %>
@@ -54,7 +54,7 @@
             </div>
           </div>
 
-          <div id="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" class="collapse show" aria-labelledby="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-parent="#accordionExample" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="true" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
+          <div id="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" class="collapse" aria-labelledby="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-parent="#accordionExample" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="false" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
             <div class="card-body">
               <p><i class="fas fa-map-marker-alt"></i><%= "#{resto.formatted_address}" %></p>
               <p><i class="fas fa-globe-americas"></i> <%= link_to  resto.website, resto.website %></p>
