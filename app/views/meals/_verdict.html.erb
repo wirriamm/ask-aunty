@@ -34,16 +34,30 @@
         <div class="card">
           <div class="card-text" id="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="true" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
             <div class="card-body" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="true" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
-              <p><%= resto.name %></p>
+              <div class="card-text">
+                <div><%= resto.name %></div>
+                <%= "#{resto.rating}" %>
+                <% rating = resto.rating %>
+                <% rating.floor.times do %>
+                  <i class="fas fa-star rated"></i>
+                <% end %>
+                <% if rating > rating.floor %>
+                  <i class="fas fa-star-half-alt half-rated"></i>
+                <% end %>
+                <% (5 - rating).floor.times do %>
+                  <i class="far fa-star rated"></i>
+                <% end %>
+                <% unless resto.price_level.nil? %>
+                  <%= " - (#{"$" * resto.price_level})" %>
+                <% end %>
+              </div>
             </div>
           </div>
 
           <div id="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" class="collapse show" aria-labelledby="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-parent="#accordionExample" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="true" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
             <div class="card-body">
               <p><i class="fas fa-map-marker-alt"></i><%= "#{resto.formatted_address}" %></p>
-              <p><%= "Rating: #{resto.rating}" %></p>
               <p><i class="fas fa-globe-americas"></i> <%= link_to  resto.website, resto.website %></p>
-
               <p><i class="fas fa-phone-volume"></i><%= "#{resto.formatted_phone_number}" %></p>
               <%= link_to "View on Google Maps", resto.url %>
             </div>
