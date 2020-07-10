@@ -136,13 +136,13 @@ class MealsController < ApplicationController
   end
 
   def second_api_call(place_id, cuisine)
-    url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name,vicinity,rating,website,formatted_phone_number,url&key=#{ENV['GOOGLE_PLACES_API']}"
+    url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name,formatted_address,rating,website,formatted_phone_number,url&key=#{ENV['GOOGLE_PLACES_API']}"
     restaurant = Restaurant.find_by(place_id: place_id)
     if restaurant.nil?
       response = RestClient.get url
       repos = JSON.parse(response)["result"]
       restaurant = Restaurant.create(name: repos["name"],
-                                     vicinity: repos["vicinity"],
+                                     formatted_address: repos["formatted_address"],
                                      rating: repos["rating"],
                                      website: repos["website"],
                                      formatted_phone_number: repos["formatted_phone_number"],
