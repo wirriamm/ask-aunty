@@ -1,34 +1,98 @@
 <!-- Used for each of the 3 aunty's suggestions -->
 <!-- The style is to specify the -->
 <style>
-.selected {
-border: 4px red;
-}
+  .selected {
+    border: 4px red;
+  }
 
-.suggestion:hover {
-  border: 4px gray;
-}
+  .suggestion:hover {
+    border: 4px gray;
+  }
+
 </style>
 
-<div>
-  <p class="card-text font-weight-bold my-0">
-      <h2><%= poll.cuisine.name.capitalize %> |
-          <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %></h2>
-          <%= "Nearest #{poll.cuisine.name.capitalize} Restaurants"%>
-          <% @restaurants.each do |resto| %>
-            <% if resto.cuisine_id == poll.cuisine.id %>
-              <div> <%= link_to resto.name, resto.url %> </div>
-            <% end %>
-          <% end %>
-<!--           "https://deliveroo.com.sg/restaurants/singapore/sg?postcode=#{@meal.postal_code}&collection=#{poll.cuisine.name.downcase}"
- -->  </p>
-
-  <div class="img-thumbnail img-fluid max-width: 100% height: auto">
+<div class='card my-3'>
+  <div class="card bg-dark text-white">
+    <h5 class="card-title align-middle p-2 my-0">
+      <%= poll.cuisine.name.capitalize %> |
+      <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %>
+    </h5>
     <% if poll.cuisine.photos.attached? %>
-      <%= cl_image_tag(poll.cuisine.photos.sample.key, crop: :fill, class: 'card-img-top') %>
+    <%= cl_image_tag(poll.cuisine.photos.sample.key, class: 'card-img-top', style:"height:160px; object-fit:cover") %>
     <% else %>
-      <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-img-top' %>
+    <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-img' %>
     <% end %>
   </div>
+  <ul class="list-group list-group-flush">
+    <% restaurant_count = 1 %>
+    <% @restaurants.each do |resto| %>
+    <% if resto.cuisine_id == poll.cuisine.id %>
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-text" id="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="false" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
+            <div class="card-body" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="false" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
+              <div class="card-text">
+                <div><%= resto.name %></div>
+                <div style="color:grey; font-size:12px;">
+                  <%= "#{resto.rating}" %>
+                  <% rating = resto.rating %>
+                  <% rating.floor.times do %>
+                    <i class="fas fa-star rated"></i>
+                  <% end %>
+                  <% if rating > rating.floor %>
+                    <i class="fas fa-star-half-alt half-rated"></i>
+                  <% end %>
+                  <% (5 - rating).floor.times do %>
+                    <i class="far fa-star rated"></i>
+                  <% end %>
+                  <% unless resto.price_level.nil? %>
+                    <%= "  (#{"$" * resto.price_level})" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <div id="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" class="collapse" aria-labelledby="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-parent="#accordionExample" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="false" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
+            <div class="card-body px-4">
+              <div class="row">
+                <div class="col-1 p-0 text-center">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="col">
+                  <p style="font-size: 14px;"><%= "#{resto.formatted_address}" %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-1 p-0 text-center">
+                  <i class="fas fa-globe-americas"></i>
+                </div>
+                <div class="col">
+                  <p style="font-size: 14px;"><%= link_to  resto.website, resto.website %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-1 p-0 text-center">
+                  <i class="fas fa-phone-volume"></i>
+                </div>
+                <div class="col">
+                  <p style="font-size: 14px;"><%= "#{resto.formatted_phone_number}" %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-1">
+                </div>
+                <div class="col">
+                  <p style="font-size: 14px;"><%= link_to "View on Google Maps", resto.url %></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% restaurant_count += 1 %>
+    <% end %>
+    <% end %>
+  </ul>
 </div>
+

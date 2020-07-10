@@ -135,23 +135,24 @@ class MealsController < ApplicationController
   def restaurant_info(json, cuisine)
     results = json["results"]
     restaurants = results.slice(0, 2).map do |resto|
-      restaurant = second_api_call(resto["place_id"], cuisine)
+      restaurant = second_api_call(resto["place_id"], resto["price_level"], cuisine)
     end
   end
 
-  def second_api_call(place_id, cuisine)
-    url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name,vicinity,rating,website,formatted_phone_number,url&key=#{ENV['GOOGLE_PLACES_API']}"
+  def second_api_call(place_id, price_level, cuisine)
+    url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=#{place_id}&fields=name,formatted_address,rating,website,formatted_phone_number,url&key=#{ENV['GOOGLE_PLACES_API']}"
     restaurant = Restaurant.find_by(place_id: place_id)
     if restaurant.nil?
       response = RestClient.get url
       repos = JSON.parse(response)["result"]
       restaurant = Restaurant.create(name: repos["name"],
-                                     vicinity: repos["vicinity"],
+                                     formatted_address: repos["formatted_address"],
                                      rating: repos["rating"],
                                      website: repos["website"],
                                      formatted_phone_number: repos["formatted_phone_number"],
                                      url: repos["url"],
                                      place_id: place_id,
+                                     price_level: price_level,
                                      cuisine_id: Cuisine.find_by(name: cuisine).id)
     end
     return restaurant

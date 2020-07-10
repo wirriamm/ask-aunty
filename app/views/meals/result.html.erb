@@ -1,10 +1,12 @@
 <% if @endtime == nil || Time.now > @endtime  %>
-  <h1>Aunty's Verdict:</h1>
+  <h4>Aunty's Verdict</h4>
   <% if @polls == [] %>
     <p>Your poll closed but no one voted :(</p>
   <% else %>
+    <% cuisine_count = 1 %>
     <% @polls.each do |poll| %>
-      <%= render partial: 'verdict', locals: { poll: poll, restaurants: @restaurants } %>
+      <%= render partial: 'verdict', locals: { poll: poll, restaurants: @restaurants, cuisine_count: cuisine_count } %>
+      <% cuisine_count += 1 %>
     <% end %>
     <br>
     <div>
