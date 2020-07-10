@@ -27,24 +27,30 @@
     <li class="list-group-item">
       <p class="card-text text-bold"><%= "Nearby #{poll.cuisine.name.capitalize} Restaurants"%></p>
     </li>
+    <% restaurant_count = 1 %>
     <% @restaurants.each do |resto| %>
     <% if resto.cuisine_id == poll.cuisine.id %>
-    <div class="accordion" id="accordionExample">
-      <div class="card">
-        <div class="card-text" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <div class="card-body" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <%= resto.name  %>
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-text" id="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="true" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
+            <div class="card-body" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="true" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
+              <p><%= resto.name %></p>
+            </div>
           </div>
-        </div>
 
-        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          <div class="card-body">
-            <%= link_to resto.name, resto.url %>
-            Restaurant info.
+          <div id="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" class="collapse show" aria-labelledby="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-parent="#accordionExample" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="true" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
+            <div class="card-body">
+              <p><i class="fas fa-map-marker-alt"></i><%= "#{resto.vicinity}" %></p>
+              <p><%= "Rating: #{resto.rating}" %></p>
+              <p><i class="fas fa-globe-americas"></i> <%= link_to  resto.website, resto.website %></p>
+
+              <p><i class="fas fa-phone-volume"></i><%= "#{resto.formatted_phone_number}" %></p>
+              <%= link_to "View on Google Maps", resto.url %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+      <% restaurant_count += 1 %>
     <% end %>
     <% end %>
   </ul>
