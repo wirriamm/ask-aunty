@@ -1,8 +1,8 @@
 <div class="d-flex justify-content-center">
-  <%= simple_form_for(@meal) do |f| %>
-    <%= f.input :postal_code, label: 'Postal Code', input_html: { class: "sharp-box", placeholder: "Enter valid postal code" } %>
-    <%= f.input :pax, label: 'How many people?', input_html: { class: "sharp-box" } %>
-    <%= f.input :endtime, input_html: { class: "sharp-box" } %>
-    <%= f.submit 'Create Meal', class: 'btn primarybtn btn-block' %>
-  <% end %>
+    <%= simple_form_for(@meal) do |f| %>
+      <%= f.input :postal_code, label: 'Postal Code', input_html: { class: "sharp-box", placeholder: "Where will you be dining today?" } %>
+      <%= f.input :pax, label: 'How many people?', input_html: { class: "sharp-box" } %>
+      <%= f.input :endtime, input_html: { class: "sharp-box timefield" } %>
+      <%= f.submit 'Create Makan', class: 'btn primarybtn btn-block' %>
+    <% end %>
 </div>
