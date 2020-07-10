@@ -68,7 +68,7 @@ class MealsController < ApplicationController
                  .select("cuisine_id, sum(score) as total_score")
                  .group("cuisine_id")
                  .order("total_score DESC")
-                 .limit(2)
+                 .limit(3)
     @total_polls = Poll.where(meal_id: @meal.id).count
 
     if @endtime == nil

@@ -29,7 +29,6 @@ import flatpickr from "flatpickr";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { loadDynamicBannerText } from '../components/banner';
-import { flipcard } from '../components/card';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:

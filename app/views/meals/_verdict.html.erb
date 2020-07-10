@@ -12,22 +12,16 @@
 </style>
 
 <div class='card my-3'>
-  <div class="flip-card card bg-dark text-white">
-    <div class="flip-card-inner">
-      <div class="flip-card-front">
-        <h5 class="card-title align-middle p-2 my-0">
-          <%= poll.cuisine.name.capitalize %> |
-          <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %>
-          <i class="fa fa-share"></i>
-        </h5>
-        <% if poll.cuisine.photos.attached? %>
-        <%= cl_image_tag(poll.cuisine.photos.sample.key, class: 'card-img-top', style:"height:160px; object-fit:cover") %>
-        <% else %>
-        <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-img' %>
-        <% end %>
-      </div>
-      <div class="flip-card-back">back</div>
-    </div>
+  <div class="card bg-dark text-white">
+    <h5 class="card-title align-middle p-2 my-0">
+      <%= poll.cuisine.name.capitalize %> |
+      <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %>
+    </h5>
+    <% if poll.cuisine.photos.attached? %>
+    <%= cl_image_tag(poll.cuisine.photos.sample.key, class: 'card-img-top', style:"height:160px; object-fit:cover") %>
+    <% else %>
+    <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-img' %>
+    <% end %>
   </div>
   <ul class="list-group list-group-flush">
     <% restaurant_count = 1 %>
