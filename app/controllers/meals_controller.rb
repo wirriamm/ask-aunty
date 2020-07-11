@@ -15,7 +15,7 @@ class MealsController < ApplicationController
     if @user_meal.nil?
       @user_meal = UsersMeal.create!(user: current_user, meal: @meal)
     end
-    url = "ask-aunty.herokuapp.com/meals/#{@meal.vanity_id}"
+    url = "ask-aunty.herokuapp.com/join_meal/#{@meal.vanity_id}"
     text = "Come join our makan at%0a#{url}%0a%0a💌 Ask Aunty"
     @whatsapp_link = "https://wa.me/?text=Come join our makan at%0a#{url}%0a%0a💌 Ask Aunty"
     @telegram_link = "https://t.me/share/url?url=#{url}&text=#{text}"

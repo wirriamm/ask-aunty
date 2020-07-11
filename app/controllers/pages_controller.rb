@@ -10,6 +10,7 @@ class PagesController < ApplicationController
 
   def join_meal
     @meal = Meal.new
+    @meal.vanity_id = params[:vanity_id]
   end
 
   def create_users_meal
