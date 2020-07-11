@@ -10,17 +10,30 @@ require 'open-uri'
 
 puts "Destroy all preferences"
 Preference.destroy_all
-puts "Destroy all cuisines"
-Cuisine.destroy_all
-puts "Destroy all meals"
-Meal.destroy_all
-puts "Destroy all users"
-User.destroy_all
+# puts "Destroy all cuisines"
+# Cuisine.destroy_all
+# puts "Destroy all meals"
+# Meal.destroy_all
+# puts "Destroy all users"
+# User.destroy_all
 
 # Cuisines preferences
 # cuisines = %W[American Arabic Asian Australian Brazilian British Cantonese Chinese European French Fusion German Hunan Indian Indonesian International Italian Japanese Korean Malaysian Mediterranean Mexican Middle Eastern Modern Indian Modernist European Nepali Singaporean Spanish Sichuan Taiwanese Thai Turkish Vietnamese Western]
 # cuisines = %W[Chinese Japanese Korean Singaporean Thai Vietnamese Mexican Indonesian Indian Western]
 
+# Seeds preferences
+preferences = ['Vegetarian', 'Pescatarian', 'No Spicy Food']
+restrictions = ['Halal']
+seeds = preferences + restrictions
+
+puts "Seeding all preferences."
+seeds.each do |pref|
+  preference = Preference.new(name: pref)
+  if preference.save
+    puts "Seeded #{preference.name}."
+  end
+end
+puts "Seeded #{Preference.count} preferences."
 cuisines = [
   { name: 'Thai',
     # dish: 'Tom yum',
@@ -100,65 +113,52 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/s9em-hero.jpg']}
 ]
 
-puts "Seeding all cuisines"
-cuisines.each do |attribs|
-  cuis = Cuisine.new(name: attribs[:name])#, dish: attribs[:dish])
-  attribs[:url].each_with_index do |url, index|
-    file = URI.open(url)
-    cuis.photos.attach(io: file, filename: "#{attribs[:name]} #{index + 1}", content_type: 'image/png')
-  end
-  cuis.save!
-  puts "#{attribs[:name]} created"
-  sleep(60)
-end
-puts "All cuisines seeded"
+# puts "Seeding all cuisines"
+# cuisines.each do |attribs|
+#   cuis = Cuisine.new(name: attribs[:name])#, dish: attribs[:dish])
+#   attribs[:url].each_with_index do |url, index|
+#     file = URI.open(url)
+#     cuis.photos.attach(io: file, filename: "#{attribs[:name]} #{index + 1}", content_type: 'image/png')
+#   end
+#   cuis.save!
+#   puts "#{attribs[:name]} created"
+#   sleep(60)
+# end
+# puts "All cuisines seeded"
 
-# Seeds preferences
-preferences = ['Vegetarian', 'Pescatarian', 'No Spicy']
-restrictions = ['Halal']
-seeds = preferences + restrictions
 
-puts "Seeding all preferences."
-seeds.each do |pref|
-  preference = Preference.new(name: pref)
-  if preference.save
-    puts "Seeded #{preference.name}."
-  end
-end
-puts "Seeded #{Preference.count} preferences."
+# puts "Seeding users"
+# john = User.new(email: 'john@gmail.com',
+#                 password: 'topsecret',
+#                 password_confirmation: 'topsecret')
+# john.save!
+# puts "john seeded"
 
-puts "Seeding users"
-john = User.new(email: 'john@gmail.com',
-                password: 'topsecret',
-                password_confirmation: 'topsecret')
-john.save!
-puts "john seeded"
+# jane = User.new(email: 'jane@gmail.com',
+#                 password: 'topsecret',
+#                 password_confirmation: 'topsecret')
+# jane.save!
+# puts "jane seeded"
 
-jane = User.new(email: 'jane@gmail.com',
-                password: 'topsecret',
-                password_confirmation: 'topsecret')
-jane.save!
-puts "jane seeded"
+# jack = User.new(email: 'jack@gmail.com',
+#                 password: 'topsecret',
+#                 password_confirmation: 'topsecret')
+# jack.save!
+# puts "jack seeded"
 
-jack = User.new(email: 'jack@gmail.com',
-                password: 'topsecret',
-                password_confirmation: 'topsecret')
-jack.save!
-puts "jack seeded"
+# jill = User.new(email: 'jill@gmail.com',
+#                 password: 'topsecret',
+#                 password_confirmation: 'topsecret')
+# jill.save!
+# puts "jill seeded"
 
-jill = User.new(email: 'jill@gmail.com',
-                password: 'topsecret',
-                password_confirmation: 'topsecret')
-jill.save!
-puts "jill seeded"
+# puts "Seeding test meal for john"
+# meal = Meal.new(vanity_id: 'TEST123',
+#                 postal_code: 238869,
+#                 endtime: Time.now )
+# meal.save!
 
-puts "Seeding test meal for john"
-meal = Meal.new(vanity_id: 'TEST123',
-                postal_code: 238869,
-                endtime: Time.now )
-meal.save!
-
-users_meal = UsersMeal.new(user: john,
-                            meal: meal )
-users_meal.save!
-puts "test meal seeded"
+# users_meal = UsersMeal.new(user: john,
+#                             meal: meal )
+# users_meal.save!
+# puts "test meal seeded"

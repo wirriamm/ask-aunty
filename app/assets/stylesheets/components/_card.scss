@@ -77,7 +77,18 @@
   grid-gap: 16px;
 }
 
-.card.active {
+.pref-card {
+  width: 40vw;
+}
+
+.card.noactive {
+  background-color: white;
+  color: white;
+}
+
+[checked="checked"] ~ label .card.active, .card.active {
   background-color: $primary;
   color: white;
 }
+
+.form-inline div { display: inline-block }
