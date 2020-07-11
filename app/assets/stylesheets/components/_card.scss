@@ -70,3 +70,9 @@
   padding: 16px;
   transform: rotateY(180deg);
 }
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 16px;
+}
