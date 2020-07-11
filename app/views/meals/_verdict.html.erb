@@ -17,15 +17,19 @@
       <h5 class="card-title align-middle p-2 my-0">
         <%= poll.cuisine.name.capitalize %> |
         <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %>
-        <i class="fa fa-share"></i>
+        <i class="fa fa-repeat"></i>
       </h5>
       <% if poll.cuisine.photos.attached? %>
         <%= cl_image_tag(poll.cuisine.photos.sample.key, class: 'card-image') %>
       <% else %>
-        <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-img' %>
+        <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-image' %>
       <% end %>
     </div>
-    <div class="flip-card-back">back</div>
+    <div class="flip-card-back">
+      <i class="fa fa-leaf"></i><br>
+      <i class="fas fa-fish"></i><br>
+      <i class="fas fa-pepper-hot"></i><br>
+    </div>
   </div>
 </div>
 
