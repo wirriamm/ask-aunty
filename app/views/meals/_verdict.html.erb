@@ -1,18 +1,5 @@
-<!-- Used for each of the 3 aunty's suggestions -->
-<!-- The style is to specify the -->
-<style>
-  .selected {
-    border: 4px red;
-  }
-
-  .suggestion:hover {
-    border: 4px gray;
-  }
-
-</style>
-
-<div class='card my-3'>
-  <div class="card bg-dark text-white">
+<div class='my-3 rounded-top'>
+  <div class="bg-dark text-white rounded-top">
     <h5 class="card-title align-middle p-2 my-0">
       <%= poll.cuisine.name.capitalize %> |
       <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %>
@@ -28,8 +15,8 @@
     <% @restaurants.each do |resto| %>
     <% if resto.cuisine_id == poll.cuisine.id %>
       <div class="accordion" id="accordionExample">
-        <div class="card">
-          <div class="card-text" id="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="false" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
+        <div class="card <%= 'rounded-bottom' if restaurant_count == 2 %>">
+          <div class="" id="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="false" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
             <div class="card-body" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="false" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
               <div class="card-text">
                 <div><%= resto.name %></div>
