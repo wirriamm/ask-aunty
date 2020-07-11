@@ -42,9 +42,9 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/x6bx-hero.jpg?',
           'https://lh3.googleusercontent.com/zaQtjTWatNGYbMISzipM3eSt0C9UnyrrWh25broU4ZyR6VJI1aaUCYvPQcOUOVcZU9HKKwFUavnWEIZE-u6I2g=s640-c-rw-v1-e365',
           'https://lh3.googleusercontent.com/JGzLsQ2UDy_u4ULkda_rZrnGJceCEiuoDQKrxoi6-Oix1WHmgremPkdEcNUj3miarJ_AYqlVZpDF3Q4ZCsNF=s640-c-rw-v1-e365'],
-    vegetarian: "",
-    pescatarian: "",
-    no_spicy_food: ""
+    vegetarian: "Green Mango Salad",
+    pescatarian: "Tom Yum Soup",
+    no_spicy_food: "Pad Thai"
   },
 
   { name: 'Chinese',
@@ -68,9 +68,9 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/x6oc-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/w8ob-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/y9og-hero.jpg'],
-    vegetarian: "",
-    pescatarian: "",
-    no_spicy_food: ""
+    vegetarian: "Vegetable Tempura",
+    pescatarian: "Sushi",
+    no_spicy_food: "Udon Soup"
   },
 
   { name: 'Korean',
