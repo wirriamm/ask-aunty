@@ -1,6 +1,6 @@
 <!-- Used for each of the 3 aunty's suggestions -->
 <!-- The style is to specify the -->
-<style>
+<!-- <style>
   .selected {
     border: 4px red;
   }
@@ -9,7 +9,7 @@
     border: 4px gray;
   }
 
-</style>
+</style> -->
 
 <div class="flip-card card bg-dark text-white">
   <div class="flip-card-inner">
@@ -20,9 +20,9 @@
         <i class="fa fa-share"></i>
       </h5>
       <% if poll.cuisine.photos.attached? %>
-      <%= cl_image_tag(poll.cuisine.photos.sample.key, class: 'card-img-top', style:"object-fit:cover") %>
+        <%= cl_image_tag(poll.cuisine.photos.sample.key, class: 'card-image') %>
       <% else %>
-      <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-img' %>
+        <%= image_tag "https://source.unsplash.com/featured/?#{poll.cuisine.dish}", alt: "alttext", class: 'card-img' %>
       <% end %>
     </div>
     <div class="flip-card-back">back</div>
