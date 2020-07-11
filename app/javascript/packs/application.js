@@ -29,7 +29,7 @@ import flatpickr from "flatpickr";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { loadDynamicBannerText } from '../components/banner';
-import { flipcard } from '../components/card';
+import { flipcard, prefcard } from '../components/card';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -37,6 +37,7 @@ document.addEventListener('turbolinks:load', () => {
   loadDynamicBannerText();
   $('[data-toggle="tooltip"]').tooltip();
   flipcard();
+  prefcard();
 });
 
 import "controllers"
