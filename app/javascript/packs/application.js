@@ -36,6 +36,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   loadDynamicBannerText();
   $('[data-toggle="tooltip"]').tooltip();
+  flipcard();
 });
 
 import "controllers"

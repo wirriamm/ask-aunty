@@ -1,8 +1,8 @@
 const flipcard = () => {
-  document.querySelectorAll(".flip-card").forEach((flipcard) => {
-    flipcard.addEventListener("click", (event) => {
+  document.querySelectorAll(".flip-card").forEach((card) => {
+    card.addEventListener("click", (event) => {
       console.log("hello");
-      console.log(event.currentTarget);
+      event.currentTarget.classList.toggle('active')
     });
   });
 }
