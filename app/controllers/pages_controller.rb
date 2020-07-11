@@ -2,8 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @meal = Meal.new
-    @meal.endtime = Time.now + 2.hours
+    @meal = Meal.new(endtime: Time.now + 2.hours)
   end
 
   def ui_kit
@@ -19,7 +18,7 @@ class PagesController < ApplicationController
     # Check if Meal ID exists
     if @meal.nil?
       @meal = Meal.new
-      flash.now[:alert] = "Don't have Makan Code \"#{get_vanity_id}\" lah!"
+      flash.now[:alert] = "Don't have Makan Code \"#{get_vanity_id}\" yet!"
       render :home
     # Cannot join meal once it is closed
     elsif @meal.endtime == nil || @meal.endtime < Time.now

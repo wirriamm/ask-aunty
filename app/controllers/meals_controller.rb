@@ -22,13 +22,8 @@ class MealsController < ApplicationController
   end
 
   def create
-    @meal = Meal.new(
-      vanity_id: generate_vanity_id,
-      endtime: Time.now + 2.hours,
-      postal_code: params[:meal][:postal_code],
-      pax: params[:meal][:pax]
-      )
-    raise
+    @meal = Meal.new(strong_params)
+    @meal.vanity_id = generate_vanity_id
     if @meal.save
       UsersMeal.create(user: current_user, meal: @meal)
       redirect_to setup_path(@meal.vanity_id), notice: "Meal ID: #{@meal.vanity_id}"
@@ -95,6 +90,10 @@ class MealsController < ApplicationController
   end
 
   private
+
+  def strong_params
+    params.require(:meal).permit(:postal_code, :pax, 'endtime(1i)', 'endtime(2i)', 'endtime(3i)', 'endtime(4i)', 'endtime(5i)')
+  end
 
   def generate_vanity_id
     loop do
