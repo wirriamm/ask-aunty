@@ -1,5 +1,6 @@
 <% if @endtime == nil || Time.now > @endtime  %>
   <h4>Aunty's Verdict</h4>
+  <h5>Makan Code: <%= @meal.vanity_id %></h5>
   <% if @polls == [] %>
     <p>Your poll closed but no one voted :(</p>
   <% else %>
