@@ -114,8 +114,8 @@ end
 puts "All cuisines seeded"
 
 # Seeds preferences
-preferences = ['no spicy', 'no raw fish', 'no fast food']
-restrictions = ['halal', 'gluten free', 'kosher', 'vegan', 'vegetarian', 'allergic to seafood', 'allergic to peanuts', 'lactose free']
+preferences = ['Vegetarian', 'Pescotarian', 'No Spicy']
+restrictions = ['Halal']
 seeds = preferences + restrictions
 
 puts "Seeding all preferences."

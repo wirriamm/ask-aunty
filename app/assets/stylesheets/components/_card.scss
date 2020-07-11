@@ -66,5 +66,7 @@
 .flip-card-back {
   background-color: $primary;
   color: white;
+  text-align: left;
+  padding: 16px;
   transform: rotateY(180deg);
 }
