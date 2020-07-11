@@ -81,10 +81,6 @@
   width: 40vw;
 }
 
-.card.noactive {
-  background-color: white;
-  color: white;
-}
 
 [checked="checked"] ~ label .card.active, .card.active {
   background-color: $primary;

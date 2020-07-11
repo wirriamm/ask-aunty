@@ -10,12 +10,12 @@ require 'open-uri'
 
 puts "Destroy all preferences"
 Preference.destroy_all
-# puts "Destroy all cuisines"
-# Cuisine.destroy_all
-# puts "Destroy all meals"
-# Meal.destroy_all
-# puts "Destroy all users"
-# User.destroy_all
+puts "Destroy all cuisines"
+Cuisine.destroy_all
+puts "Destroy all meals"
+Meal.destroy_all
+puts "Destroy all users"
+User.destroy_all
 
 # Cuisines preferences
 # cuisines = %W[American Arabic Asian Australian Brazilian British Cantonese Chinese European French Fusion German Hunan Indian Indonesian International Italian Japanese Korean Malaysian Mediterranean Mexican Middle Eastern Modern Indian Modernist European Nepali Singaporean Spanish Sichuan Taiwanese Thai Turkish Vietnamese Western]
@@ -41,7 +41,12 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/x6nv-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/x6bx-hero.jpg?',
           'https://lh3.googleusercontent.com/zaQtjTWatNGYbMISzipM3eSt0C9UnyrrWh25broU4ZyR6VJI1aaUCYvPQcOUOVcZU9HKKwFUavnWEIZE-u6I2g=s640-c-rw-v1-e365',
-          'https://lh3.googleusercontent.com/JGzLsQ2UDy_u4ULkda_rZrnGJceCEiuoDQKrxoi6-Oix1WHmgremPkdEcNUj3miarJ_AYqlVZpDF3Q4ZCsNF=s640-c-rw-v1-e365']},
+          'https://lh3.googleusercontent.com/JGzLsQ2UDy_u4ULkda_rZrnGJceCEiuoDQKrxoi6-Oix1WHmgremPkdEcNUj3miarJ_AYqlVZpDF3Q4ZCsNF=s640-c-rw-v1-e365'],
+    vegetarian: "",
+    pescatarian: "",
+    no_spicy_food: ""
+  },
+
   { name: 'Chinese',
     # dish: 'Steamed fish',
     url: ['https://asianinspirations.com.au/wp-content/uploads/2018/07/R00705_ChineseSteamed-Fish.jpg',
@@ -49,7 +54,12 @@ cuisines = [
           "https://images.deliveryhero.io/image/fd-sg/LH/j7eb-hero.jpg",
           "https://images.deliveryhero.io/image/fd-sg/LH/y6bt-hero.jpg",
           "https://images.deliveryhero.io/image/fd-sg/LH/y3ce-hero.jpg",
-          "https://images.deliveryhero.io/image/fd-sg/LH/x7bz-hero.jpg"]},
+          "https://images.deliveryhero.io/image/fd-sg/LH/x7bz-hero.jpg"],
+    vegetarian: "",
+    pescatarian: "",
+    no_spicy_food: ""
+  },
+
   { name: 'Japanese',
     # dish: 'Sushi',
     url: ['https://www.edgemagazine.net/wp-content/uploads/2018/02/duffel.jpg',
@@ -57,7 +67,12 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/y1oe-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/x6oc-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/w8ob-hero.jpg',
-          'https://images.deliveryhero.io/image/fd-sg/LH/y9og-hero.jpg']},
+          'https://images.deliveryhero.io/image/fd-sg/LH/y9og-hero.jpg'],
+    vegetarian: "",
+    pescatarian: "",
+    no_spicy_food: ""
+  },
+
   { name: 'Korean',
     # dish: 'Bimbimbap',
     url: ['https://i0.wp.com/www.agoda.com/wp-content/uploads/2019/05/Seoul-food-Seoul-Korean-BBQ-family-style-meal.jpg',
@@ -65,7 +80,12 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/x6xv-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/x5qj-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/s2ob-hero.jpg',
-          'https://images.deliveryhero.io/image/fd-sg/LH/s5pw-hero.jpg']},
+          'https://images.deliveryhero.io/image/fd-sg/LH/s5pw-hero.jpg'],
+    vegetarian: "",
+    pescatarian: "",
+    no_spicy_food: ""
+  },
+
   { name: 'Singaporean',
     # dish: 'Chilli crab',
     url: ['https://www.jetstar.com/_/media/inspiration-hub/article-images/19feb/this-is-the-person-who-created-the-singapore-chilli-crab/hero_chilli_crab.jpg?rev=1a56cfb9c3b24bc89b158f6c2175ca42&w=1050&rc=1&cw=1050&ch=590&cx=55&cy=0&hash=81188182BAA3AF0AE54FBE96F370DD5463855D8E',
@@ -73,14 +93,24 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/j2vg-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/x5wb-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/x3bk-hero.jpg',
-          'https://images.deliveryhero.io/image/fd-sg/LH/w3tu-hero.jpg']},
+          'https://images.deliveryhero.io/image/fd-sg/LH/w3tu-hero.jpg'],
+    vegetarian: "",
+    pescatarian: "",
+    no_spicy_food: ""
+  },
+
   { name: 'Vietnamese',
     # dish: 'Pho',
     url: ['https://www.capitaland.com/content/dam/capitaland-media-library/retail/Singapore/Singapore/cma-tenants/sopho.jpg.transform/cap-midres/image.jpg',
           'https://burpple-1.imgix.net/foods/63ceedb6eef116614dc1553447_original.?w=645&dpr=1&fit=crop&q=80&auto=format',
           'https://burpple-3.imgix.net/foods/2f70ab78fbaed9909c9c1845330_original.?w=645&dpr=1&fit=crop&q=80&auto=format',
           'https://burpple-2.imgix.net/foods/3f5b6ac2b1f36b6478e1430769_original.?w=645&dpr=1&fit=crop&q=80&auto=format',
-          'https://burpple-1.imgix.net/foods/17f3b3d92994d23f41445063_original.?w=645&dpr=1&fit=crop&q=80&auto=format']},
+          'https://burpple-1.imgix.net/foods/17f3b3d92994d23f41445063_original.?w=645&dpr=1&fit=crop&q=80&auto=format'],
+    vegetarian: "",
+    pescatarian: "",
+    no_spicy_food: ""
+  },
+
   { name: 'Mexican',
     # dish: 'Tacos',
     url: ['https://hips.hearstapps.com/del.h-cdn.co/assets/18/11/1520956952-chicken-tacos-horizontal.jpg',
@@ -88,21 +118,36 @@ cuisines = [
           'https://www.topuniversities.com/sites/default/files/huevos-rancheros.jpg',
           'https://www.topuniversities.com/sites/default/files/chilaquiles.jpg',
           'https://www.topuniversities.com/sites/default/files/tacos-al-pastor_0.jpg',
-          'https://www.onceuponachef.com/images/2018/03/Breakfast-Burritos-760x569.jpg']},
+          'https://www.onceuponachef.com/images/2018/03/Breakfast-Burritos-760x569.jpg'],
+    vegetarian: "",
+    pescatarian: "",
+    no_spicy_food: ""
+  },
+
   { name: 'Indonesian',
     # dish: 'Ayam penyet',
     url: ['https://magazine.foodpanda.my/wp-content/uploads/sites/12/2019/11/cropped-Ayam-Penyet-Best-Delivery-in-Kuala-Lumpur.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/v6tq-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/v7rr-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/z3od-hero.jpg',
-          'https://www.fodors.com/wp-content/uploads/2019/04/05_TraditionalfoodsinJava__GadoGado_shutterstock_1134726908.jpg']},
+          'https://www.fodors.com/wp-content/uploads/2019/04/05_TraditionalfoodsinJava__GadoGado_shutterstock_1134726908.jpg'],
+    vegetarian: "",
+    pescatarian: "",
+    no_spicy_food: ""
+  },
+
   { name: 'Indian',
     # dish: 'Naan',
     url: ['https://www.khaosodenglish.com/wp-content/uploads/2019/08/CIB_1-1068x601.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/x1py-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/w9hw-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/w8rf-hero.jpg',
-          'https://images.deliveryhero.io/image/fd-sg/LH/x0fu-hero.jpg']},
+          'https://images.deliveryhero.io/image/fd-sg/LH/x0fu-hero.jpg'],
+    vegetarian: "",
+    pescatarian: "",
+    no_spicy_food: ""
+  },
+
   { name: 'Western',
     # dish: 'Steak',
     url: ['https://www.seriouseats.com/recipes/images/2015/05/Anova-Steak-Guide-Sous-Vide-Photos15-beauty-1500x1125.jpg',
@@ -110,55 +155,59 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/x5nu-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/w4hj-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/x7ns-hero.jpg',
-          'https://images.deliveryhero.io/image/fd-sg/LH/s9em-hero.jpg']}
+          'https://images.deliveryhero.io/image/fd-sg/LH/s9em-hero.jpg'],
+    vegetarian: "",
+    pescatarian: "",
+    no_spicy_food: ""
+  }
 ]
 
-# puts "Seeding all cuisines"
-# cuisines.each do |attribs|
-#   cuis = Cuisine.new(name: attribs[:name])#, dish: attribs[:dish])
-#   attribs[:url].each_with_index do |url, index|
-#     file = URI.open(url)
-#     cuis.photos.attach(io: file, filename: "#{attribs[:name]} #{index + 1}", content_type: 'image/png')
-#   end
-#   cuis.save!
-#   puts "#{attribs[:name]} created"
-#   sleep(60)
-# end
-# puts "All cuisines seeded"
+puts "Seeding all cuisines"
+cuisines.each do |attribs|
+  cuis = Cuisine.new(name: attribs[:name])#, dish: attribs[:dish])
+  attribs[:url].each_with_index do |url, index|
+    file = URI.open(url)
+    cuis.photos.attach(io: file, filename: "#{attribs[:name]} #{index + 1}", content_type: 'image/png')
+  end
+  cuis.save!
+  puts "#{attribs[:name]} created"
+  sleep(60)
+end
+puts "All cuisines seeded"
 
 
-# puts "Seeding users"
-# john = User.new(email: 'john@gmail.com',
-#                 password: 'topsecret',
-#                 password_confirmation: 'topsecret')
-# john.save!
-# puts "john seeded"
+puts "Seeding users"
+john = User.new(email: 'john@gmail.com',
+                password: 'topsecret',
+                password_confirmation: 'topsecret')
+john.save!
+puts "john seeded"
 
-# jane = User.new(email: 'jane@gmail.com',
-#                 password: 'topsecret',
-#                 password_confirmation: 'topsecret')
-# jane.save!
-# puts "jane seeded"
+jane = User.new(email: 'jane@gmail.com',
+                password: 'topsecret',
+                password_confirmation: 'topsecret')
+jane.save!
+puts "jane seeded"
 
-# jack = User.new(email: 'jack@gmail.com',
-#                 password: 'topsecret',
-#                 password_confirmation: 'topsecret')
-# jack.save!
-# puts "jack seeded"
+jack = User.new(email: 'jack@gmail.com',
+                password: 'topsecret',
+                password_confirmation: 'topsecret')
+jack.save!
+puts "jack seeded"
 
-# jill = User.new(email: 'jill@gmail.com',
-#                 password: 'topsecret',
-#                 password_confirmation: 'topsecret')
-# jill.save!
-# puts "jill seeded"
+jill = User.new(email: 'jill@gmail.com',
+                password: 'topsecret',
+                password_confirmation: 'topsecret')
+jill.save!
+puts "jill seeded"
 
-# puts "Seeding test meal for john"
-# meal = Meal.new(vanity_id: 'TEST123',
-#                 postal_code: 238869,
-#                 endtime: Time.now )
-# meal.save!
+puts "Seeding test meal for john"
+meal = Meal.new(vanity_id: 'TEST123',
+                postal_code: 238869,
+                endtime: Time.now )
+meal.save!
 
-# users_meal = UsersMeal.new(user: john,
-#                             meal: meal )
-# users_meal.save!
-# puts "test meal seeded"
+users_meal = UsersMeal.new(user: john,
+                            meal: meal )
+users_meal.save!
+puts "test meal seeded"
