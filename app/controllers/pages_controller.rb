@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @meal = Meal.new
+    @meal.endtime = Time.now + 2.hours
   end
 
   def ui_kit

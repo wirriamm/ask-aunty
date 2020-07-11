@@ -28,6 +28,7 @@ class MealsController < ApplicationController
       postal_code: params[:meal][:postal_code],
       pax: params[:meal][:pax]
       )
+    raise
     if @meal.save
       UsersMeal.create(user: current_user, meal: @meal)
       redirect_to setup_path(@meal.vanity_id), notice: "Meal ID: #{@meal.vanity_id}"
