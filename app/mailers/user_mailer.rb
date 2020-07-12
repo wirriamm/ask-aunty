@@ -13,6 +13,6 @@ class UserMailer < ApplicationMailer
   private
 
   def endtime_is_over
-
+    @meals = Meal.where("endtime < ? AND is_notified = 'false'", Time.now)
   end
 end
