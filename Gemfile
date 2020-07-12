@@ -40,6 +40,10 @@ gem 'turbolinks_render'
 gem 'interactor'
 gem 'selenium-webdriver'
 
+gem 'redis'
+gem 'sidekiq'
+gem 'sidekiq-cron'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
