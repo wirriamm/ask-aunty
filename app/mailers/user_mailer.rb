@@ -5,9 +5,8 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.push_email.subject
   #
-  def push_email(user)
-    @user = user
-    mail(to: @user.email, subject: "The result of you meal is here!")
+  def push_email(email)
+    mail(to: email, subject: "The result of you meal is here!")
   end
 
   private
