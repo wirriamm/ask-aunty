@@ -1,8 +1,11 @@
 .gradientbackground {
   background: #FCD4D4;  /* fallback for old browsers */
   // background: -webkit-linear-gradient(to top, #C1C1C1, #FCD4D4);  /* Chrome 10-25, Safari 5.1-6 */
-  // background: linear-gradient(#C1C1C1, #FCD4D4);
-  background: linear-gradient(#FCD4D4, #C1C1C1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  // background: linear-gradient(#FCD4D4, #C1C1C1);
+  // linear-gradient(#ffb3b3, #fde9e9)
+  // background: linear-gradient(#FCD4D4, #C1C1C1); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(#ffaeae, #ffe6e6);
+  // background: linear-gradient(#ffaeae, #ffe6e68c);
   // min-height: 100%;
   height: calc(100vh - 96px);
   background-attachment: fixed;
