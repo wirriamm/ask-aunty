@@ -88,3 +88,13 @@
 }
 
 .form-inline div { display: inline-block }
+
+input[type="checkbox"]:indeterminate {
+  background-color: white;
+  color: black;
+}
+
+input[type="checkbox"]:checked {
+  background-color: $primary;
+  color: white;
+}
