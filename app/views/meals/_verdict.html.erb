@@ -17,7 +17,7 @@
       <div class="accordion" id="accordionExample">
         <div class="card <%= 'rounded-bottom' if restaurant_count == 2 %>">
           <div class="" id="heading-<%= "#{cuisine_count}-#{restaurant_count}"%>" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="false" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
-            <div class="card-body" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="false" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
+            <div class="card-body d-flex justify-content-between" data-toggle="collapse" data-target="#collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>" aria-expanded="false" aria-controls="collapse-<%= "#{cuisine_count}-#{restaurant_count}"%>">
               <div class="card-text">
                 <div><%= resto.name %></div>
                 <div style="color:grey; font-size:12px;">
@@ -37,6 +37,7 @@
                   <% end %>
                 </div>
               </div>
+              <i class="fas fa-chevron-down"></i>
             </div>
           </div>
 
