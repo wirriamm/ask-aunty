@@ -14,7 +14,7 @@ class Preference < ApplicationRecord
       when 'Vegetarian' then 'fa fa-leaf'
       when 'Pescatarian' then 'fas fa-fish'
       when 'No Spicy Food' then 'fas fa-pepper-hot'
-      when 'Halal' then 'icon-halal'
+      when 'Halal' then 'fa fa-cutlery'
     end
   end
 end
