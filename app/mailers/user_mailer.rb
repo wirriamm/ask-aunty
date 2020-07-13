@@ -1,17 +1,14 @@
 class UserMailer < ApplicationMailer
-
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
   #   en.user_mailer.push_email.subject
   #
-  def push_email(email)
-    mail(to: email, subject: "The result of you meal is here!")
+  def endtime_is_over_email(email)
+    mail(to: email, subject: "Endtime is over!")
   end
 
-  private
-
-  def endtime_is_over
-    @meals = Meal.where("endtime < ? AND is_notified = 'false'", Time.now)
+  def all_pax_completed_email(email)
+    mail(to: email, subject: "All pax completed!")
   end
 end
