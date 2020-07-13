@@ -81,11 +81,10 @@
   width: 40vw;
 }
 
-
-// [checked="checked"] ~ label .card.active, .card.active {
-//   background-color: $primary;
-//   color: white;
-// }
+.card.active {
+  background-color: $primary;
+  color: white;
+}
 
 .form-inline div { display: inline-block }
 
