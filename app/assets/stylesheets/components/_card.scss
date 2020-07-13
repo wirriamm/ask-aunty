@@ -82,19 +82,23 @@
 }
 
 
-[checked="checked"] ~ label .card.active, .card.active {
-  background-color: $primary;
-  color: white;
-}
+// [checked="checked"] ~ label .card.active, .card.active {
+//   background-color: $primary;
+//   color: white;
+// }
 
 .form-inline div { display: inline-block }
 
-input[type="checkbox"]:indeterminate {
+input[type=checkbox] {
+  visibility: hidden;
+}
+input[type="checkbox"]:indeterminate + label {
   background-color: white;
   color: black;
 }
 
-input[type="checkbox"]:checked {
+input[type="checkbox"]:checked + label {
   background-color: $primary;
   color: white;
 }
+
