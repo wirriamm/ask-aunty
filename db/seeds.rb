@@ -34,6 +34,7 @@ seeds.each do |pref|
   end
 end
 puts "Seeded #{Preference.count} preferences."
+
 cuisines = [
   { name: 'Thai',
     # dish: 'Tom yum',
@@ -164,7 +165,7 @@ cuisines = [
 
 puts "Seeding all cuisines"
 cuisines.each do |attribs|
-  cuis = Cuisine.new(name: attribs[:name])#, dish: attribs[:dish])
+  cuis = Cuisine.new(name: attribs[:name], vegetarian: attribs[:vegetarian], pescatarian: attribs[:pescatarian], no_spicy_food: attribs[:no_spicy_food])#, dish: attribs[:dish])
   attribs[:url].each_with_index do |url, index|
     file = URI.open(url)
     cuis.photos.attach(io: file, filename: "#{attribs[:name]} #{index + 1}", content_type: 'image/png')
