@@ -55,9 +55,9 @@ cuisines = [
           "https://images.deliveryhero.io/image/fd-sg/LH/y6bt-hero.jpg",
           "https://images.deliveryhero.io/image/fd-sg/LH/y3ce-hero.jpg",
           "https://images.deliveryhero.io/image/fd-sg/LH/x7bz-hero.jpg"],
-    vegetarian: "",
-    pescatarian: "",
-    no_spicy_food: ""
+    vegetarian: "Tofu Fried Rice",
+    pescatarian: "Shrimp Lo Mein",
+    no_spicy_food: "Sweet and Sour Pork"
   },
 
   { name: 'Japanese',
@@ -81,9 +81,9 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/x5qj-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/s2ob-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/s5pw-hero.jpg'],
-    vegetarian: "",
-    pescatarian: "",
-    no_spicy_food: ""
+    vegetarian: "Jap Chae",
+    pescatarian: "Seafood Pancake",
+    no_spicy_food: "Sam Gae Tang"
   },
 
   { name: 'Singaporean',
@@ -94,9 +94,9 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/x5wb-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/x3bk-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/w3tu-hero.jpg'],
-    vegetarian: "",
-    pescatarian: "",
-    no_spicy_food: ""
+    vegetarian: "Roti Prata",
+    pescatarian: "Laksa",
+    no_spicy_food: "Hainanese Chicken Rice"
   },
 
   { name: 'Vietnamese',
@@ -106,9 +106,9 @@ cuisines = [
           'https://burpple-3.imgix.net/foods/2f70ab78fbaed9909c9c1845330_original.?w=645&dpr=1&fit=crop&q=80&auto=format',
           'https://burpple-2.imgix.net/foods/3f5b6ac2b1f36b6478e1430769_original.?w=645&dpr=1&fit=crop&q=80&auto=format',
           'https://burpple-1.imgix.net/foods/17f3b3d92994d23f41445063_original.?w=645&dpr=1&fit=crop&q=80&auto=format'],
-    vegetarian: "",
-    pescatarian: "",
-    no_spicy_food: ""
+    vegetarian: "Vegetarian Bun Chay",
+    pescatarian: "Summer Rolls with Shrimp",
+    no_spicy_food: "Pho"
   },
 
   { name: 'Mexican',
@@ -119,9 +119,9 @@ cuisines = [
           'https://www.topuniversities.com/sites/default/files/chilaquiles.jpg',
           'https://www.topuniversities.com/sites/default/files/tacos-al-pastor_0.jpg',
           'https://www.onceuponachef.com/images/2018/03/Breakfast-Burritos-760x569.jpg'],
-    vegetarian: "",
-    pescatarian: "",
-    no_spicy_food: ""
+    vegetarian: "Guacamole",
+    pescatarian: "Fish Tamale",
+    no_spicy_food: "Enchiladas"
   },
 
   { name: 'Indonesian',
@@ -131,9 +131,9 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/v7rr-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/z3od-hero.jpg',
           'https://www.fodors.com/wp-content/uploads/2019/04/05_TraditionalfoodsinJava__GadoGado_shutterstock_1134726908.jpg'],
-    vegetarian: "",
-    pescatarian: "",
-    no_spicy_food: ""
+    vegetarian: "Gado-Gado",
+    pescatarian: "Ikan Goreng",
+    no_spicy_food: "Soto Mie/Ayam"
   },
 
   { name: 'Indian',
@@ -143,9 +143,9 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/w9hw-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/w8rf-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/x0fu-hero.jpg'],
-    vegetarian: "",
-    pescatarian: "",
-    no_spicy_food: ""
+    vegetarian: "Masala Thosai",
+    pescatarian: "Fish Curry",
+    no_spicy_food: "Butter Chicken"
   },
 
   { name: 'Western',
@@ -156,9 +156,9 @@ cuisines = [
           'https://images.deliveryhero.io/image/fd-sg/LH/w4hj-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/x7ns-hero.jpg',
           'https://images.deliveryhero.io/image/fd-sg/LH/s9em-hero.jpg'],
-    vegetarian: "",
-    pescatarian: "",
-    no_spicy_food: ""
+    vegetarian: "Vegetarian Caesar Salad",
+    pescatarian: "Grilled Salmon",
+    no_spicy_food: "Beef Burger"
   }
 ]
 
