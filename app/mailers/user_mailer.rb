@@ -4,11 +4,13 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.push_email.subject
   #
-  def endtime_is_over_email(email)
+  def endtime_is_over_email(email, vanity_id)
+    @vanity_id = vanity_id
     mail(to: email, subject: "Endtime is over!")
   end
 
-  def all_pax_completed_email(email)
+  def all_pax_completed_email(email, vanity_id)
+    @vanity_id = vanity_id
     mail(to: email, subject: "All pax completed!")
   end
 end

@@ -18,10 +18,10 @@ class HardWorker
       @users = meal.users
       @users.each do |user|
         if all_pax_completed
-          UserMailer.all_pax_completed_email(user.email).deliver_later
+          UserMailer.all_pax_completed_email(user.email, meal.vanity_id).deliver_later
           p "Sent email to notify user #{user.email} that all pax in meal #{meal.vanity_id} have completed the polls!"
         else
-          UserMailer.endtime_is_over_email(user.email).deliver_later
+          UserMailer.endtime_is_over_email(user.email, meal.vanity_id).deliver_later
           p "Sent email to notify user #{user.email} that the meal #{meal.vanity_id} has ended!"
         end
       end
