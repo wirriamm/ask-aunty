@@ -1,5 +1,6 @@
-<% if @endtime == nil || Time.now > @endtime  %>
-  <h4 class="px-1">Aunty's Verdict</h4>
+<% polls = Poll.where(meal_id: @meal).length / 10.0 %>
+<% if @endtime == nil || Time.now > @endtime || @meal.pax == polls %>
+  <h4>Aunty's Verdict</h4>
   <% if @polls == [] %>
     <p>Your poll closed but no one voted :(</p>
   <% else %>
@@ -19,8 +20,8 @@
     </div>
   <% end %>
 <% else %>
-<!--   <%= image_tag image_path('aunty-square.svg') %>
- -->  <%= image_tag "aunty-square.svg", class: "rotate" %><br>
+<!--   <%= image_tag image_path('aunty-square.svg') %>-->
+  <%= image_tag "aunty-square.svg", class: "rotate" %><br>
   <h3>Aunty's still working on it...</h3>
   <p>Can wait? Come back to Aunty in <%= @time_left %> for results.</p></br>
 <!--   <div class="bubble">
