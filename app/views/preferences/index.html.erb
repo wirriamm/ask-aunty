@@ -2,7 +2,8 @@
   <%= simple_form_for current_user, wrapper: :inline_form, html: { class: 'form-inline' }, url: "/save_preference", action: :post do |f| %>
     <%= f.association :preferences,
       as: :check_boxes,
-      include_blank: true
+      include_blank: true,
+      label_html: { class: "pref-card" }
     %>
     <%= f.submit 'Save Preferences' %>
   <% end %>
