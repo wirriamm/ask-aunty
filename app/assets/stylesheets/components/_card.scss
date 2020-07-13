@@ -79,16 +79,14 @@
 
 .pref-card {
   width: 40vw;
+
 }
 
-.card.active {
-  background-color: $primary;
-  color: white;
-}
 
 input[type=checkbox] {
   visibility: hidden;
 }
+
 input[type="checkbox"]:indeterminate + label > div {
   background-color: white;
   color: black;
@@ -99,3 +97,7 @@ input[type="checkbox"]:checked + label > div {
   color: white;
 }
 
+// .active {
+//   background-color: $primary;
+//   color: white;
+// }
