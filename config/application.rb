@@ -29,5 +29,3 @@ module AskAunty
     config.time_zone = 'Singapore'
   end
 end
-
-    config.time_zone = 'Singapore'

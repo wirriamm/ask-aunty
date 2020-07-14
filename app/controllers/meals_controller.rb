@@ -1,6 +1,7 @@
 class MealsController < ApplicationController
   def index
     @users_meals = UsersMeal.where(user: current_user).includes(:meal).reverse
+    # @users_meals = @users_meals.select { |um| um.meal.endtime > Time.now }
   end
 
   def new
@@ -27,7 +28,7 @@ class MealsController < ApplicationController
     @meal.vanity_id = generate_vanity_id
     if @meal.save
       UsersMeal.create(user: current_user, meal: @meal)
-      redirect_to setup_path(@meal.vanity_id), notice: "Meal ID: #{@meal.vanity_id}"
+      redirect_to meal_path(@meal.vanity_id)
     else
       flash.now[:alert] = "Postal Code not valid leh"
       render :new
