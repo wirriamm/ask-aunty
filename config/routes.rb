@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   }
   root to: 'pages#home'
   get '/ui_kit', to: 'pages#ui_kit'
-  get '/join_meal', to: 'pages#join_meal'
+  get '/join_meal/:vanity_id', to: 'pages#join_meal', as: 'join_meal_path'
   post '/join_meal', to: 'pages#create_users_meal'
   get '/create_meal', to: 'meals#new'
 
