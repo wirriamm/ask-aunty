@@ -27,6 +27,8 @@ export default class extends Controller {
 
   update = (e) => {
     this.editTarget.classList.toggle('hide');
+    const lastEl = document.getElementById('bottom');
+    lastEl.scrollIntoView();
   }
 
   copy = (e) => {
