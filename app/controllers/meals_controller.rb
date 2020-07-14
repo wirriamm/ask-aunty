@@ -1,7 +1,9 @@
 class MealsController < ApplicationController
   def index
     @users_meals = UsersMeal.where(user: current_user).includes(:meal).reverse
-    # @users_meals = @users_meals.select { |um| um.meal.endtime > Time.now }
+    @users_meals = @users_meals.select do |um|
+      (um.meal.endtime + 6.hour) > Time.now
+    end
   end
 
   def new
