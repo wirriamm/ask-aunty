@@ -71,7 +71,7 @@
   transform: rotateY(180deg);
 }
 
-.form-check {
+.cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
@@ -79,25 +79,12 @@
 
 .pref-card {
   width: 40vw;
-
 }
 
 
-input[type=checkbox] {
-  visibility: hidden;
-}
-
-input[type="checkbox"]:indeterminate + label > div {
-  background-color: white;
-  color: black;
-}
-
-input[type="checkbox"]:checked + label > div {
+[checked="checked"] ~ label .card.active, .card.active {
   background-color: $primary;
   color: white;
 }
 
-// .active {
-//   background-color: $primary;
-//   color: white;
-// }
+.form-inline div { display: inline-block }
