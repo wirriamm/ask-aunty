@@ -39,6 +39,13 @@ class MealsController < ApplicationController
     @meal = Meal.find_by(vanity_id: params[:id])
     raise
     Date.civil(params[:meal]["date(1i)"].to_i,params[:meal]["date(2i)"].to_i,params[:meal]["date(3i)"].to_i)
+    if @meal.save
+      flash.now[:success] = "Updated Meal!"
+      render :show
+    else
+      flash.now[:alert] = "Unable to update"
+      render :show
+    end
   end
 
   def setup
