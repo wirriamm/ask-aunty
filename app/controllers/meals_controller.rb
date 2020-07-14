@@ -37,8 +37,7 @@ class MealsController < ApplicationController
 
   def update
     @meal = Meal.find_by(vanity_id: params[:id])
-    raise
-    Date.civil(params[:meal]["date(1i)"].to_i,params[:meal]["date(2i)"].to_i,params[:meal]["date(3i)"].to_i)
+    @meal.endtime = DateTime.civil_from_format(:local, params[:meal]["endtime(1i)"].to_i, params[:meal]["endtime(2i)"].to_i, params[:meal]["endtime(3i)"].to_i, params[:meal]["endtime(4i)"].to_i, params[:meal]["endtime(5i)"].to_i)
     if @meal.save
       flash.now[:success] = "Updated Meal!"
       render :show
