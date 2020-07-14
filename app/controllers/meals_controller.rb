@@ -35,7 +35,9 @@ class MealsController < ApplicationController
   end
 
   def update
+    @meal = Meal.find_by(vanity_id: params[:id])
     raise
+    Date.civil(params[:meal]["date(1i)"].to_i,params[:meal]["date(2i)"].to_i,params[:meal]["date(3i)"].to_i)
   end
 
   def setup

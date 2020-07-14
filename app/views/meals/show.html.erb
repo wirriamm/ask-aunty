@@ -49,9 +49,9 @@
   </div>
 
   <div class="my-3 hide" data-target="show-button.edit">
-    <%= simple_form_for @meal, method: :patch do |f| %>
+    <%= simple_form_for @meal, url: "/meals/#{@meal.vanity_id}", method: :patch do |f| %>
       <%= f.input :pax, label: "Max Kakis:", input_html: { class: 'sharp-box mb-0' }, label_html: { class: 'm-0' } %>
-      <%= f.input :endtime, label: "Endtime:", input_html: { class: 'sharp-box timefield mb-0' }, label_html: { class: 'm-0' } %>
+      <%= f.input :endtime, label: "Endtime:", default: Time.now.in_time_zone('Singapore'), input_html: { class: 'sharp-box timefield mb-0' }, label_html: { class: 'm-0' } %>
       <%= f.submit 'Update', class: 'btn primarybtn btn-block m-0' %>
     <% end %>
   </div>
