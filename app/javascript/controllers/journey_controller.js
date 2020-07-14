@@ -17,6 +17,8 @@ export default class extends Controller {
     // this.createmealTarget.classList.remove("hide");
     this.createmealTarget.classList.remove("secondarybtn");
     this.createmealTarget.classList.remove("highlight-tab");
+    const lastEl = document.getElementById('bottom');
+    lastEl.scrollIntoView();
   }
 
   createmeal = (event) => {
@@ -29,5 +31,7 @@ export default class extends Controller {
     // this.joinmealTarget.classList.remove("hide");
     this.joinmealTarget.classList.remove("secondarybtn");
     this.joinmealTarget.classList.remove("highlight-tab");
+    const lastEl = document.getElementById('bottom');
+    lastEl.scrollIntoView();
   }
 }

@@ -27,12 +27,17 @@ export default class extends Controller {
 
   update = (e) => {
     this.editTarget.classList.toggle('hide');
+    const lastEl = document.getElementById('bottom');
+    lastEl.scrollIntoView();
   }
 
   copy = (e) => {
     e.preventDefault();
+    const vanity_id = this.sourceTarget.value;
+    this.sourceTarget.value = "ask-aunty.herokuapp.com/join_meal/" + vanity_id;
     console.log(this.sourceTarget.value);
     this.sourceTarget.select();
     document.execCommand("copy");
+    this.sourceTarget.value = vanity_id;
   }
 }

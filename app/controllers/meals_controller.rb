@@ -1,6 +1,9 @@
 class MealsController < ApplicationController
   def index
     @users_meals = UsersMeal.where(user: current_user).includes(:meal).reverse
+    @users_meals = @users_meals.select do |um|
+      (um.meal.endtime + 6.hour) > Time.now
+    end
   end
 
   def new
@@ -15,22 +18,19 @@ class MealsController < ApplicationController
     if @user_meal.nil?
       @user_meal = UsersMeal.create!(user: current_user, meal: @meal)
     end
-    url = "ask-aunty.herokuapp.com/meals/test123"
+    url = "ask-aunty.herokuapp.com/join_meal/#{@meal.vanity_id}"
     text = "Come join our makan at%0a#{url}%0a%0a💌 Ask Aunty"
     @whatsapp_link = "https://wa.me/?text=Come join our makan at%0a#{url}%0a%0a💌 Ask Aunty"
     @telegram_link = "https://t.me/share/url?url=#{url}&text=#{text}"
   end
 
   def create
-    @meal = Meal.new(
-      vanity_id: generate_vanity_id,
-      endtime: Time.now + 2.hours,
-      postal_code: params[:meal][:postal_code],
-      pax: params[:meal][:pax]
-      )
+    @meal = Meal.new(strong_params)
+    @meal.endtime = Time.now + get_duration
+    @meal.vanity_id = generate_vanity_id
     if @meal.save
       UsersMeal.create(user: current_user, meal: @meal)
-      redirect_to setup_path(@meal.vanity_id), notice: "Meal ID: #{@meal.vanity_id}"
+      redirect_to meal_path(@meal.vanity_id)
     else
       flash.now[:alert] = "Postal Code not valid leh"
       render :new
@@ -38,7 +38,15 @@ class MealsController < ApplicationController
   end
 
   def update
-    raise
+    @meal = Meal.find_by(vanity_id: params[:id])
+    @meal.endtime = DateTime.civil_from_format(:local, params[:meal]["endtime(1i)"].to_i, params[:meal]["endtime(2i)"].to_i, params[:meal]["endtime(3i)"].to_i, params[:meal]["endtime(4i)"].to_i, params[:meal]["endtime(5i)"].to_i)
+    if @meal.save
+      flash.now[:success] = "Updated Meal!"
+      render :show
+    else
+      flash.now[:alert] = "Unable to update"
+      render :show
+    end
   end
 
   def setup
@@ -94,6 +102,22 @@ class MealsController < ApplicationController
   end
 
   private
+
+  def strong_params
+    params.require(:meal).permit(:postal_code, :pax, 'endtime(1i)', 'endtime(2i)', 'endtime(3i)', 'endtime(4i)', 'endtime(5i)')
+  end
+
+  def get_duration
+    selected_to_time = {
+      '15 mins' => 15.minute,
+      '30 mins' => 30.minute,
+      '1 hour' => 1.hour,
+      '1 hour 30 mins' => 90.minute,
+      '2 hour' => 2.hour
+    }
+    selected = params[:others][:duration]
+    return selected_to_time[selected]
+  end
 
   def generate_vanity_id
     loop do

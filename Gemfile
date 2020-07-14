@@ -41,6 +41,10 @@ gem 'interactor'
 gem 'selenium-webdriver'
 # gem 'exception_handler', '~> 0.8.0.0'
 
+gem 'redis'
+gem 'sidekiq'
+gem 'sidekiq-cron'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -57,6 +61,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener'
 end
 
 group :test do
