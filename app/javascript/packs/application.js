@@ -44,7 +44,6 @@ document.addEventListener('turbolinks:load', () => {
   $('[data-toggle="tooltip"]').tooltip();
   flipcard();
   // prefcard();
-});
 
   polyfill({
       // use this to make use of the scroll behaviour
