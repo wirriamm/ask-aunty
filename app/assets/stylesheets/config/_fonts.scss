@@ -1,11 +1,13 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap');
+// @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Lato&family=Roboto&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Acme&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Halant:wght@400;500;600&family=Montserrat:wght@400;700&family=Satisfy&display=swap');
 // Define fonts for body and headers
-$body-font: 'Roboto', sans-serif;
-$headers-font: 'Lato', sans-serif;
+$headers-font: 'Satisfy', sans-serif;
+$body-font: 'Halant', sans-serif;
 // $enable-responsive-font-sizes: true;
 $font-size-base: 14px;
 $h3-font-size: 20px;
