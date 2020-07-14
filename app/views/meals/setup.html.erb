@@ -1,24 +1,26 @@
 <% if @meal.endtime > Time.now %>
   <% count = 0; %>
 
-  <div class='poll' data-controller='polls swipepolls' data-target='polls'>
-    <% if @polls.any? %>
-      <input type="hidden" data-target='polls.count' value='<%= count %>'>
-      <% @polls.each do |poll|%>
-        <% if poll == @polls.first %>
-          <div class='' data-target='polls.poll' style='display: block;'>
-            <p><%= "Poll no #{@poll_no}/10" %></p>
-            <%= cl_image_tag poll.cuisine.photos.sample.key, height: 300, width: 400, crop: :fill, data: {action:'dragstart->polls#dragStart dragend->polls#dragEnd', xStart: "hey there"}, draggable: "true", class: "img-thumbnail img-fluid max-width: 100% height: auto" %>
-          </div>
-        <% else %>
-          <div draggable='true' data-target='polls.poll' style='display: none;'>
-            <p><%= "Poll no #{@poll_no}/10" %></p>
-            <%= cl_image_tag poll.cuisine.photos.sample.key, height: 300, width: 400, crop: :fill, data: {action:'dragstart->polls#dragStart dragend->polls#dragEnd', xStart: "hey there"}, draggable: "true", class: "img-thumbnail img-fluid max-width: 100% height: auto"  %>
-          </div>
-        <% end %>
-        <% @poll_no += 1 %>
-        <% count += 1 %>
-        <input type="hidden" data-target='polls.cuisineId' value='<%= poll.cuisine.id %>'>
+<div class='poll' data-controller='polls swipepolls' data-target='polls'>
+  <% if @polls.any? %>
+    <input type="hidden" data-target='polls.count' value='<%= count %>'>
+    <% @polls.each do |poll|%>
+      <% if poll == @polls.first %>
+        <div class='' data-target='polls.poll' style='display: block;'>
+          <p>
+            <%= "Poll no #{@poll_no}/10" %>
+            <progress max=10 value='<%= @poll_no %>'></progress>
+          </p>
+          <%= cl_image_tag poll.cuisine.photos.sample.key, height: 300, width: 400, crop: :fill, data: {action:'dragstart->polls#dragStart dragend->polls#dragEnd', xStart: "hey there"}, draggable: "true", class: "img-thumbnail img-fluid max-width: 100% height: auto" %>
+        </div>
+      <% else %>
+        <div draggable='true' data-target='polls.poll' style='display: none;'>
+          <p>
+            <%= "Poll no #{@poll_no}/10" %>
+            <progress max=10 value="<%= @poll_no%>"></progress>
+          </p>
+          <%= cl_image_tag poll.cuisine.photos.sample.key, height: 300, width: 400, crop: :fill, data: {action:'dragstart->polls#dragStart dragend->polls#dragEnd', xStart: "hey there"}, draggable: "true", class: "img-thumbnail img-fluid max-width: 100% height: auto"  %>
+        </div>
       <% end %>
       <input type="hidden" data-target='polls.mealId' value='<%= @meal.id %>'>
       <input type="hidden" data-target='polls.userId' value='<%= current_user.id %>'>
