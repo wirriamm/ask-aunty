@@ -58,7 +58,7 @@
       <%= f.input :postal_code, label: 'Postal Code', input_html: { class: "sharp-box hide", 'data-target' => "journey.postalCode", placeholder: "Where will you set off from?" }, label_html: { class: "hide",  'data-target' => "journey.postalCode" } %>
       <%= f.input :pax, label: 'How many people?', input_html: { class: "sharp-box" } %>
       <%= simple_fields_for :others do |o| %>
-        <%= o.input :duration, collection: ['15 mins', '30 mins', '1 hour', '1 hour 30 mins', '2 hours'], input_html: { class: 'sharp-box timefield text-center hide', 'data-target' => "journey.postalCode", id: 'endtime',  }, label_html: { class: "hide", 'data-target' => "journey.postalCode" } %>
+        <%= o.input :duration, collection: ['15 mins', '30 mins', '1 hour', '1 hour 30 mins', '2 hours'], selected: '1 hour', input_html: { class: 'sharp-box timefield text-center hide', 'data-target' => "journey.postalCode", id: 'endtime',  }, label_html: { class: "hide", 'data-target' => "journey.postalCode" } %>
       <% end %>
       <%= f.submit 'Create Makan', class: 'btn primarybtn btn-block hide', 'data-target' => "journey.postalCode" %>
     <% end %>

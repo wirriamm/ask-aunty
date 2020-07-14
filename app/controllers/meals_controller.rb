@@ -24,6 +24,7 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new(strong_params)
     @meal.vanity_id = generate_vanity_id
+    raise
     if @meal.save
       UsersMeal.create(user: current_user, meal: @meal)
       redirect_to setup_path(@meal.vanity_id), notice: "Meal ID: #{@meal.vanity_id}"

@@ -4,7 +4,7 @@
       <%= f.input :pax, label: 'How many people?', input_html: { class: "sharp-box" } %>
       <%#= f.input :endtime, input_html: { class: "sharp-box timefield" } %>
       <%= simple_fields_for :others do |o| %>
-        <%= o.input :duration, collection: ['15 mins', '30 mins', '1 hour', '1 hour 30 mins', '2 hours'], input_html: { class: 'sharp-box timefield text-center' } %>
+        <%= o.input :duration, collection: ['15 mins', '30 mins', '1 hour', '1 hour 30 mins', '2 hours'], selected: '1 hour', input_html: { class: 'sharp-box timefield text-center' } %>
       <% end %>
       <%= f.submit 'Create Makan', class: 'btn primarybtn btn-block' %>
     <% end %>
