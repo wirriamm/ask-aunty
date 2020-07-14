@@ -27,5 +27,6 @@ module AskAunty
     config.action_view.embed_authenticity_token_in_remote_forms = true
     config.active_record.default_timezone = :local
     # config.exception_handler = { dev: true }
+    config.exceptions_app = self.routes
   end
 end
