@@ -1,6 +1,7 @@
 <% polls = Poll.where(meal_id: @meal).length / 10.0 %>
 <% if @endtime == nil || Time.now > @endtime || @meal.pax == polls %>
-  <h4>Aunty's Verdict</h4>
+  <h4><strong>Aunty's Verdict</strong></h4>
+  <h5>Makan Code: <%= @meal.vanity_id %></h5>
   <% if @polls == [] %>
     <p>Your poll closed but no one voted :(</p>
   <% else %>
@@ -11,7 +12,7 @@
     <% end %>
     <br>
     <div>
-      <h2><strong> PS: Your Group's Preferences</strong></h2>
+      <h3><strong> PS: Your Group's Preferences</strong></h3>
       <ul style="list-style-type:square">
         <% @collated_prefs.each do |p| %>
           <li><%= p.name %></li>

@@ -26,15 +26,28 @@ require("channels")
 import "bootstrap";
 import flatpickr from "flatpickr";
 
+import {polyfill} from "mobile-drag-drop";
+
+// optional import of scroll behaviour
+import {scrollBehaviourDragImageTranslateOverride} from "mobile-drag-drop/scroll-behaviour";
+
+import "controllers"
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { loadDynamicBannerText } from '../components/banner';
+import { flipcard, prefcard } from '../components/card';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   loadDynamicBannerText();
   $('[data-toggle="tooltip"]').tooltip();
+  flipcard();
+  // prefcard();
 });
 
-import "controllers"
+  polyfill({
+      // use this to make use of the scroll behaviour
+      dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride
+  });
+});
