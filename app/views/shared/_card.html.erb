@@ -1,6 +1,6 @@
 <a href="<%= meal_path(users_meal.meal.vanity_id) %>" class="card-clickable">
   <div class="card shadow-sm card-shadow my-3 content-centered">
-    <h5 class="card-header">Makan Code: <span class="makan-code"><%= users_meal.meal.vanity_id %></span></h5>
+    <p class="card-header title-size">Makan Code: <span class="makan-code"><%= users_meal.meal.vanity_id %></span></p>
     <div class="card-body">
       <p class="card-text">
         <%= users_meal.meal.endtime < Time.now ? "Ended at: " : "Ending at: " %>
