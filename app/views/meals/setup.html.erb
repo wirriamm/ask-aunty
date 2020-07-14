@@ -7,23 +7,21 @@
       <% if poll == @polls.first %>
         <div class='' data-target='polls.poll' style='display: block;'>
           <p>
-            <%= "Poll no #{@poll_no}/10" %>
             <div class="progress">
-              <div class="progress-bar" role="progressbar" aria-valuenow="<%= @poll_no %>" aria-valuemin="0" aria-valuemax="10"></div>
+              <div class="progress-bar" style="width: <%= (@poll_no - 1) * 10 %>%"><%= (@poll_no - 1) *10 %>%</div>
             </div>
-            <progress max=10 value='<%= @poll_no %>'></progress>
           </p>
           <%= cl_image_tag poll.cuisine.photos.sample.key, height: 300, width: 400, crop: :fill, data: {action:'dragstart->polls#dragStart dragend->polls#dragEnd', xStart: "hey there"}, draggable: "true", class: "img-thumbnail img-fluid max-width: 100% height: auto" %>
         </div>
       <% else %>
         <div draggable='true' data-target='polls.poll' style='display: none;'>
           <p>
-            <%= "Poll no #{@poll_no}/10" %>
-            <div class="progress">
-              <div class="progress-bar bg-danger" style="width: 25%" role="progressbar" aria-valuenow="<%= @poll_no %>" aria-valuemin="0" aria-valuemax="10"></div>
+<!--             <%= "Poll no #{@poll_no}/10" %>
+ -->         <div class="progress">
+              <div class="progress-bar" style="width: <%= (@poll_no - 1) * 10 %>%"><%= (@poll_no - 1) *10 %>%</div>
             </div>
-            <progress max=10 value="<%= @poll_no%>"></progress>
-          </p>
+<!--             <progress max=10 value="<%= @poll_no%>"></progress>
+ -->      </p>
           <%= cl_image_tag poll.cuisine.photos.sample.key, height: 300, width: 400, crop: :fill, data: {action:'dragstart->polls#dragStart dragend->polls#dragEnd', xStart: "hey there"}, draggable: "true", class: "img-thumbnail img-fluid max-width: 100% height: auto"  %>
         </div>
       <% end %>
