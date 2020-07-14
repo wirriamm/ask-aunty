@@ -22,6 +22,10 @@
           <%= cl_image_tag poll.cuisine.photos.sample.key, height: 300, width: 400, crop: :fill, data: {action:'dragstart->polls#dragStart dragend->polls#dragEnd', xStart: "hey there"}, draggable: "true", class: "img-thumbnail img-fluid max-width: 100% height: auto"  %>
         </div>
       <% end %>
+        <% @poll_no += 1 %>
+        <% count += 1 %>
+        <input type="hidden" data-target='polls.cuisineId' value='<%= poll.cuisine.id %>'>
+      <% end %>
       <input type="hidden" data-target='polls.mealId' value='<%= @meal.id %>'>
       <input type="hidden" data-target='polls.userId' value='<%= current_user.id %>'>
       <div class='d-flex justify-content-around'>
