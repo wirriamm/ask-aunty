@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center">
-  <%= simple_form_for(@meal, method: :post, url: '/join_makan') do |f| %>
+  <%= simple_form_for(@meal, method: :post, url: '/join_meal') do |f| %>
     <%= f.input :vanity_id, placeholder: "eg: jQus3F", hint: "enter the code your makan kaki shared!", label: 'Makan Code', input_html: { class: "sharp-box" }, maxlength: "6" %>
     <%= f.submit 'Join Makan', class: 'btn primarybtn btn-block' %>
   <% end %>

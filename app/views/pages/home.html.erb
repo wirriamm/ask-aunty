@@ -1,15 +1,9 @@
-<!-- <div class="justify-content-center">
-  <div>
-    <%#= image_tag image_path('aunty-square.svg') %>
-  </div>
-  <h1>Ask Aunty</h1>
-  <p>
-    Going out in a group and can't decide what to eat? <br>
-    <br> <strong>ASK AUNTY!</strong><br>
-    <br> Aunty will set up a poll for your group and suggest locations based on your group's preferences.
-  </p>
-</div> -->
-<div class="d-flex justify-content-center">
+<div class="d-flex flex-column justify-content-center text-center my-2 py-3">
+  <p class="m-0 font-italic">Your group can't decide what and where to eat?</p>
+  <h3 class="m-2 glow shoutout pt-2">Just Ask Aunty!</h3>
+</div>
+
+<div class="d-flex justify-content-center pb-3">
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -30,38 +24,43 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-    </div>
   </div>
-  <br>
-  <div class="d-flex flex-column justify-content-center">
-    <p>Eating in a group? But don't know what to eat?<br>
-    <strong>Leave it to Aunty!</strong><br>
-    Aunty will poll everyone...and suggest shiokk makan spots based on how your makan kakis vote!</p>
+</div>
+
+<div class="d-flex justify-content-center align-items-end my-3">
+  <div class="">
+    <%= image_tag image_path('aunty.png'), class: 'aunty-small mr-3' %>
+  </div>
+  <div class="">
+    <p class="m-0">Aunty will ...</p>
+    <p class="m-0 pt-2"><i class="fas fa-vote-yea pr-2 glow"></i>Poll all your makan kakis</p>
+    <p class="m-0 pt-2"><i class="fas fa-search pr-2 glow"></i> Suggest shiokk makan spots</p>
   </div>
 </div>
 
 <div data-controller="journey">
-
-  <div class="d-flex justify-content-around">
-    <div class="btn primarybtn btn-block half-tab m-2" data-remote="true" data-action="click->journey#joinmeal" data-target="journey.joinmeal" data-toggle="tooltip" data-placement="bottom" title='Join an existing makan poll that you have a Makan Code for'>Join Makan</div>
-
-    <div class="btn primarybtn btn-block half-tab m-2" data-remote="true" data-action="click->journey#createmeal" data-target="journey.createmeal" data-toggle="tooltip" data-placement="bottom" title="Start a new makan poll for your makan kakis">Create Makan</div>
+  <div class="d-flex justify-content-around pt-3">
+    <div class="btn primarybtn btn-block half-tab m-2" data-remote="true" data-action="click->journey#joinmeal" data-target="journey.joinmeal" data-toggle="tooltip" data-placement="top" title='Join an existing makan poll that you have a Makan Code for'>
+      Join Makan
+    </div>
+    <div class="btn primarybtn btn-block half-tab m-2" data-remote="true" data-action="click->journey#createmeal" data-target="journey.createmeal" data-toggle="tooltip" data-placement="top" title="Start a new makan poll for your makan kakis">
+      Jio Makan
+    </div>
   </div>
-
-  <div class="d-flex justify-content-center form-width">
+  <div class="d-flex justify-content-center form-width hide", data-target="journey.mealId">
     <%= simple_form_for(@meal, method: :post, url: '/join_meal') do |f| %>
-      <%= f.input :vanity_id, label: 'Makan Code', input_html: { class: "sharp-box hide", 'data-target' => 'journey.mealId', placeholder: "eg: gh28Ty" }, label_html: { class: "hide", 'data-target' => 'journey.mealId' } %>
+      <%= f.input :vanity_id, label: 'Makan Code', hint: "enter the code your makan kaki shared!", input_html: { class: "sharp-box hide", 'data-target' => 'journey.mealId', placeholder: "eg: gh28Ty" }, label_html: { class: "hide", 'data-target' => 'journey.mealId' } %>
       <%= f.submit 'Join Makan', class: 'btn primarybtn btn-block hide', 'data-target' => 'journey.mealId' %>
     <% end %>
   </div>
-
   <div class="d-flex justify-content-center hide form-width", data-target="journey.postalCode">
     <%= simple_form_for(@meal, method: :post) do |f| %>
-      <%= f.input :postal_code, label: 'Postal Code', input_html: { class: "sharp-box hide", 'data-target' => "journey.postalCode", placeholder: "Where will you be dining today?" }, label_html: { class: "hide",  'data-target' => "journey.postalCode" } %>
+      <%= f.input :postal_code, label: 'Postal Code', input_html: { class: "sharp-box hide", 'data-target' => "journey.postalCode", placeholder: "Where will you set off from?" }, label_html: { class: "hide",  'data-target' => "journey.postalCode" } %>
       <%= f.input :pax, label: 'How many people?', input_html: { class: "sharp-box" } %>
-      <%= f.input :endtime, input_html: { class: "sharp-box timefield hide", 'data-target' => "journey.postalCode", id: 'endtime' }, label_html: { class: "hide", 'data-target' => "journey.postalCode" }, class: "hide" %>
+      <%= simple_fields_for :others do |o| %>
+        <%= o.input :duration, collection: ['15 mins', '30 mins', '1 hour', '1 hour 30 mins', '2 hours'], selected: '1 hour', input_html: { class: 'sharp-box timefield text-center hide', 'data-target' => "journey.postalCode", id: 'endtime',  }, label_html: { class: "hide", 'data-target' => "journey.postalCode" } %>
+      <% end %>
       <%= f.submit 'Create Makan', class: 'btn primarybtn btn-block hide', 'data-target' => "journey.postalCode" %>
     <% end %>
   </div>
-
 </div>
