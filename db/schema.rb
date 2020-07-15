@@ -52,9 +52,9 @@ ActiveRecord::Schema.define(version: 2020_07_11_150545) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "postal_code"
-    t.integer "pax", default: 1
     t.float "latitude"
     t.float "longitude"
+    t.integer "pax", default: 1
     t.boolean "is_notified", default: false
   end
 
