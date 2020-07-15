@@ -6,3 +6,7 @@
 .was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
   color: black !important;
 }
+
+#edit_user_11>fieldset>legend {
+    display: none;
+}
