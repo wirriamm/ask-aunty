@@ -80,7 +80,7 @@
   transform: rotateY(180deg);
 }
 
-.form-check {
+#edit_user_5 > fieldset > div {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
@@ -92,16 +92,16 @@
 }
 
 
-.card input[type=checkbox] {
+.form-check-input.check_boxes.optional {
   visibility: hidden;
 }
 
-.card input[type="checkbox"]:indeterminate + label > div {
+input[type="checkbox"]:indeterminate + label > div {
   background-color: white;
   color: black;
 }
 
-.card input[type="checkbox"]:checked + label > div {
+input[type="checkbox"]:checked + label > div {
   background-color: $primary;
   color: white;
 }
