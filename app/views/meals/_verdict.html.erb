@@ -33,6 +33,9 @@
             <div style="color:grey; font-size:12px;">
               <%= "#{resto.rating}" %>
               <% rating = resto.rating %>
+              <% if rating.nil? %>
+                <% rating = 0 %>
+              <% end %>
               <% rating.floor.times do %>
               <i class="fas fa-star rated"></i>
               <% end %>
