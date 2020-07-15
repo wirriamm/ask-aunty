@@ -11,19 +11,21 @@
       <% cuisine_count += 1 %>
     <% end %>
     <br>
-    <div>
-      <h3><strong> PS: Your Group's Preferences</strong></h3>
-      <ul style="list-style-type:square">
-        <% @collated_prefs.each do |p| %>
-          <li><%= p.name %></li>
-        <% end %>
-      </ul>
-    </div>
+    <% if @collated_prefs.any? %>
+      <div>
+        <h4><strong> PS: Your Group's Preferences</strong></h4>
+        <ul style="list-style-type:square">
+          <% @collated_prefs.each do |p| %>
+            <li><%= p.name %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
 <% else %>
 <!--   <%= image_tag image_path('aunty-square.svg') %>-->
   <%= image_tag "aunty-square.svg", class: "rotate" %><br>
-  <h3>Aunty's still working on it...</h3>
+  <h4>Aunty's still working on it...</h3>
   <p>Can wait? Come back to Aunty in <%= @time_left %> for results.</p></br>
 <!--   <div class="bubble">
     <p>ps... <strong> Aunty's wise words for today: </strong><br>
