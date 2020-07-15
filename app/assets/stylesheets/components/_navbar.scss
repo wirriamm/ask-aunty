@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: #F0EDE6;
+  background: #F0EDE6; // Must have background cos fixed-top
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -20,4 +20,5 @@
 
 .hor-line {
   border-bottom: 2px solid $primary;
+  margin: 0 16px; // Based on the margin of the navbar container
 }

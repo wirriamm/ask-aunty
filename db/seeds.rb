@@ -17,10 +17,6 @@ Meal.destroy_all
 puts "Destroy all users"
 User.destroy_all
 
-# Cuisines preferences
-# cuisines = %W[American Arabic Asian Australian Brazilian British Cantonese Chinese European French Fusion German Hunan Indian Indonesian International Italian Japanese Korean Malaysian Mediterranean Mexican Middle Eastern Modern Indian Modernist European Nepali Singaporean Spanish Sichuan Taiwanese Thai Turkish Vietnamese Western]
-# cuisines = %W[Chinese Japanese Korean Singaporean Thai Vietnamese Mexican Indonesian Indian Western]
-
 # Seeds preferences
 preferences = ['Vegetarian', 'Pescatarian', 'No Spicy Food']
 restrictions = ['Halal']
