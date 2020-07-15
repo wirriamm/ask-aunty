@@ -92,16 +92,16 @@
 }
 
 
-input[type=checkbox] {
+.card input[type=checkbox] {
   visibility: hidden;
 }
 
-input[type="checkbox"]:indeterminate + label > div {
+.card input[type="checkbox"]:indeterminate + label > div {
   background-color: white;
   color: black;
 }
 
-input[type="checkbox"]:checked + label > div {
+.card input[type="checkbox"]:checked + label > div {
   background-color: $primary;
   color: white;
 }
