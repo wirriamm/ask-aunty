@@ -4,7 +4,7 @@
       <%= link_to root_path, class: "navbar-brand m-0" do %>
         <%= image_tag image_path('aunty-square.svg') %>
       <% end %>
-      <h3 class="m-0 pt-2 pl-2 brand-name">
+      <h3 class="m-0 pt-2 pl-2 brand-name glow">
         <span class="m-0 y-0 pl-1" id="banner-typed-text"></span>
       </h3>
     </div>
@@ -24,7 +24,7 @@
         </div>
       <% else %>
         <div class="pt-2 nav-item">
-          <strong><%= link_to "Login", new_user_session_path, class: "nav-link" %></strong>
+          <strong><%= link_to "Login", new_user_session_path, class: "nav-link glow" %></strong>
         </div>
       <% end %>
     </div>
