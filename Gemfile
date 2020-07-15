@@ -38,7 +38,8 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'turbolinks_render'
 
 gem 'interactor'
-gem 'selenium-webdriver'
+# gem 'selenium-webdriver'
+# gem 'exception_handler', '~> 0.8.0.0'
 
 gem 'redis'
 gem 'sidekiq'

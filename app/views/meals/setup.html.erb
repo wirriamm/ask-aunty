@@ -8,17 +8,21 @@
       <% if poll == @polls.first %>
         <div class='' data-target='polls.poll' style='display: block;'>
           <p>
-            <%= "Poll no #{@poll_no}/10" %>
-            <progress max=10 value='<%= @poll_no %>'></progress>
+            <div class="progress">
+              <div class="progress-bar" style="width: <%= (@poll_no - 1) * 10 %>%"><%= (@poll_no - 1) *10 %>%</div>
+            </div>
           </p>
           <%= cl_image_tag poll.cuisine.photos.sample.key, height: 300, width: 400, crop: :fill, data: {action:'dragstart->polls#dragStart dragend->polls#dragEnd', xStart: "hey there"}, draggable: "true", class: "img-thumbnail img-fluid max-width: 100% height: auto" %>
         </div>
       <% else %>
         <div draggable='true' data-target='polls.poll' style='display: none;'>
           <p>
-            <%= "Poll no #{@poll_no}/10" %>
-            <progress max=10 value="<%= @poll_no%>"></progress>
-          </p>
+<!--             <%= "Poll no #{@poll_no}/10" %>
+ -->         <div class="progress">
+              <div class="progress-bar" style="width: <%= (@poll_no - 1) * 10 %>%"><%= (@poll_no - 1) *10 %>%</div>
+            </div>
+<!--             <progress max=10 value="<%= @poll_no%>"></progress>
+ -->      </p>
           <%= cl_image_tag poll.cuisine.photos.sample.key, height: 300, width: 400, crop: :fill, data: {action:'dragstart->polls#dragStart dragend->polls#dragEnd', xStart: "hey there"}, draggable: "true", class: "img-thumbnail img-fluid max-width: 100% height: auto"  %>
         </div>
       <% end %>
