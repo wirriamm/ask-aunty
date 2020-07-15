@@ -80,15 +80,14 @@
   transform: rotateY(180deg);
 }
 
-#edit_user_5 > fieldset > div {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
+fieldset > div {
+  display: inline !important;
+  padding: 0 !important;
 }
 
 .pref-card {
   width: 40vw;
-
+  margin: 10px;
 }
 
 

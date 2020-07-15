@@ -1,3 +1,4 @@
+<h4><strong>Preferences</strong></h4>
 <div class="cards">
   <%= simple_form_for current_user, wrapper: :inline_form, html: { class: 'form-inline' }, url: "/save_preference", action: :post do |f| %>
     <%= f.association :preferences,
