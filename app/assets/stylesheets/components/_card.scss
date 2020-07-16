@@ -80,19 +80,18 @@
   transform: rotateY(180deg);
 }
 
-.form-check {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 16px;
+fieldset > div {
+  display: inline !important;
+  padding: 0 !important;
 }
 
 .pref-card {
   width: 40vw;
-
+  margin: 10px;
 }
 
 
-input[type=checkbox] {
+.form-check-input.check_boxes.optional {
   visibility: hidden;
 }
 
