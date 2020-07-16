@@ -39,6 +39,7 @@ class MealsController < ApplicationController
 
   def update
     @meal = Meal.find_by(vanity_id: params[:id])
+    @meal.pax = params[:meal][:pax]
     @meal.endtime = DateTime.civil_from_format(:local, params[:meal]["endtime(1i)"].to_i, params[:meal]["endtime(2i)"].to_i, params[:meal]["endtime(3i)"].to_i, params[:meal]["endtime(4i)"].to_i, params[:meal]["endtime(5i)"].to_i)
     if @meal.save
       flash.now[:success] = "Updated Meal!"
@@ -99,6 +100,11 @@ class MealsController < ApplicationController
       results_json = JSON.parse(results.results)
       restaurant_info(results_json, cuisine).each { |resto| @restaurants << resto }
     end
+
+    url = "ask-aunty.herokuapp.com/meals/#{@meal.vanity_id}/result"
+    text = "Aunty's verdict for your makan #{@meal.vanity_id} at%0a#{url}%0a%0a💌 Ask Aunty"
+    @whatsapp_link = "https://wa.me/?text=#{text}"
+    @telegram_link = "https://t.me/share/url?url=#{url}&text=#{text}"
   end
 
   private

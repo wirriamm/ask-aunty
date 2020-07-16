@@ -1,10 +1,10 @@
-<h4><strong>Preferences</strong></h4>
-<div class="cards">
+<h3 class="p-3 m-0 text-center">Preferences</h3>
+<div class="pref-container">
   <%= simple_form_for current_user, wrapper: :inline_form, html: { class: 'form-inline' }, url: "/save_preference", action: :post do |f| %>
     <%= f.association :preferences,
       as: :check_boxes,
-      include_blank: true
-      # label_html: { class: "pref-card" }
+      include_blank: true,
+      label: '', input_html: { class: 'pref-header' }
     %>
     <%= f.submit 'Save Preferences', class: "btn primarybtn btn-block" %>
   <% end %>
@@ -25,11 +25,8 @@
     <h5 class="p-2 m-0">No Spicy Foods</h5>
   </div>
   <div class="pref-card card shadow-sm mb-3 content-centered">
-    <%= image_tag "halal", alt: "alttext", height: "60px", class: "p-2 m-0" %>
+    <%#= image_tag "halal", alt: "alttext", height: "60px", class: "p-2 m-0" %>
     <h5 class="p-2 m-0">Halal</h5>
   </div>
 </div>
  -->
-
-
-

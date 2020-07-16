@@ -13,8 +13,8 @@
   margin: auto;
 }
 
-.glow {
-  text-shadow: 0 0 4px white;
+.tagline-lg.glow {
+  text-shadow: 2px 2px 4px #dadada;
 }
 
 .aunty-small {
@@ -23,7 +23,6 @@
 }
 
 .brand-name {
-  // color: black;
   color: $primary;
   font-weight: bolder;
 }
@@ -37,9 +36,5 @@
 .tagline-sm {
   color: black !important;
   font-size: 16px;
-  font-weight: bolder;
-}
-
-.carousel-width {
-  // width: 80vw;
+  text-align: center;
 }

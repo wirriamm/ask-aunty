@@ -1,23 +1,18 @@
-<div class="d-flex align-items-center">
-<div class="d-flex flex-column justify-content-center text-center my-2 py-3">
-  <p class="m-0 font-italic tagline-sm">Your group can't decide what and where to eat?</p>
-  <h3 class="tagline-lg m-2 glow pt-2">Just Ask Aunty!</h3>
-</div>
-<!-- <div class="pl-3 pb-2">
-  <%#= image_tag image_path('aunty.svg'), class: 'aunty-small mr-3' %>
-</div> -->
+<div class="d-flex flex-column justify-content-center text-center">
+  <p class="tagline-sm font-italic m-0 glow">Your group can't decide what and where to eat?</p>
+  <h3 class="tagline-lg glow my-3">Just Ask Aunty!</h3>
 </div>
 
-<div class="d-flex justify-content-center pb-3 carousel-width">
+<div class="d-flex justify-content-center">
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-      <div class="carousel-item active">
+      <div class="carousel-item active shadow">
         <%= image_tag image_path('comic1.png') %>
       </div>
-      <div class="carousel-item">
+      <div class="carousel-item shadow">
         <%= image_tag image_path('comic2.png') %>
       </div>
-      <div class="carousel-item">
+      <div class="carousel-item shadow">
         <%= image_tag image_path('comic3.png') %>
       </div>
     </div>
@@ -32,9 +27,8 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-center align-items-end my-3">
-
-  <div class="">
+<div class="d-flex justify-content-center align-items-end mt-5 mb-4">
+  <div class="glow">
     <h5 class="m-0">Aunty will ...</h5>
     <p class="m-0 pt-2"><i class="fas fa-vote-yea pr-2 glow"></i>Poll all your makan kakis</p>
     <p class="m-0 pt-2"><i class="fas fa-search pr-2 glow"></i> Suggest shiokk makan spots</p>
@@ -42,7 +36,7 @@
 </div>
 
 <div data-controller="journey">
-  <div class="d-flex justify-content-around pt-3">
+  <div class="d-flex justify-content-around">
     <div class="btn primarybtn btn-block half-tab m-2" data-remote="true" data-action="click->journey#joinmeal" data-target="journey.joinmeal" data-toggle="tooltip" data-placement="top" title='Join an existing makan poll that you have a Makan Code for'>
       Join Makan
     </div>
