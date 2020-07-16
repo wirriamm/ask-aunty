@@ -153,6 +153,7 @@ class MealsController < ApplicationController
 
   def first_api_call(lat, long, cuisine)
     verdict = Verdict.where(lat: lat, long: long, cuisine: cuisine).first
+    # raise
     if verdict.nil?
       url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=#{lat},#{long}&radius=2000&types=restaurant&keyword=#{cuisine}&key=#{ENV['GOOGLE_PLACES_API']}"
       response = RestClient.get url

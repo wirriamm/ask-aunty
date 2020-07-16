@@ -33,8 +33,8 @@
       <input type="hidden" data-target='polls.mealId' value='<%= @meal.id %>'>
       <input type="hidden" data-target='polls.userId' value='<%= current_user.id %>'>
       <div class='d-flex justify-content-around'>
-        <div data-target='polls.btn' data-action='click->polls#thumbsUp'> <i class="fas fa-thumbs-up"></i> </div>
         <div data-target='polls.btn' data-action='click->polls#thumbsDown'> <i class="fas fa-thumbs-down"></i></div>
+        <div data-target='polls.btn' data-action='click->polls#thumbsUp'> <i class="fas fa-thumbs-up"></i></div>
       </div>
         <div data-target='polls.viewResult' style='display: none;' class='btn primarybtn btn-block'><%= link_to "View Result", result_path(@meal.vanity_id) %></div>
     <% else %>
