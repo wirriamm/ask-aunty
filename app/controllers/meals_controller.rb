@@ -99,6 +99,11 @@ class MealsController < ApplicationController
       results_json = JSON.parse(results.results)
       restaurant_info(results_json, cuisine).each { |resto| @restaurants << resto }
     end
+
+    url = "ask-aunty.herokuapp.com/meals/#{@meal.vanity_id}/result"
+    text = "Aunty's verdict for your makan #{@meal.vanity_id} at%0a#{url}%0a%0a💌 Ask Aunty"
+    @whatsapp_link = "https://wa.me/?text=#{text}"
+    @telegram_link = "https://t.me/share/url?url=#{url}&text=#{text}"
   end
 
   private

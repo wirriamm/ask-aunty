@@ -1,10 +1,26 @@
 <% polls = Poll.where(meal_id: @meal).length / 10.0 %>
 <% if @endtime == nil || Time.now > @endtime || @meal.pax == polls %>
-  <h4><strong>Aunty's Verdict</strong></h4>
-  <h5>Makan Code: <%= @meal.vanity_id %></h5>
+  <h3 class="p-3 m-0 text-center">Aunty's Verdict</h3>
+  <h5 class="px-2 glow pt-2"><i class="fas fa-bullhorn pr-3"></i>Update your kakis</h5>
+  <div data-controller="results">
+    <div class="d-flex justify-content-center align-items-center mb-3">
+      <input type="input" value="<%= @meal.vanity_id %>" class="sharp-box flex-grow-1 p-2 url-width" data-target="results.source" readonly>
+      <div class="md-icon mx-2">
+        <a href="" data-action="click->results#copy"><i class="far fa-clone"></i></a>
+      </div>
+      <div class="lg-icon mx-2">
+        <a href="<%= @whatsapp_link %>" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <div class="lg-icon mx-2">
+        <a href="<%= @telegram_link %>" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+      </div>
+    </div>
+  </div>
+
   <% if @polls == [] %>
     <p>Your poll closed but no one voted :(</p>
   <% else %>
+    <h5 class="p-2 glow"><i class="fas fa-poll-h pr-3"></i>Top 2 cuisines</h5>
     <% cuisine_count = 1 %>
     <% @polls.each do |poll| %>
       <%= render partial: 'verdict', locals: { poll: poll, restaurants: @restaurants, cuisine_count: cuisine_count } %>
@@ -21,13 +37,7 @@
     </div>
   <% end %>
 <% else %>
-<!--   <%= image_tag image_path('aunty-square.svg') %>-->
-  <%= image_tag "aunty-square.svg", class: "rotate" %><br>
+  <%= image_tag "aunty-square.svg", class: "rotate mx-auto" %><br>
   <h3>Aunty's still working on it...</h3>
   <p>Can wait? Come back to Aunty in <%= @time_left %> for results.</p></br>
-<!--   <div class="bubble">
-    <p>ps... <strong> Aunty's wise words for today: </strong><br>
-      <em><%#= @fortune %></em></p>
-  </div>
-  <div class="pointer"></div> -->
 <% end %>

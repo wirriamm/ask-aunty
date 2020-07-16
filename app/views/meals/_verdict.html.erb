@@ -1,11 +1,11 @@
 <div class="flip-card card bg-dark text-white">
   <div class="flip-card-inner">
     <div class="flip-card-front">
-      <h5 class="card-title align-middle p-2 my-0">
+      <p class="card-title align-middle p-2 my-0 cuisine-font">
         <%= poll.cuisine.name.capitalize %> |
         <%= number_to_percentage(poll.total_score/@total_polls.to_f * 100, options = { precision: 0 }) %>
         <i class="fa fa-repeat"></i>
-      </h5>
+      </p>
       <% if poll.cuisine.photos.attached? %>
         <%= cl_image_tag(poll.cuisine.photos.sample.key, class: 'card-image') %>
       <% else %>
