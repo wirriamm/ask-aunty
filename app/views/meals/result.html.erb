@@ -26,14 +26,17 @@
       <%= render partial: 'verdict', locals: { poll: poll, restaurants: @restaurants, cuisine_count: cuisine_count } %>
       <% cuisine_count += 1 %>
     <% end %>
-    <br>
-    <div>
-      <h3><strong> PS: Your Group's Preferences</strong></h3>
-      <ul style="list-style-type:square">
-        <% @collated_prefs.each do |p| %>
-          <li><%= p.name %></li>
-        <% end %>
-      </ul>
+    <div class="my-3 pb-3">
+      <h5 class="p-2 glow"><i class="far fa-sticky-note pr-3"></i>Additional Notes</h5>
+      <% if @collated_prefs.any? %>
+        <ul style="list-style-type:square">
+          <% @collated_prefs.each do |p| %>
+            <li><%= p.name %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="px-3">- NIL -</p>
+      <% end %>
     </div>
   <% end %>
 <% else %>
