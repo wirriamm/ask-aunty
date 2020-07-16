@@ -1,4 +1,5 @@
 <h3 class="p-3 m-0 text-center">Preferences</h3>
+<p class="px-3">Aunty will show all selected preferences in the results. But don't worry, aunty won't show your name!</p>
 <div class="pref-container">
   <%= simple_form_for current_user, wrapper: :inline_form, html: { class: 'form-inline' }, url: "/save_preference", action: :post do |f| %>
     <%= f.association :preferences,

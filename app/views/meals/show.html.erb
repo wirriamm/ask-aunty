@@ -28,6 +28,7 @@
 
   <div class="mt-3">
     <h5 class="px-2 glow"><i class="fas fa-users pr-3"></i>Meal Kakis [<%= @meal.users.count %>/<%= @meal.pax %>]</h5>
+    <p class="px-2">Your makan kakis' email address will appear here when they join the makan.</p>
     <div class="mt-3 pl-3">
       <% @meal.users.each_with_index do |user, i| %>
         <p><%= "#{i + 1}. #{user.email}" %></p>
@@ -39,8 +40,8 @@
     <div class="fixed-width">
       <input type="hidden" data-target='show-button.pollCount' value="<%= Poll.where(user: current_user, meal: @meal).length %>">
       <input type="hidden" data-target='show-button.time' value="<%= @meal.endtime > Time.now %>" >
-      <%= link_to "Start Poll", setup_path(@meal.vanity_id), class: 'btn primarybtn fixed-width', data: {target: "show-button.startPoll"} %>
-      <%= link_to "See Result", result_path(@meal.vanity_id), class: 'btn primarybtn fixed-width', data: {target: "show-button.viewResult"} %>
+      <%= link_to "Start Poll", setup_path(@meal.vanity_id), class: 'btn primarybtn btn-block', data: {target: "show-button.startPoll"} %>
+      <%= link_to "See Result", result_path(@meal.vanity_id), class: 'btn primarybtn btn-block', data: {target: "show-button.viewResult"} %>
     </div>
     <div class="btn primarybtn fixed-width" data-target="show-button.editBtn" data-action="click->show-button#update">
       Edit

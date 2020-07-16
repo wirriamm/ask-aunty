@@ -27,7 +27,7 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-center align-items-end mt-5 mb-4">
+<div class="d-flex justify-content-center align-items-end info-margin">
   <div class="glow">
     <h5 class="m-0">Aunty will ...</h5>
     <p class="m-0 pt-2"><i class="fas fa-vote-yea pr-2 glow"></i>Poll all your makan kakis</p>
@@ -36,7 +36,7 @@
 </div>
 
 <div data-controller="journey">
-  <div class="d-flex justify-content-around">
+  <div class="d-flex justify-content-around mb-3">
     <div class="btn primarybtn btn-block half-tab m-2" data-remote="true" data-action="click->journey#joinmeal" data-target="journey.joinmeal" data-toggle="tooltip" data-placement="top" title='Join an existing makan poll that you have a Makan Code for'>
       Join Makan
     </div>
@@ -46,7 +46,7 @@
   </div>
   <div class="d-flex justify-content-center form-width hide", data-target="journey.mealId">
     <%= simple_form_for(@meal, method: :post, url: '/join_meal') do |f| %>
-      <%= f.input :vanity_id, label: 'Makan Code', hint: "enter the code your makan kaki shared!", input_html: { class: "sharp-box hide", 'data-target' => 'journey.mealId', placeholder: "eg: gh28Ty" }, label_html: { class: "hide", 'data-target' => 'journey.mealId' } %>
+      <%= f.input :vanity_id, label: 'Makan Code', hint: "Enter the code your makan kaki shared", input_html: { class: "sharp-box hide", 'data-target' => 'journey.mealId', placeholder: "eg: GH28TY" }, label_html: { class: "hide", 'data-target' => 'journey.mealId' } %>
       <%= f.submit 'Join Makan', class: 'btn primarybtn btn-block hide', 'data-target' => 'journey.mealId' %>
     <% end %>
   </div>

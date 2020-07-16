@@ -8,7 +8,7 @@ class PreferencesController < ApplicationController
     selected = params[:user][:preference_ids].delete_if(&:blank?).map { |id| id.to_i }
     destroy_users_preferences(current - selected)
     create_users_preferences(selected - current)
-    redirect_to root_path
+    redirect_to meal_path(current_user.meals.last.vanity_id)
   end
 
   def update
