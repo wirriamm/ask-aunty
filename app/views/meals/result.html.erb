@@ -40,7 +40,11 @@
     </div>
   <% end %>
 <% else %>
-  <%= image_tag "aunty-square.svg", class: "rotate mx-auto" %><br>
-  <h3>Aunty's still working on it...</h3>
-  <p>Can wait? Come back to Aunty in <%= @time_left %> for results.</p></br>
+  <div class="centered-header">
+    <%= image_tag "aunty-square.svg", class: "rotate my-5" %><br>
+    <h3 class="my-3">Wait ah ...</h3>
+    <p>Aunty is still polling your kakis.</p>
+    <p>Come back in <%= @time_left %> for results.</p>
+    <p>Aunty Will send an email notice once I finish okay?</p>
+  </div>
 <% end %>
