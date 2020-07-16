@@ -6,3 +6,11 @@
 .was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
   color: black !important;
 }
+
+fieldset>legend {
+    display: none;
+}
+
+#new_user > div.form-inputs > fieldset {
+  padding-left: 1.25rem !important;
+}
