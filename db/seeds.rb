@@ -41,7 +41,7 @@ cuisines = [
           'https://lh3.googleusercontent.com/JGzLsQ2UDy_u4ULkda_rZrnGJceCEiuoDQKrxoi6-Oix1WHmgremPkdEcNUj3miarJ_AYqlVZpDF3Q4ZCsNF=s640-c-rw-v1-e365'],
     vegetarian: "Green Mango Salad",
     pescatarian: "Tom Yum Soup",
-    no_spicy_food: "Pad Thai"
+    no_spicy_food: "Pineapple Rice"
   },
 
   { name: 'Chinese',
@@ -53,7 +53,7 @@ cuisines = [
           "https://images.deliveryhero.io/image/fd-sg/LH/y3ce-hero.jpg",
           "https://images.deliveryhero.io/image/fd-sg/LH/x7bz-hero.jpg"],
     vegetarian: "Tofu Fried Rice",
-    pescatarian: "Shrimp Lo Mein",
+    pescatarian: "Steamed Fish",
     no_spicy_food: "Sweet and Sour Pork"
   },
 

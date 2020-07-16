@@ -26,8 +26,9 @@
       <%= render partial: 'verdict', locals: { poll: poll, restaurants: @restaurants, cuisine_count: cuisine_count } %>
       <% cuisine_count += 1 %>
     <% end %>
-    <div class="my-3 pb-3">
+    <div class="my-2 pb-3">
       <h5 class="p-2 glow"><i class="far fa-sticky-note pr-3"></i>Additional Notes</h5>
+      <p class="px-2">Aunty collated all the preferences from your kakis.</p>
       <% if @collated_prefs.any? %>
         <ul style="list-style-type:square">
           <% @collated_prefs.each do |p| %>
