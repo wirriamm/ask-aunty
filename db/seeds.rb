@@ -198,6 +198,13 @@ jill = User.new(email: 'jill@gmail.com',
 jill.save!
 puts "jill seeded"
 
+
+serene = User.new(email: 'serene@gmail.com',
+                password: 'topsecret',
+                password_confirmation: 'topsecret')
+serene.save!
+puts "serene seeded"
+
 puts "Seeding test meal for john"
 meal = Meal.new(vanity_id: 'TEST123',
                 postal_code: 238869,
