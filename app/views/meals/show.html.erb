@@ -1,17 +1,17 @@
 <div data-controller='show-button'>
-  <div class="d-flex">
-    <div class="card shadow-sm mb-3 mr-1">
+  <div class="d-flex align-items-center">
+    <div class="">
       <a href="<%= meals_path %>">
-        <h4 class="p-3 m-0"><i class="fas fa-angle-left"></i></h4>
+        <p class="m-0 p-0 md-icon"><i class="far fa-caret-square-left"></i></p>
       </a>
     </div>
-    <div class="card shadow-sm mb-3 flex-grow-1 align-items-center justify-content-center">
-      <h5 class="p-3 m-0">Makan Code: <%= @meal.vanity_id %></h5>
+    <div class="flex-grow-1">
+      <h5 class="p-3 m-0 text-center pr-5">Makan Details</h5>
     </div>
   </div>
 
   <div class="pt-4 pb-3">
-    <h5 class="pl-2 mb-2 glow"><i class="fas fa-bullhorn mr-2"></i>Jio your kakis</h5>
+    <h5 class="pl-2 mb-2 glow"><i class="fas fa-bullhorn pr-3"></i>Jio your kakis</h5>
     <div class="d-flex justify-content-center align-items-center">
       <input type="input" value="<%= @meal.vanity_id %>" class="sharp-box flex-grow-1 p-2 url-width" data-target="show-button.source" readonly>
       <div class="md-icon mx-2">
@@ -27,7 +27,7 @@
   </div>
 
   <div class="mt-3">
-    <h5 class="px-2 glow"><i class="fas fa-users pr-2"></i>Meal Kakis [<%= @meal.users.count %>/<%= @meal.pax %>]</h5>
+    <h5 class="px-2 glow"><i class="fas fa-users pr-3"></i>Meal Kakis [<%= @meal.users.count %>/<%= @meal.pax %>]</h5>
     <div class="mt-3 pl-3">
       <% @meal.users.each_with_index do |user, i| %>
         <p><%= "#{i + 1}. #{user.email}" %></p>
